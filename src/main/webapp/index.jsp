@@ -11,10 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  đây là dòng ánh viết
-sửa cái gì đấy đi :
-  ibnhkk
-  ánh viết thêm nè
-  Dũng thêm dòng 4
+  mêt vkl ra rồi
   </body>
 </html>
