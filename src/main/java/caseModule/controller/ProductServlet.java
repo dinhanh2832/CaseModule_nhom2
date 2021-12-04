@@ -27,11 +27,12 @@ public class ProductServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
-        switch (action){
-
+        switch (action) {
+            case "":
+                break;
             default:
                 try {
-                    showListProduct(request,response);
+                    showListProduct(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -42,10 +43,10 @@ public class ProductServlet extends HttpServlet {
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 
-        List<Product> productList=productService.printAll();
-        request.setAttribute("products",productList);
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("theme/listProduct.jsp");
-        requestDispatcher.forward(request,response);
+        List<Product> productList = productService.printAll();
+        request.setAttribute("products", productList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/listProduct.jsp");
+        requestDispatcher.forward(request, response);
 
     }
 

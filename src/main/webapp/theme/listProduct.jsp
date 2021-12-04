@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Tien Dung
@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -41,7 +42,6 @@
             <td > Id</td>
             <td> Price</td>
             <td> Classify Id</td>
-            <td> Description</td>
             <td> Status</td>
             <td> Server</td>
 
@@ -53,7 +53,6 @@
                 <td>  <input style="border: none" type="text" name="id" value="${product.id}"></td>
                 <td>  <input style="border: none" type="text" name="price" value="${product.price}"></td>
                 <td>  <input style="border: none" type="text" name="classifyId" value="${product.classifyId}"></td>
-                <td>  <input style="border: none" type="text" name="description" value="${product.description}"></td>
                 <td>  <input style="border: none" type="text" name="status" value="${product.status}"></td>
                 <td>  <input style="border: none" type="text" name="server" value="${product.serverId}"></td>
 

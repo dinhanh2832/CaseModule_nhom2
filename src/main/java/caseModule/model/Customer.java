@@ -6,6 +6,7 @@ private String name;
 private int age;
 private int numberPhone;
 private String email;
+private double money;
 private String userNameAcc;
 private String pass;
 private int role;
@@ -13,12 +14,13 @@ private int role;
     public Customer() {
     }
 
-    public Customer(int id, String name, int age, int nuberPhone, String email, String userNameAcc, String pass, int role) {
+    public Customer(int id, String name, int age, int numberPhone, String email,double money, String userNameAcc, String pass, int role) {
         this.id = id;
         this.name = name;
         this.age = age;
-        this.numberPhone = nuberPhone;
+        this.numberPhone = numberPhone;
         this.email = email;
+        this.money = money;
         this.userNameAcc = userNameAcc;
         this.pass = pass;
         this.role = role;
@@ -86,5 +88,13 @@ private int role;
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
     }
 }

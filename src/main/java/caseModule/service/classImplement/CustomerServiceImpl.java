@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
         List<Customer> customers = new ArrayList<>();
         try (Connection connection = getConnection();
 
-             PreparedStatement preparedStatement = connection.prepareStatement("Select * from customer");) {
+             PreparedStatement preparedStatement = connection.prepareStatement("Select * from customer")) {
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
@@ -38,10 +38,11 @@ public class CustomerServiceImpl implements CustomerService {
                 int age = rs.getInt("age");
                 int numberPhone = rs.getInt("numberPhone");
                 String email = rs.getString("email");
+                double money = rs.getDouble("money");
                 String userNameAcc = rs.getString("userNameAcc");
                 String pass = rs.getString("pass");
                 int role = rs.getInt("role");
-                customers.add(new Customer(id, name, age, numberPhone, email, userNameAcc, pass, role));
+                customers.add(new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role));
             }
         } catch (SQLException e) {
         }
@@ -71,10 +72,11 @@ public class CustomerServiceImpl implements CustomerService {
                 int age = rs.getInt("age");
                 int numberPhone = rs.getInt("numberPhone");
                 String email = rs.getString("email");
+                double money = rs.getDouble("money");
                 String userNameAcc = rs.getString("userNameAcc");
                 String pass = rs.getString("pass");
                 int role = rs.getInt("role");
-                customer.add(new Customer(id, name, age, numberPhone, email, userNameAcc, pass, role));
+                customer.add(new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role));
             }
         } catch (SQLException e) {
         }
@@ -90,9 +92,10 @@ public class CustomerServiceImpl implements CustomerService {
             preparedStatement.setInt(3, customer.getAge());
             preparedStatement.setInt(4, customer.getNumberPhone());
             preparedStatement.setString(5, customer.getEmail());
-            preparedStatement.setString(6, customer.getUserNameAcc());
-            preparedStatement.setString(7, customer.getPass());
-            preparedStatement.setInt(8, customer.getRole());
+            preparedStatement.setDouble(6, customer.getMoney());
+            preparedStatement.setString(7, customer.getUserNameAcc());
+            preparedStatement.setString(8, customer.getPass());
+            preparedStatement.setInt(9, customer.getRole());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -142,10 +145,11 @@ public class CustomerServiceImpl implements CustomerService {
                 int age = rs.getInt("age");
                 int numberPhone = rs.getInt("numberPhone");
                 String email = rs.getString("email");
+                double money = rs.getDouble("money");
                 String userNameAcc = rs.getString("userNameAcc");
                 String pass = rs.getString("pass");
                 int role = rs.getInt("role");
-                customer = new Customer(id, name, age, numberPhone, email, userNameAcc, pass, role);
+                customer = new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role);
             }
         } catch (SQLException e) {
         }
