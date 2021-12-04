@@ -83,7 +83,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void delete(int id) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("delete from orders where id=?");) {
+             PreparedStatement preparedStatement = connection.prepareStatement("delete from orders where id=?")) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         }
@@ -93,7 +93,7 @@ public class OrderServiceImpl implements OrderService {
     public Order findById(int id) throws SQLException {
         Order order = null;
         Connection connection = getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("select  *from student where id=?");
+        PreparedStatement preparedStatement = connection.prepareStatement("select  *from orders where id=?");
         preparedStatement.setInt(1, id);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
