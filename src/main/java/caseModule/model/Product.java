@@ -2,7 +2,7 @@ package caseModule.model;
 
 public class Product {
     private int id;
-    private String price;
+    private int price;
     private int classifyId;
     private String description;
     private String userProduct;
@@ -13,7 +13,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String price, int classifyId, String description, String userProduct, String pass, int status, int serverId) {
+    public Product(int id, int price, int classifyId, String description, String userProduct, String pass, int status, int serverId) {
         this.id = id;
         this.price = price;
         this.classifyId = classifyId;
@@ -32,11 +32,11 @@ public class Product {
         this.id = id;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
