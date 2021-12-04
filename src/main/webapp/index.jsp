@@ -11,8 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  đây là dòng ánh viết
-sửa cái gì đấy đi :
-  ibnhkk
+  <a href="/products">Show List Product</a>
   </body>
 </html>

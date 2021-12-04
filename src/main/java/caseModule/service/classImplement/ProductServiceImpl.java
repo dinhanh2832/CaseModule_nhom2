@@ -33,11 +33,11 @@ public class ProductServiceImpl implements ProductService {
             int id=rs.getInt("id");
             int price= rs.getInt("price");
             int classifyId=rs.getInt("classifyId");
-            String description=rs.getString("classifyId");
-            String userProduct=rs.getString("classifyId");
+            String description=rs.getString("description");
+            String userProduct=rs.getString("userProduct");
             String pass=rs.getString("pass");
             int status=rs.getInt("status");
-            int severId=rs.getInt("severId");
+            int severId=rs.getInt("serverId");
             productList.add(new Product(id,price,classifyId,description,userProduct,pass,status,severId));
         }
         return productList;
@@ -57,7 +57,7 @@ public class ProductServiceImpl implements ProductService {
             String userProduct=rs.getString("classifyId");
             String pass=rs.getString("pass");
             int status=rs.getInt("status");
-            int severId=rs.getInt("severId");
+            int severId=rs.getInt("serverId");
             productList.add(new Product(id,price,classifyId,description,userProduct,pass,status,severId));
         }
         return productList;
@@ -124,7 +124,7 @@ public class ProductServiceImpl implements ProductService {
             String userProduct=rs.getString("classifyId");
             String pass=rs.getString("pass");
             int status=rs.getInt("status");
-            int severId=rs.getInt("severId");
+            int severId=rs.getInt("serverId");
             product=new Product(id1,price,classifyId,description,userProduct,pass,status,severId);
         }
         return product;
