@@ -4,7 +4,7 @@ public class Customer {
 private int id;
 private String name;
 private int age;
-private int nuberPhone;
+private int numberPhone;
 private String email;
 private String userNameAcc;
 private String pass;
@@ -17,7 +17,7 @@ private int role;
         this.id = id;
         this.name = name;
         this.age = age;
-        this.nuberPhone = nuberPhone;
+        this.numberPhone = nuberPhone;
         this.email = email;
         this.userNameAcc = userNameAcc;
         this.pass = pass;
@@ -48,12 +48,12 @@ private int role;
         this.age = age;
     }
 
-    public int getNuberPhone() {
-        return nuberPhone;
+    public int getNumberPhone() {
+        return numberPhone;
     }
 
-    public void setNuberPhone(int nuberPhone) {
-        this.nuberPhone = nuberPhone;
+    public void setNumberPhone(int numberPhone) {
+        this.numberPhone = numberPhone;
     }
 
     public String getEmail() {
