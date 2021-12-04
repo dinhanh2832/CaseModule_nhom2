@@ -28,6 +28,9 @@ public class ProductServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "create":
+                showCreateProduct(request,response);
+                break;
             default:
                 try {
                     showListProduct(request, response);
@@ -37,6 +40,11 @@ public class ProductServlet extends HttpServlet {
         }
 
 
+    }
+
+    private void showCreateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/createProduct.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
@@ -49,6 +57,33 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "create":
+                try {
+                    createProduct(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+    }
+    private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id= Integer.parseInt(request.getParameter("id"));
+        int price = Integer.parseInt(request.getParameter("price"));
+       int classifyId= Integer.parseInt(request.getParameter("classifyId"));
+       String description=request.getParameter("description");
+       String userProduct=request.getParameter("userProduct");
+       String pass=request.getParameter("pass");
+       int status= Integer.parseInt(request.getParameter("status"));
+       int serverId= Integer.parseInt(request.getParameter("serverId"));
+        Product product = new Product(id, price,classifyId,description,userProduct,pass,status,serverId);
+        productService.add(product);
+        response.sendRedirect("/products");
 
     }
 }

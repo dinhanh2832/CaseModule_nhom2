@@ -12,7 +12,9 @@
   </head>
   <body>
   <a href="/products">Show List Product</a>
+  <br>
   <a href="/customers">Show List Customer</a>
-  gà
+  <br>
+
   </body>
 </html>
