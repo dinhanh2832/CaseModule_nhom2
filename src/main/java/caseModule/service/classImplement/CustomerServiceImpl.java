@@ -11,8 +11,7 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
     public CustomerServiceImpl() {
     }
-
-    protected Connection getConnection(){
+    private Connection getConnection(){
         Connection connection=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

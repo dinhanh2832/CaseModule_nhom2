@@ -12,7 +12,7 @@ public class ServerServiceImpl implements ServerService {
     public ServerServiceImpl() {
     }
 
-    protected Connection getConnection(){
+    private Connection getConnection(){
         Connection connection=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

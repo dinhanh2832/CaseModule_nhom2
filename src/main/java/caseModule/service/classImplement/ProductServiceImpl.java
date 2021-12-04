@@ -12,7 +12,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductServiceImpl() {
     }
 
-    protected Connection getConnection(){
+    private Connection getConnection(){
         Connection connection=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

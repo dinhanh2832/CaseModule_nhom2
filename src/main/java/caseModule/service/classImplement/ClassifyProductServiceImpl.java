@@ -11,7 +11,7 @@ import java.util.List;
 public class ClassifyProductServiceImpl implements ClassifyProductService {
     public ClassifyProductServiceImpl() {
     }
-    protected Connection getConnection(){
+    private Connection getConnection(){
         Connection connection=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
