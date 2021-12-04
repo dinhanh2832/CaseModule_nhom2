@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
-
     public OrderServiceImpl() {
     }
 
@@ -43,13 +42,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> printAllOrderByPrice() throws SQLException {
-
         return null;
     }
 
     @Override
     public List<Order> findByName(String name) throws SQLException {
-
         return null;
     }
 
