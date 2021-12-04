@@ -1,4 +1,6 @@
 package caseModule.service.interfacee;
 
-public interface ProductService {
+import caseModule.model.Product;
+
+public interface ProductService extends Service<Product> {
 }
