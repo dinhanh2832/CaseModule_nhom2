@@ -25,6 +25,7 @@
 <center>
     <h1> List Customer</h1>
     <br>
+    <p><a href="/logIn?action=page"> Back home</a></p>
     <p><a href="/products?action=create"> Create customer</a> </p>
     <br>
     <form action="/customers">

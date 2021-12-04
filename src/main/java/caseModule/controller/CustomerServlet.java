@@ -10,11 +10,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CustomerServlet", value = "/customers")
 public class CustomerServlet extends HttpServlet {
     CustomerService customerServlet = new CustomerServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -24,7 +26,7 @@ public class CustomerServlet extends HttpServlet {
         switch (action) {
             case "edit":
                 try {
-                    showEditForm(request,response);
+                    showEditForm(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -35,8 +37,10 @@ public class CustomerServlet extends HttpServlet {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                break;
         }
     }
+
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -46,6 +50,7 @@ public class CustomerServlet extends HttpServlet {
         dispatcher.forward(request, response);
 
     }
+
     private void ListCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Customer> listCustomer = customerServlet.printAll();
         request.setAttribute("customers", listCustomer);
@@ -62,13 +67,14 @@ public class CustomerServlet extends HttpServlet {
         switch (action) {
             case "edit":
                 try {
-                    updateCustomer(request,response);
+                    updateCustomer(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
         }
     }
+
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -80,8 +86,8 @@ public class CustomerServlet extends HttpServlet {
         double money = Double.parseDouble(request.getParameter("money"));
         String pass = request.getParameter("pass");
 
-        Customer customer = new Customer( name,  age,  numberPhone,  email,  money,  userNameAcc, pass);
-        customerServlet.edit(id,customer);
+        Customer customer = new Customer(name, age, numberPhone, email, money, userNameAcc, pass);
+        customerServlet.edit(id, customer);
         response.sendRedirect("/customers");
     }
 }

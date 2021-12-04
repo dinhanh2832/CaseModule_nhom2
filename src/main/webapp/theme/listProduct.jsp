@@ -26,7 +26,7 @@
     <h1> List Product</h1>
     <br>
     <p><a href="/products?action=create"> Create product</a> </p>
-    <p><a href="http://localhost:8080">Back home</a></p>
+    <p><a href="/logIn?action=page">Back home</a></p>
     <br>
     <form action="/products">
         <input type="text" name="key" placeholder="Enter name you want find?">
