@@ -3,10 +3,27 @@ package caseModule.service.classImplement;
 import caseModule.model.Product;
 import caseModule.service.interfacee.ProductService;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
+    public ProductServiceImpl() {
+    }
+
+    protected Connection getConnection(){
+        Connection connection=null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/case_module3?useSSL=false", "root", "123456");
+        }catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return connection;
+    }
     @Override
     public List<Product> printAll() throws SQLException {
         return null;
