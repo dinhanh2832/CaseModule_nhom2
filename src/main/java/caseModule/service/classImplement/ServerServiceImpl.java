@@ -46,7 +46,7 @@ public class ServerServiceImpl implements ServerService {
     }
 
     @Override
-    public void edit(Server server) throws SQLException {
+    public void edit(int id,Server server) throws SQLException {
 
     }
 

@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void edit(Product product) throws SQLException {
+    public void edit(int id ,Product product) throws SQLException {
 
     }
 

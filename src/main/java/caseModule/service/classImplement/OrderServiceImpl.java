@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void edit(Order order) throws SQLException {
+    public void edit(int id ,Order order) throws SQLException {
 
     }
 
