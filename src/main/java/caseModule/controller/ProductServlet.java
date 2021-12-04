@@ -38,6 +38,13 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "view":
+                try {
+                    viewProduct(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
                 try {
                     showListProduct(request, response);
@@ -47,6 +54,14 @@ public class ProductServlet extends HttpServlet {
         }
 
 
+    }
+
+    private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/view.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        request.setAttribute("product", product);
+        requestDispatcher.forward(request, response);
     }
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
