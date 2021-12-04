@@ -1,4 +1,6 @@
 package caseModule.service.interfacee;
 
-public interface OrderService {
+import caseModule.model.Order;
+
+public interface OrderService<O> extends Service<Order>{
 }
