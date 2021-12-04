@@ -6,7 +6,8 @@ import caseModule.service.interfacee.ServerService;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ServerServiceImpl implements ServerService<Server> {
+public class ServerServiceImpl implements ServerService {
+
     @Override
     public List<Server> printAll() throws SQLException {
         return null;

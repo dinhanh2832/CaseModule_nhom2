@@ -6,7 +6,7 @@ import caseModule.service.interfacee.ProductService;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ProductServiceImpl implements ProductService<Product> {
+public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> printAll() throws SQLException {
         return null;
