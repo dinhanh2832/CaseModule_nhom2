@@ -53,23 +53,23 @@
             <td> Delete</td>
             <td> Chi con mẹ tiết sp</td>
         </tr>
-        <c:forEach items="${products}" var="product">
+        <c:forEach  var="i" begin="0" end="${products.size()-1}">
             <tr>
-                <td>  <input style="border: none" type="text" name="id" value="${product.id}"></td>
-                <td>  <input style="border: none" type="text" name="price" value="${product.price}"></td>
-                <td>  <input style="border: none" type="text" name="classifyId" value="${product.classifyId}"></td>
-                <td>  <input style="border: none" type="text" name="description" value="${product.description}"></td>
-                <td>  <input style="border: none" type="text" name="userProduct" value="${product.userProduct}"></td>
-                <td>  <input style="border: none" type="text" name="pass" value="${product.pass}"></td>
-                <td>  <input style="border: none" type="text" name="status" value="${product.status}"></td>
-                <td>  <input style="border: none" type="text" name="server" value="${product.serverId}"></td>
+                <td>  <input style="border: none" type="text" name="id" value="${products.get(i).id}"></td>
+                <td>  <input style="border: none" type="text" name="price" value="${products.get(i).price}"></td>
+                <td>  <input style="border: none" type="text" name="classifyId" value="${classifyProducts.get(i).category}"></td>
+                <td>  <input style="border: none" type="text" name="description" value="${products.get(i).description}"></td>
+                <td>  <input style="border: none" type="text" name="userProduct" value="${products.get(i).userProduct}"></td>
+                <td>  <input style="border: none" type="text" name="pass" value="${products.get(i).pass}"></td>
+                <td>  <input style="border: none" type="text" name="status" value="${products.get(i).status}"></td>
+                <td>  <input style="border: none" type="text" name="server" value="${servers.get(i).name}"></td>
 
-                <td><a href="/products?action=edit&id=${product.getId()}"> Edit</a></td>
+                <td><a href="/products?action=edit&id=${products.get(i).getId()}"> Edit</a></td>
 
-                <td> <a href="/products?action=delete&id=${product.id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">
+                <td> <a href="/products?action=delete&id=${products.get(i).id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">
                     delete
                 </a> </td>
-                <td><a href="/products?action=view&id=${product.getId()}">xem chi tiết</a></td>
+                <td><a href="/products?action=view&id=${products.get(i).getId()}">xem chi tiết</a></td>
             </tr>
         </c:forEach>
     </table>

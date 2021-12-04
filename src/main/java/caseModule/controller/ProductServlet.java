@@ -1,9 +1,13 @@
 package caseModule.controller;
 
+import caseModule.model.ClassifyProduct;
 import caseModule.model.Product;
+import caseModule.model.Server;
+import caseModule.service.classImplement.ClassifyProductServiceImpl;
 import caseModule.service.classImplement.OrderServiceImpl;
 import caseModule.service.classImplement.ProductServiceImpl;
 import caseModule.service.classImplement.ServerServiceImpl;
+import caseModule.service.interfacee.ClassifyProductService;
 import caseModule.service.interfacee.OrderService;
 import caseModule.service.interfacee.ProductService;
 import caseModule.service.interfacee.ServerService;
@@ -20,6 +24,7 @@ public class ProductServlet extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
     OrderService orderService = new OrderServiceImpl();
     ServerService serverService = new ServerServiceImpl();
+  ClassifyProductService classifyProductService=new ClassifyProductServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -79,8 +84,14 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        List<Server> serverList=serverService.printAll();
+        List<ClassifyProduct> classifyProductList=classifyProductService.printAll();
         List<Product> productList = productService.printAll();
+
+        request.setAttribute("servers",serverList);
+        request.setAttribute("classifyProducts",classifyProductList);
         request.setAttribute("products", productList);
+
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/listProduct.jsp");
         requestDispatcher.forward(request, response);
 
