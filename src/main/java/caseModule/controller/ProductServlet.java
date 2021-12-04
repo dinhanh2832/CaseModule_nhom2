@@ -17,6 +17,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/products")
@@ -84,17 +85,32 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        List<Server> serverList=serverService.printAll();
-        List<ClassifyProduct> classifyProductList=classifyProductService.printAll();
         List<Product> productList = productService.printAll();
+        List<Server> serverList=findAllServer(productList);
+        List<ClassifyProduct> classifyProductList=findAllClassify(productList);
 
         request.setAttribute("servers",serverList);
         request.setAttribute("classifyProducts",classifyProductList);
         request.setAttribute("products", productList);
-
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/listProduct.jsp");
         requestDispatcher.forward(request, response);
 
+    }
+    private List<ClassifyProduct> findAllClassify(List<Product> productList) throws SQLException {
+        List<ClassifyProduct> list=new ArrayList<>();
+        for (int i = 0; i <productList.size(); i++) {
+            ClassifyProduct classifyProduct =classifyProductService.findById(productList.get(i).getClassifyId());
+            list.add(classifyProduct);
+        }
+        return list;
+    }
+    private List<Server> findAllServer(List<Product> productList) throws SQLException {
+        List<Server> list=new ArrayList<>();
+        for (int i = 0; i <productList.size(); i++) {
+           Server server =serverService.findById(productList.get(i).getServerId());
+            list.add(server);
+        }
+        return list;
     }
 
     @Override
