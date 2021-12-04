@@ -31,6 +31,13 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 showCreateProduct(request,response);
                 break;
+            case "edit":
+                try {
+                    showEdit(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
                 try {
                     showListProduct(request, response);
@@ -39,6 +46,15 @@ public class ProductServlet extends HttpServlet {
                 }
         }
 
+
+    }
+
+    private void showEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/editProduct.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        request.setAttribute("product", product);
+        requestDispatcher.forward(request, response);
 
     }
 
@@ -70,8 +86,31 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "edit":
+                try {
+                    editProduct(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
+
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int id1= Integer.parseInt(request.getParameter("id1"));
+        int price = Integer.parseInt(request.getParameter("price"));
+        int classifyId= Integer.parseInt(request.getParameter("classifyId"));
+        String description=request.getParameter("description");
+        String userProduct=request.getParameter("userProduct");
+        String pass=request.getParameter("pass");
+        int status= Integer.parseInt(request.getParameter("status"));
+        int serverId= Integer.parseInt(request.getParameter("serverId"));
+        Product product = new Product(id1, price,classifyId,description,userProduct,pass,status,serverId);
+        productService.edit(id,product);
+        response.sendRedirect("/products");
+    }
+
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id= Integer.parseInt(request.getParameter("id"));
         int price = Integer.parseInt(request.getParameter("price"));

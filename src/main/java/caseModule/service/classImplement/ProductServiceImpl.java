@@ -53,8 +53,8 @@ public class ProductServiceImpl implements ProductService {
             int id=rs.getInt("id");
             int price= rs.getInt("price");
             int classifyId=rs.getInt("classifyId");
-            String description=rs.getString("classifyId");
-            String userProduct=rs.getString("classifyId");
+            String description=rs.getString("description");
+            String userProduct=rs.getString("userProduct");
             String pass=rs.getString("pass");
             int status=rs.getInt("status");
             int severId=rs.getInt("serverId");
@@ -120,8 +120,8 @@ public class ProductServiceImpl implements ProductService {
             int id1=rs.getInt("id");
             int price= rs.getInt("price");
             int classifyId=rs.getInt("classifyId");
-            String description=rs.getString("classifyId");
-            String userProduct=rs.getString("classifyId");
+            String description=rs.getString("description");
+            String userProduct=rs.getString("userProduct");
             String pass=rs.getString("pass");
             int status=rs.getInt("status");
             int severId=rs.getInt("serverId");
