@@ -22,10 +22,11 @@
     }
 </style>
 <body>
+
 <center>
     <h1> List Customer</h1>
     <br>
-    <p><a href="/products?action=create"> Create customer</a> </p>
+    <a href="/customers?action=create">Thêm Sản phẩm</a>
     <br>
     <form action="/customers">
         <input type="text" name="key" placeholder="Enter name you want find?">
