@@ -44,23 +44,26 @@
             <td> Tuổi</td>
             <td> Số điện thoại</td>
             <td> Email</td>
+            <td> Số tiền khả dụng</td>
             <td> Tài khoản</td>
             <td> Mật khẩu</td>
+            <td> Edit</td>
+            <td> Delete</td>
         </tr>
         <c:forEach items="${customers}" var="customer">
             <tr>
                 <td>  <input style="border: none" type="text" name="id" value="${customer.id}"></td>
                 <td>  <input style="border: none" type="text" name="name" value="${customer.name}"></td>
                 <td>  <input style="border: none" type="text" name="age" value="${customer.age}"></td>
-                <td>  <input style="border: none" type="numberPhone" name="numberPhone" value="${customer.numberPhone}"></td>
+                <td>  <input style="border: none" type="text" name="numberPhone" value="${customer.numberPhone}"></td>
                 <td>  <input style="border: none" type="text" name="email" value="${customer.email}"></td>
                 <td>  <input style="border: none" type="text" name="money" value="${customer.money}"></td>
                 <td>  <input style="border: none" type="text" name="userNameAcc" value="${customer.userNameAcc}"></td>
                 <td>  <input style="border: none" type="text" name="pass" value="${customer.pass}"></td>
 
-                <td><a href="/products?action=edit&id=${customer.getId()}"> Edit</a></td>
+                <td><a href="/customers?action=edit&id=${customer.getId()}"> Edit</a></td>
 
-                <td> <a href="/products?action=delete&id=${customer.id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">
+                <td> <a href="/customers?action=delete&id=${customer.id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">
                     delete
                 </a> </td>
             </tr>

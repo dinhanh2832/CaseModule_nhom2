@@ -36,7 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int age = rs.getInt("age");
-                int numberPhone = rs.getInt("numberPhone");
+                String numberPhone = rs.getString("numberPhone");
                 String email = rs.getString("email");
                 double money = rs.getDouble("money");
                 String userNameAcc = rs.getString("userNameAcc");
@@ -70,7 +70,7 @@ public class CustomerServiceImpl implements CustomerService {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int age = rs.getInt("age");
-                int numberPhone = rs.getInt("numberPhone");
+                String numberPhone = rs.getString("numberPhone");
                 String email = rs.getString("email");
                 double money = rs.getDouble("money");
                 String userNameAcc = rs.getString("userNameAcc");
@@ -90,7 +90,7 @@ public class CustomerServiceImpl implements CustomerService {
             preparedStatement.setInt(1, customer.getId());
             preparedStatement.setString(2, customer.getName());
             preparedStatement.setInt(3, customer.getAge());
-            preparedStatement.setInt(4, customer.getNumberPhone());
+            preparedStatement.setString(4, customer.getNumberPhone());
             preparedStatement.setString(5, customer.getEmail());
             preparedStatement.setDouble(6, customer.getMoney());
             preparedStatement.setString(7, customer.getUserNameAcc());
@@ -109,7 +109,7 @@ public class CustomerServiceImpl implements CustomerService {
             preparedStatement.setInt(1, customer.getId());
             preparedStatement.setString(2, customer.getName());
             preparedStatement.setInt(3, customer.getAge());
-            preparedStatement.setInt(4, customer.getNumberPhone());
+            preparedStatement.setString(4, customer.getNumberPhone());
             preparedStatement.setString(5, customer.getEmail());
             preparedStatement.setString(6, customer.getUserNameAcc());
             preparedStatement.setString(7, customer.getPass());
@@ -143,7 +143,7 @@ public class CustomerServiceImpl implements CustomerService {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int age = rs.getInt("age");
-                int numberPhone = rs.getInt("numberPhone");
+                String numberPhone = rs.getString("numberPhone");
                 String email = rs.getString("email");
                 double money = rs.getDouble("money");
                 String userNameAcc = rs.getString("userNameAcc");

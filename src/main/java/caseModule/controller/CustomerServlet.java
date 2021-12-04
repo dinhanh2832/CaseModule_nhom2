@@ -22,7 +22,12 @@ public class CustomerServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "":
+            case "edit":
+                try {
+                    showEditForm(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 break;
             default:
                 try {
@@ -32,7 +37,15 @@ public class CustomerServlet extends HttpServlet {
                 }
         }
     }
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer existingCustomer = customerServlet.findById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/edit.jsp");
+        request.setAttribute("customer", existingCustomer);
+        dispatcher.forward(request, response);
 
+    }
     private void ListCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Customer> listCustomer = customerServlet.printAll();
         request.setAttribute("customers", listCustomer);
@@ -42,6 +55,33 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "edit":
+                try {
+                    updateCustomer(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+    }
+    private void updateCustomer(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String numberPhone = request.getParameter("numberPhone");
+        String email = request.getParameter("email");
+        String userNameAcc = request.getParameter("userNameAcc");
+        double money = Double.parseDouble(request.getParameter("money"));
+        String pass = request.getParameter("pass");
 
+        Customer customer = new Customer( name,  age,  numberPhone,  email,  money,  userNameAcc, pass);
+        customerServlet.edit(id,customer);
+        response.sendRedirect("/customers");
     }
 }

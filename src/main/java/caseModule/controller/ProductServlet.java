@@ -28,8 +28,6 @@ public class ProductServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "":
-                break;
             default:
                 try {
                     showListProduct(request, response);
@@ -42,7 +40,6 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-
         List<Product> productList = productService.printAll();
         request.setAttribute("products", productList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/listProduct.jsp");
