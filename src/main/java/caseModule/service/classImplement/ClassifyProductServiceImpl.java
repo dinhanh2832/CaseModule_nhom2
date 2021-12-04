@@ -44,7 +44,7 @@ public class ClassifyProductServiceImpl implements ClassifyProductService {
     }
 
     @Override
-    public void edit(ClassifyProduct classifyProduct) throws SQLException {
+    public void edit(int id,ClassifyProduct classifyProduct) throws SQLException {
 
     }
 

@@ -44,7 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void edit(Customer customer) throws SQLException {
+    public void edit(int id,Customer customer) throws SQLException {
 
     }
 

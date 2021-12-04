@@ -2,14 +2,14 @@ package caseModule.model;
 
 public class Order {
     private int id;
-    private int time;
+    private String time;
     private int customerId;
     private int productId;
 
     public Order() {
     }
 
-    public Order(int id, int time, int customerId, int productId) {
+    public Order(int id, String time, int customerId, int productId) {
         this.id = id;
         this.time = time;
         this.customerId = customerId;
@@ -24,11 +24,11 @@ public class Order {
         this.id = id;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
