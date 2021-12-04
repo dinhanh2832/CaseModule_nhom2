@@ -11,7 +11,6 @@ import java.util.List;
 public class ClassifyProductServiceImpl implements ClassifyProductService {
     public ClassifyProductServiceImpl() {
     }
-
     protected Connection getConnection(){
         Connection connection=null;
         try {
