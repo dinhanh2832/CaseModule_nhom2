@@ -24,6 +24,9 @@ public class CustomerServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "create":
+                showCreate(request, response);
+                break;
             case "edit":
                 try {
                     showEditForm(request, response);
@@ -37,9 +40,15 @@ public class CustomerServlet extends HttpServlet {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                break;
         }
     }
+
+
+    private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/create.jsp");
+        requestDispatcher.forward(request, response);
+    }
+
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
@@ -50,7 +59,6 @@ public class CustomerServlet extends HttpServlet {
         dispatcher.forward(request, response);
 
     }
-
     private void ListCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Customer> listCustomer = customerServlet.printAll();
         request.setAttribute("customers", listCustomer);
@@ -65,6 +73,9 @@ public class CustomerServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "create":
+                AddForm(request,response);
+                break;
             case "edit":
                 try {
                     updateCustomer(request, response);
@@ -74,7 +85,6 @@ public class CustomerServlet extends HttpServlet {
                 break;
         }
     }
-
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -88,6 +98,25 @@ public class CustomerServlet extends HttpServlet {
 
         Customer customer = new Customer(name, age, numberPhone, email, money, userNameAcc, pass);
         customerServlet.edit(id, customer);
+        response.sendRedirect("/customers");
+
+    }
+    private void AddForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String numberPhone = request.getParameter("numberPhone");
+        String email = request.getParameter("email");
+        double money = Double.parseDouble(request.getParameter("money"));
+        String userNameAcc = request.getParameter("userNameAcc");
+        String pass = request.getParameter("pass");
+        int role = Integer.parseInt(request.getParameter("role"));
+        try {
+            customerServlet.add(new Customer(id, name, age, numberPhone,email,money,userNameAcc,pass,role));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         response.sendRedirect("/customers");
     }
 }

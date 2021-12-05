@@ -26,7 +26,7 @@
     <h1> List Customer</h1>
     <br>
     <p><a href="/logIn?action=page"> Back home</a></p>
-    <p><a href="/products?action=create"> Create customer</a> </p>
+    <p><a href="/products?action=create"> Thêm người dùng</a> </p>
     <br>
     <form action="/customers">
         <input type="text" name="key" placeholder="Enter name you want find?">
@@ -51,7 +51,6 @@
             <td> Edit</td>
             <td> Delete</td>
         </tr>
-
         <c:forEach items="${customers}" var="customer">
             <tr>
                 <td>  <input style="border: none" type="text" name="id" value="${customer.id}"></td>

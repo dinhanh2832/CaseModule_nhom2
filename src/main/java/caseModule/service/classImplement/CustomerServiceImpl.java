@@ -38,10 +38,10 @@ public class CustomerServiceImpl implements CustomerService {
                 int age = rs.getInt("age");
                 String numberPhone = rs.getString("numberPhone");
                 String email = rs.getString("email");
-                double money = rs.getDouble("money");
                 String userNameAcc = rs.getString("userNameAcc");
                 String pass = rs.getString("pass");
                 int role = rs.getInt("role");
+                double money = rs.getDouble("money");
                 customers.add(new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role));
             }
         } catch (SQLException e) {
@@ -86,7 +86,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void add(Customer customer) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("insert into customer(id,name,age,numberPhone,email,userNameAcc,pass,role) value  (?,?,?,?,?,?,?,?)");) {
+             PreparedStatement preparedStatement = connection.prepareStatement("insert into customer(id,name,age,numberPhone,email,userNameAcc,pass,role,money) value  (?,?,?,?,?,?,?,?,?)");) {
             preparedStatement.setInt(1, customer.getId());
             preparedStatement.setString(2, customer.getName());
             preparedStatement.setInt(3, customer.getAge());
