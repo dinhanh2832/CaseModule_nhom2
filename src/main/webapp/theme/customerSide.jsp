@@ -31,8 +31,8 @@
         <input type="text" name="key" placeholder="Enter name you want find?">
         <button style="background: darkorchid"> find</button>
     </form>
-    <form method="get">
-        <input type="hidden" name="action" value="sort">
+    <form >
+        <input type="hidden" name="action=" value="sort">
         <button style="background: darkorchid"> Sort</button>
     </form>
     <br>
@@ -53,7 +53,7 @@
                 <td><input style="border: none" type="text" name="classifyId" value="${classifyProducts.get(i).category}"></td>
                 <td><input style="border: none" type="text" name="server" value="${servers.get(i).name}"></td>
                 <td><a href="/products?action=viewUser&id=${products.get(i).id}"> Xem chi tiết</a></td>
-                <td><a href="#"> Mua </a></td>
+                <td><a href=""> Mua </a></td>
 
             </tr>
         </c:forEach>
