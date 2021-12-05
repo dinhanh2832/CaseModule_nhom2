@@ -33,6 +33,7 @@ public class ServerServiceImpl implements ServerService {
         while (rs.next()) {
             int id=rs.getInt("id");
             String name=rs.getString("name");
+            servers.add(new Server(id,name));
 
         }
         return servers;

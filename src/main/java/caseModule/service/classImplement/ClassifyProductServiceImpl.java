@@ -1,6 +1,7 @@
 package caseModule.service.classImplement;
 
 import caseModule.model.ClassifyProduct;
+import caseModule.model.Order;
 import caseModule.service.interfacee.ClassifyProductService;
 
 import java.sql.*;
@@ -26,7 +27,17 @@ public class ClassifyProductServiceImpl implements ClassifyProductService {
 
     @Override
     public List<ClassifyProduct> printAll() throws SQLException {
-        return null;
+
+        List<ClassifyProduct> classifyProducts = new ArrayList<>();
+        Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("select *from classifyproduct");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            int id=rs.getInt("id");
+            String category=rs.getString("category");
+            classifyProducts.add(new ClassifyProduct(id,category));
+        }
+        return classifyProducts;
     }
 
     @Override
@@ -89,7 +100,7 @@ public class ClassifyProductServiceImpl implements ClassifyProductService {
     public ClassifyProduct findById(int key) throws SQLException {
         ClassifyProduct classifyProduct = new ClassifyProduct();
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("Select * from classifyproduct where id = ?");) {
+             PreparedStatement preparedStatement = connection.prepareStatement("Select * from classifyproduct where id = ?")) {
             System.out.println(preparedStatement);
             preparedStatement.setInt(1, key);
             ResultSet rs = preparedStatement.executeQuery();

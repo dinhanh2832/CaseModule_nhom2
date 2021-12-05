@@ -86,17 +86,14 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void add(Customer customer) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("insert into customer(id,name,age,numberPhone,email,userNameAcc,pass,role,money) value  (?,?,?,?,?,?,?,?,?)");) {
-            preparedStatement.setInt(1, customer.getId());
-            preparedStatement.setString(2, customer.getName());
-            preparedStatement.setInt(3, customer.getAge());
-            preparedStatement.setString(4, customer.getNumberPhone());
-            preparedStatement.setString(5, customer.getEmail());
-            preparedStatement.setDouble(6, customer.getMoney());
-            preparedStatement.setString(7, customer.getUserNameAcc());
-            preparedStatement.setString(8, customer.getPass());
-            preparedStatement.setInt(9, customer.getRole());
-
+             PreparedStatement preparedStatement = connection.prepareStatement("insert into customer(name,age,numberPhone,email,money,userNameAcc,pass) value  (?,?,?,?,?,?,?)")) {
+            preparedStatement.setString(1, customer.getName());
+            preparedStatement.setInt(2, customer.getAge());
+            preparedStatement.setString(3, customer.getNumberPhone());
+            preparedStatement.setString(4, customer.getEmail());
+            preparedStatement.setDouble(5, customer.getMoney());
+            preparedStatement.setString(6, customer.getUserNameAcc());
+            preparedStatement.setString(7, customer.getPass());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
         }
@@ -105,27 +102,22 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void edit(int id, Customer customer) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("update customer set id=?,name=?,age=?,numberPhone=?,email=?,userNameAcc=?,pass=?,role=?  where id=?")) {
-            preparedStatement.setInt(1, customer.getId());
-            preparedStatement.setString(2, customer.getName());
-            preparedStatement.setInt(3, customer.getAge());
-            preparedStatement.setString(4, customer.getNumberPhone());
-            preparedStatement.setString(5, customer.getEmail());
+             PreparedStatement preparedStatement = connection.prepareStatement("update customer set name=?,age=?,numberPhone=?,email=?,money=?,userNameAcc=?,pass=?  where id=?")) {
+            preparedStatement.setInt(8,id);
+            preparedStatement.setString(1, customer.getName());
+            preparedStatement.setInt(2, customer.getAge());
+            preparedStatement.setString(3, customer.getNumberPhone());
+            preparedStatement.setString(4, customer.getEmail());
+            preparedStatement.setDouble(5, customer.getMoney());
             preparedStatement.setString(6, customer.getUserNameAcc());
             preparedStatement.setString(7, customer.getPass());
-            preparedStatement.setInt(8, customer.getRole());
-            preparedStatement.setInt(9, id);
             preparedStatement.executeUpdate();
         }
     }
 
     @Override
     public void delete(int id) throws SQLException {
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("delete from customer where id = ?");) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
-        }
+
     }
 
     @Override

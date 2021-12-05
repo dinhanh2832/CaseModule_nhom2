@@ -53,8 +53,8 @@ public class ProductServiceImpl implements ProductService {
             int id=rs.getInt("id");
             int price= rs.getInt("price");
             int classifyId=rs.getInt("classifyId");
-            String description=rs.getString("classifyId");
-            String userProduct=rs.getString("classifyId");
+            String description=rs.getString("description");
+            String userProduct=rs.getString("userProduct");
             String pass=rs.getString("pass");
             int status=rs.getInt("status");
             int severId=rs.getInt("serverId");
@@ -72,7 +72,7 @@ public class ProductServiceImpl implements ProductService {
     public void add(Product product) throws SQLException {
         Connection connection=getConnection();
         PreparedStatement preparedStatement=connection.prepareStatement("insert into product(id,price,classifyId,description,userProduct,pass,status,serverId) value (?,?,?,?,?,?,?,?)");
-       preparedStatement.setInt(1,product.getId());
+        preparedStatement.setInt(1,product.getId());
        preparedStatement.setInt(2,product.getPrice());
        preparedStatement.setInt(3,product.getClassifyId());
        preparedStatement.setString(4,product.getDescription());
@@ -102,11 +102,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void delete(int id) throws SQLException {
-        Connection connection=getConnection();
-        PreparedStatement preparedStatement=connection.prepareStatement("delete from product where id=?");
-        preparedStatement.setInt(1,id);
-        preparedStatement.executeUpdate();
-
     }
 
     @Override
@@ -120,8 +115,8 @@ public class ProductServiceImpl implements ProductService {
             int id1=rs.getInt("id");
             int price= rs.getInt("price");
             int classifyId=rs.getInt("classifyId");
-            String description=rs.getString("classifyId");
-            String userProduct=rs.getString("classifyId");
+            String description=rs.getString("description");
+            String userProduct=rs.getString("userProduct");
             String pass=rs.getString("pass");
             int status=rs.getInt("status");
             int severId=rs.getInt("serverId");

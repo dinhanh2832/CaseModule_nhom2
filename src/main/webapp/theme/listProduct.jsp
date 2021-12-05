@@ -13,11 +13,12 @@
     <title>Title</title>
 </head>
 <style>
-    table, th, td{
-        border:1px solid #d21d1d;
+    table, th, td {
+        border: 1px solid #d21d1d;
     }
-    table{
-        border-collapse:collapse;
+
+    table {
+        border-collapse: collapse;
         width: 400px;
     }
 </style>
@@ -25,8 +26,8 @@
 <center>
     <h1> List Product</h1>
     <br>
-    <p><a href="/products?action=create"> Create product</a> </p>
-    <p><a href="http://localhost:8080">Back home</a></p>
+    <p><a href="/products?action=create"> Create product</a></p>
+    <p><a href="/logIn?action=page">Back home</a></p>
     <br>
     <form action="/products">
         <input type="text" name="key" placeholder="Enter name you want find?">
@@ -41,31 +42,32 @@
     <br>
     <table>
         <tr style="background: pink">
-
-            <td > Id</td>
+            <td> Xem chi tiết</td>
+            <td> Id</td>
             <td> Price</td>
             <td> Classify Id</td>
-            <td> Status</td>
             <td> Server</td>
 
             <td> Edit</td>
             <td> Delete</td>
         </tr>
-        <c:forEach items="${products}" var="product">
-            <tr>
-                <td>  <input style="border: none" type="text" name="id" value="${product.id}"></td>
-                <td>  <input style="border: none" type="text" name="price" value="${product.price}"></td>
-                <td>  <input style="border: none" type="text" name="classifyId" value="${product.classifyId}"></td>
-                <td>  <input style="border: none" type="text" name="status" value="${product.status}"></td>
-                <td>  <input style="border: none" type="text" name="server" value="${product.serverId}"></td>
+            <c:forEach  var="i" begin="0" end="${products.size() - 1}">
+                <tr>
+                    <td><a href="/products?action=view&id=${products.get(i).id}"> Xem chi tiết</a></td>
+                    <td><input style="border: none" type="text" name="id" value="${products.get(i).id}"></td>
+                    <td><input style="border: none" type="text" name="price" value="${products.get(i).price}"></td>
+                    <td><input style="border: none" type="text" name="classifyId" value="${classifyProducts.get(i).category}"></td>
+                    <td><input style="border: none" type="text" name="server" value="${servers.get(i).name}"></td>
 
-                <td><a href="/products?action=edit&id=${product.getId()}"> Edit</a></td>
+                    <td><a href="/products?action=edit&id=${product.getId()}"> Edit</a></td>
 
-                <td> <a href="/products?action=delete&id=${product.id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">
-                    delete
-                </a> </td>
-            </tr>
-        </c:forEach>
+                    <td><a href="/products?action=delete&id=${product.id}"
+                           onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
+                           title="Link Title">
+                        delete
+                    </a></td>
+                </tr>
+            </c:forEach>
     </table>
 </center>
 </body>

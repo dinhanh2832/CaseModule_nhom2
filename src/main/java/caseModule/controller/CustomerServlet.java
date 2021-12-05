@@ -10,11 +10,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CustomerServlet", value = "/customers")
 public class CustomerServlet extends HttpServlet {
     CustomerService customerServlet = new CustomerServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -27,7 +29,7 @@ public class CustomerServlet extends HttpServlet {
                 break;
             case "edit":
                 try {
-                    showEditForm(request,response);
+                    showEditForm(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -42,8 +44,9 @@ public class CustomerServlet extends HttpServlet {
         }
     }
 
+
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/create.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/createCustomer.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -52,7 +55,7 @@ public class CustomerServlet extends HttpServlet {
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Customer existingCustomer = customerServlet.findById(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/editCustomer.jsp");
         request.setAttribute("customer", existingCustomer);
         dispatcher.forward(request, response);
 
@@ -76,7 +79,7 @@ public class CustomerServlet extends HttpServlet {
                 break;
             case "edit":
                 try {
-                    updateCustomer(request,response);
+                    updateCustomer(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -93,15 +96,12 @@ public class CustomerServlet extends HttpServlet {
         String userNameAcc = request.getParameter("userNameAcc");
         double money = Double.parseDouble(request.getParameter("money"));
         String pass = request.getParameter("pass");
-
-        Customer customer = new Customer( name,  age,  numberPhone,  email,  money,  userNameAcc, pass);
-        customerServlet.edit(id,customer);
+        Customer customer = new Customer(name, age, numberPhone, email, money, userNameAcc, pass);
+        customerServlet.edit(id, customer);
         response.sendRedirect("/customers");
 
     }
     private void AddForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-        int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
         String numberPhone = request.getParameter("numberPhone");
@@ -109,9 +109,8 @@ public class CustomerServlet extends HttpServlet {
         double money = Double.parseDouble(request.getParameter("money"));
         String userNameAcc = request.getParameter("userNameAcc");
         String pass = request.getParameter("pass");
-        int role = Integer.parseInt(request.getParameter("role"));
         try {
-            customerServlet.add(new Customer(id, name, age, numberPhone,email,money,userNameAcc,pass,role));
+            customerServlet.add(new Customer(name, age, numberPhone,email,money,userNameAcc,pass));
         } catch (SQLException e) {
             e.printStackTrace();
         }
