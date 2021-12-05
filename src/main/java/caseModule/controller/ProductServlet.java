@@ -119,4 +119,33 @@ public class ProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int id1= Integer.parseInt(request.getParameter("id1"));
+        int price = Integer.parseInt(request.getParameter("price"));
+        int classifyId= Integer.parseInt(request.getParameter("classifyId"));
+        String description=request.getParameter("description");
+        String userProduct=request.getParameter("userProduct");
+        String pass=request.getParameter("pass");
+        int status= Integer.parseInt(request.getParameter("status"));
+        int serverId= Integer.parseInt(request.getParameter("serverId"));
+        Product product = new Product(id1, price,classifyId,description,userProduct,pass,status,serverId);
+        productService.edit(id,product);
+        response.sendRedirect("/products");
+    }
+
+    private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id= Integer.parseInt(request.getParameter("id"));
+        int price = Integer.parseInt(request.getParameter("price"));
+        int classifyId= Integer.parseInt(request.getParameter("classifyId"));
+        String description=request.getParameter("description");
+        String userProduct=request.getParameter("userProduct");
+        String pass=request.getParameter("pass");
+        int status= Integer.parseInt(request.getParameter("status"));
+        int serverId= Integer.parseInt(request.getParameter("serverId"));
+        Product product = new Product(id, price,classifyId,description,userProduct,pass,status,serverId);
+        productService.add(product);
+        response.sendRedirect("/products");
+
+    }
 }
