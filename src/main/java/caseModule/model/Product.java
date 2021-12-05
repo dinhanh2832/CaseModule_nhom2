@@ -24,6 +24,16 @@ public class Product {
         this.serverId = serverId;
     }
 
+    public Product(int price, int classifyId, String description, String userProduct, String pass, int status, int serverId) {
+        this.price = price;
+        this.classifyId = classifyId;
+        this.description = description;
+        this.userProduct = userProduct;
+        this.pass = pass;
+        this.status = status;
+        this.serverId = serverId;
+    }
+
     public int getId() {
         return id;
     }

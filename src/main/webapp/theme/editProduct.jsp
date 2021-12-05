@@ -14,7 +14,6 @@
 <center>
   <h1> Edit</h1>
   <form method="post">
-    <p>id<input type="text" name="id1" value="${product.getId()}"></p>
     <p> price<input type="text" name="price" value="${product.getPrice()}"></p>
     <p>classifyId<input type="text" name="classifyId" value="${product.getClassifyId()}"></p>
     <p> description<input type="text" name="description" value="${product.getDescription()}"></p>

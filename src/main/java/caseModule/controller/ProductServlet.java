@@ -98,6 +98,10 @@ public class ProductServlet extends HttpServlet {
         requestDispatcher.forward(request, response);
 
     }
+    private void showClassifyProduct(HttpServletRequest request, HttpServletResponse response)throws SQLException, ServletException, IOException{
+        List<ClassifyProduct> list = classifyProductService.printAll();
+    }
+
     private List<ClassifyProduct> findAllClassify(List<Product> productList) throws SQLException {
         List<ClassifyProduct> list=new ArrayList<>();
         for (int i = 0; i <productList.size(); i++) {
@@ -140,7 +144,6 @@ public class ProductServlet extends HttpServlet {
     }
     private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
-        int id1= Integer.parseInt(request.getParameter("id1"));
         int price = Integer.parseInt(request.getParameter("price"));
         int classifyId= Integer.parseInt(request.getParameter("classifyId"));
         String description=request.getParameter("description");
@@ -148,7 +151,7 @@ public class ProductServlet extends HttpServlet {
         String pass=request.getParameter("pass");
         int status= Integer.parseInt(request.getParameter("status"));
         int serverId= Integer.parseInt(request.getParameter("serverId"));
-        Product product = new Product(id1, price,classifyId,description,userProduct,pass,status,serverId);
+        Product product = new Product(price,classifyId,description,userProduct,pass,status,serverId);
         productService.edit(id,product);
         response.sendRedirect("/products");
     }
