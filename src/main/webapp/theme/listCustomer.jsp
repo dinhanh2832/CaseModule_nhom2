@@ -51,6 +51,7 @@
             <td> Edit</td>
             <td> Delete</td>
         </tr>
+
         <c:forEach items="${customers}" var="customer">
             <tr>
                 <td>  <input style="border: none" type="text" name="id" value="${customer.id}"></td>

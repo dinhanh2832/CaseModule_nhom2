@@ -12,8 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>${sessionScope.us}</h1>
-<h1>${sessionScope.ps}</h1>
+<h1>${sessionScope.uc}</h1>
 <a href="/products">Show List Product</a>
 <a href="/customers">Show List Customer</a>
 </body>

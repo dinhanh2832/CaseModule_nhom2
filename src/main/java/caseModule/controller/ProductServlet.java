@@ -13,6 +13,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/products")
@@ -41,10 +42,16 @@ public class ProductServlet extends HttpServlet {
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Product> productList = productService.printAll();
-        request.setAttribute("products", productList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/listProduct.jsp");
+        List<Product> list = new ArrayList<>();
+        for(Product product: productList){
+            int status = product.getStatus();
+            if(status == 1){
+                list.add(product);
+            }
+        }
+        request.setAttribute("products", list);
         requestDispatcher.forward(request, response);
-
     }
 
     @Override
