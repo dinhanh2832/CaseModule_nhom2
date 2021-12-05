@@ -32,6 +32,7 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+
             default:
                 try {
                     ListCustomer(request, response);
