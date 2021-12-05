@@ -100,7 +100,7 @@ public class ClassifyProductServiceImpl implements ClassifyProductService {
     public ClassifyProduct findById(int key) throws SQLException {
         ClassifyProduct classifyProduct = new ClassifyProduct();
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("Select * from classifyproduct where id = ?");) {
+             PreparedStatement preparedStatement = connection.prepareStatement("Select * from classifyproduct where id = ?")) {
             System.out.println(preparedStatement);
             preparedStatement.setInt(1, key);
             ResultSet rs = preparedStatement.executeQuery();

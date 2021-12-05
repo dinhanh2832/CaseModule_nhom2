@@ -94,26 +94,27 @@ public class ProductServlet extends HttpServlet {
                 list.add(product);
             }
         }
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(list);
+        List<Server> serverList = findAllServer(list);
         request.setAttribute("products", list);
+        request.setAttribute("classifyProducts",classifyProducts);
+        request.setAttribute("servers",serverList);
         requestDispatcher.forward(request, response);
 
     }
-    private void showClassifyProduct(HttpServletRequest request, HttpServletResponse response)throws SQLException, ServletException, IOException{
-        List<ClassifyProduct> list = classifyProductService.printAll();
-    }
-
-    private List<ClassifyProduct> findAllClassify(List<Product> productList) throws SQLException {
-        List<ClassifyProduct> list=new ArrayList<>();
-        for (int i = 0; i <productList.size(); i++) {
-            ClassifyProduct classifyProduct =classifyProductService.findById(productList.get(i).getClassifyId());
+    private List<ClassifyProduct> findClassifyProduct(List<Product> products)throws SQLException, ServletException, IOException{
+        List<ClassifyProduct> list = new ArrayList<>();
+        for (Product product : products) {
+            ClassifyProduct classifyProduct = classifyProductService.findById(product.getClassifyId());
             list.add(classifyProduct);
         }
         return list;
     }
+
     private List<Server> findAllServer(List<Product> productList) throws SQLException {
         List<Server> list=new ArrayList<>();
-        for (int i = 0; i <productList.size(); i++) {
-           Server server =serverService.findById(productList.get(i).getServerId());
+        for (Product product : productList) {
+            Server server = serverService.findById(product.getServerId());
             list.add(server);
         }
         return list;
