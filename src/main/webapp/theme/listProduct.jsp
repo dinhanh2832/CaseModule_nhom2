@@ -46,7 +46,6 @@
             <td> Id</td>
             <td> Price</td>
             <td> Classify Id</td>
-            <td> Status</td>
             <td> Server</td>
 
             <td> Edit</td>

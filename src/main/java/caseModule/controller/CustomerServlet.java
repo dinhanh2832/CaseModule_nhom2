@@ -54,7 +54,7 @@ public class CustomerServlet extends HttpServlet {
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Customer existingCustomer = customerServlet.findById(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/editCustomer.jsp");
         request.setAttribute("customer", existingCustomer);
         dispatcher.forward(request, response);
 
