@@ -1,5 +1,6 @@
 package caseModule.service.classImplement;
 
+import caseModule.model.Customer;
 import caseModule.model.Order;
 import caseModule.service.interfacee.OrderService;
 
@@ -78,12 +79,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public Customer delete(int id) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("delete from orders where id=?")) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         }
+        return null;
     }
 
     @Override

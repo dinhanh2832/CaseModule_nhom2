@@ -34,6 +34,10 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "delete":
+
+                showDeleteForm(request,response);
+                break;
 
             default:
                 try {
@@ -42,6 +46,19 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
         }
+    }
+
+    private void showDeleteForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer existingCustomer = null;
+        try {
+            existingCustomer = customerServlet.delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/editCustomer.jsp");
+        request.setAttribute("customer", existingCustomer);
+        dispatcher.forward(request, response);
     }
 
 
