@@ -53,7 +53,7 @@
         </tr>
         <c:forEach items="${customers}" var="customer">
             <tr>
-<%--                <td>  <a href="/customers?action=edit&id=${customer.getId()}"></a></td>--%>
+                <td>  <a href="/customers?action=view&id=${customer.getId()}"></a></td>
                 <td>  <input style="border: none" type="text" name="id" value="${customer.id}"></td>
                 <td>  <input style="border: none" type="text" name="name" value="${customer.name}"></td>
                 <td>  <input style="border: none" type="text" name="age" value="${customer.age}"></td>

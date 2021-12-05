@@ -46,13 +46,24 @@
             <td> Xem</td>
             <td> Mua</td>
         </tr>
-        <c:forEach items="${products}" var="product">
+<%--        <c:forEach items="${products}" var="product">--%>
+<%--            <tr>--%>
+<%--                <td>  <input style="border: none" type="text" name="id" value="${product.id}"></td>--%>
+<%--                <td>  <input style="border: none" type="text" name="price" value="${product.price}"></td>--%>
+<%--                <td>  <input style="border: none" type="text" name="classifyId" value="${product.classifyId}"></td>--%>
+<%--                <td>  <input style="border: none" type="text" name="server" value="${product.serverId}"></td>--%>
+<%--                <td><a href="" >Xem</a></td>--%>
+<%--            </tr>--%>
+<%--        </c:forEach>--%>
+        <c:forEach  var="i" begin="0" end="${products.size() - 1}">
             <tr>
-                <td>  <input style="border: none" type="text" name="id" value="${product.id}"></td>
-                <td>  <input style="border: none" type="text" name="price" value="${product.price}"></td>
-                <td>  <input style="border: none" type="text" name="classifyId" value="${product.classifyId}"></td>
-                <td>  <input style="border: none" type="text" name="server" value="${product.serverId}"></td>
-                <td><a href="" >Xem</a></td>
+                <td><input style="border: none" type="text" name="id" value="${products.get(i).id}"></td>
+                <td><input style="border: none" type="text" name="price" value="${products.get(i).price}"></td>
+                <td><input style="border: none" type="text" name="classifyId" value="${classifyProducts.get(i).category}"></td>
+                <td><input style="border: none" type="text" name="server" value="${servers.get(i).name}"></td>
+                <td><a href="/products?action=view&id=${products.get(i).id}"> Xem chi tiết</a></td>
+                <td><a href="#"> Mua </a></td>
+
             </tr>
         </c:forEach>
     </table>

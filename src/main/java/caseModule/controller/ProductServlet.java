@@ -23,7 +23,6 @@ import java.util.List;
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
     ServerService serverService = new ServerServiceImpl();
   ClassifyProductService classifyProductService=new ClassifyProductServiceImpl();
 
