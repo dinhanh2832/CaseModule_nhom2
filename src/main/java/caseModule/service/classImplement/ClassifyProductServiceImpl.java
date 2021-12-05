@@ -88,12 +88,13 @@ public class ClassifyProductServiceImpl implements ClassifyProductService {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public Customer delete(int id) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("delete from classifycroduct where id = ?");) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         }
+        return null;
     }
 
     @Override

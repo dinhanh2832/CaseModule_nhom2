@@ -48,18 +48,14 @@ public class CustomerServlet extends HttpServlet {
         }
     }
 
-    private void showDeleteForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void showDeleteForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Customer existingCustomer = null;
-        try {
-            existingCustomer = customerServlet.delete(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Customer existingCustomer = customerServlet.delete(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("theme/editCustomer.jsp");
         request.setAttribute("customer", existingCustomer);
         dispatcher.forward(request, response);
-    }
+        }
+
 
 
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
