@@ -117,7 +117,26 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "create":
+                try {
+                    createProduct(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "edit":
+                try {
+                    editProduct(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
     }
     private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -135,7 +154,14 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-        int id= Integer.parseInt(request.getParameter("id"));
+//        int id= Integer.parseInt(request.getParameter("id"));
+        int max = 1;
+        List<Product> list = productService.printAll();
+        for (Product value : list) {
+            if (max < value.getId()) {
+                max = value.getId();
+            }
+        }
         int price = Integer.parseInt(request.getParameter("price"));
         int classifyId= Integer.parseInt(request.getParameter("classifyId"));
         String description=request.getParameter("description");
@@ -143,7 +169,7 @@ public class ProductServlet extends HttpServlet {
         String pass=request.getParameter("pass");
         int status= Integer.parseInt(request.getParameter("status"));
         int serverId= Integer.parseInt(request.getParameter("serverId"));
-        Product product = new Product(id, price,classifyId,description,userProduct,pass,status,serverId);
+        Product product = new Product(max + 1, price,classifyId,description,userProduct,pass,status,serverId);
         productService.add(product);
         response.sendRedirect("/products");
 

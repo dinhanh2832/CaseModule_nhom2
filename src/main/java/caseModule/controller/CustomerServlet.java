@@ -45,7 +45,7 @@ public class CustomerServlet extends HttpServlet {
 
 
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/create.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/createCustomer.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -95,15 +95,12 @@ public class CustomerServlet extends HttpServlet {
         String userNameAcc = request.getParameter("userNameAcc");
         double money = Double.parseDouble(request.getParameter("money"));
         String pass = request.getParameter("pass");
-
         Customer customer = new Customer(name, age, numberPhone, email, money, userNameAcc, pass);
         customerServlet.edit(id, customer);
         response.sendRedirect("/customers");
 
     }
     private void AddForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-        int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
         String numberPhone = request.getParameter("numberPhone");
@@ -111,9 +108,8 @@ public class CustomerServlet extends HttpServlet {
         double money = Double.parseDouble(request.getParameter("money"));
         String userNameAcc = request.getParameter("userNameAcc");
         String pass = request.getParameter("pass");
-        int role = Integer.parseInt(request.getParameter("role"));
         try {
-            customerServlet.add(new Customer(id, name, age, numberPhone,email,money,userNameAcc,pass,role));
+            customerServlet.add(new Customer(name, age, numberPhone,email,money,userNameAcc,pass));
         } catch (SQLException e) {
             e.printStackTrace();
         }

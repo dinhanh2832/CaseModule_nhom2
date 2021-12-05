@@ -42,7 +42,7 @@
     <br>
     <table>
         <tr style="background: pink">
-
+            <td> Xem chi tiết</td>
             <td> Id</td>
             <td> Price</td>
             <td> Classify Id</td>
@@ -53,6 +53,7 @@
         </tr>
             <c:forEach items="${products}" var="product">
                 <tr>
+                    <td><a href="/products?action=view&id=${product.getId()}"> Xem chi tiết</a></td>
                     <td><input style="border: none" type="text" name="id" value="${product.id}"></td>
                     <td><input style="border: none" type="text" name="price" value="${product.price}"></td>
                     <td><input style="border: none" type="text" name="classifyId" value="${product.classifyId}"></td>

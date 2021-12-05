@@ -14,7 +14,6 @@
 <center>
     <h1> Create</h1>
     <form method="post" >
-        <p> <input type="text" name="id" placeholder="Enter new id product"></p>
         <p> <input type="text" name="price" placeholder="Enter price"></p>
         <p> <input type="text" name="classifyId" placeholder="Enter classifyId"></p>
         <p> <input type="text" name="description" placeholder="Enter description"></p>

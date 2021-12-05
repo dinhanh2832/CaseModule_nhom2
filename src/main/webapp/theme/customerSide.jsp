@@ -44,6 +44,7 @@
             <td> Classify Id</td>
             <td> Server</td>
             <td> Xem</td>
+            <td> Mua</td>
         </tr>
         <c:forEach items="${products}" var="product">
             <tr>
@@ -51,7 +52,7 @@
                 <td>  <input style="border: none" type="text" name="price" value="${product.price}"></td>
                 <td>  <input style="border: none" type="text" name="classifyId" value="${product.classifyId}"></td>
                 <td>  <input style="border: none" type="text" name="server" value="${product.serverId}"></td>
-                <td><a href="">Xem</a></td>
+                <td><a href="" >Xem</a></td>
             </tr>
         </c:forEach>
     </table>

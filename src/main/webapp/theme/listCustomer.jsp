@@ -26,7 +26,7 @@
     <h1> List Customer</h1>
     <br>
     <p><a href="/logIn?action=page"> Back home</a></p>
-    <p><a href="/products?action=create"> Thêm người dùng</a> </p>
+    <p><a href="/customers?action=create"> Thêm người dùng</a> </p>
     <br>
     <form action="/customers">
         <input type="text" name="key" placeholder="Enter name you want find?">
@@ -39,8 +39,8 @@
     <br>
     <table>
         <tr style="background: pink">
-
-            <td > Id</td>
+            <td> Xem chi tiết</td>
+            <td> Id</td>
             <td> Tên khách hàng</td>
             <td> Tuổi</td>
             <td> Số điện thoại</td>
@@ -53,6 +53,7 @@
         </tr>
         <c:forEach items="${customers}" var="customer">
             <tr>
+<%--                <td>  <a href="/customers?action=edit&id=${customer.getId()}"></a></td>--%>
                 <td>  <input style="border: none" type="text" name="id" value="${customer.id}"></td>
                 <td>  <input style="border: none" type="text" name="name" value="${customer.name}"></td>
                 <td>  <input style="border: none" type="text" name="age" value="${customer.age}"></td>
