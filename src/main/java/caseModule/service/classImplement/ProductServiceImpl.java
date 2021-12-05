@@ -102,8 +102,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Customer delete(int id) throws SQLException {
-        return null;
+    public void delete(int id) throws SQLException {
+
     }
 
     @Override

@@ -115,12 +115,12 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
-    @Override
-    public Customer delete(int id) throws SQLException {
-        return null;
+
+    public void delete(int id) throws SQLException {
+
     }
 
-
+    @Override
     public void delete(int id,Customer customer) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("update customer set role=2  where id=?")) {
