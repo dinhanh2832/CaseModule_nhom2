@@ -59,7 +59,7 @@
 <div class="jumbotron ">
     <div class="row">
         <div class="col-12">
-            <p class="bp">Web Acc <b>Cửu âm</b> hàng đầu Việt Nam <br>
+            <p class="bp">Web Acc <b class="bb">Cửu âm</b> hàng đầu Việt Nam <br>
                 Chuyên nghiệp và nhanh chóng<br>
                 Uy tín làm nên chất lượng
             </p>
