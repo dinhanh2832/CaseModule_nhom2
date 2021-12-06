@@ -76,14 +76,14 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("theme/customerSide.jsp");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("customer/customerSide.jsp");
         List<Product> productList = productService.printAllOrderByPrice();
         request.setAttribute("products", productList);
         requestDispatcher.forward(request, response);
     }
 
     private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/viewProduct.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
         request.setAttribute("product", product);
@@ -91,7 +91,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/editProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/editProduct.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
         request.setAttribute("product", product);
@@ -106,7 +106,7 @@ public class ProductServlet extends HttpServlet {
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Product> productList = productService.printAll();
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/listProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
         List<Product> list = new ArrayList<>();
         for(Product product: productList){
             int status = product.getStatus();

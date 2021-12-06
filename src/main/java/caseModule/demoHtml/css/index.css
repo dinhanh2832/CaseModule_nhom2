@@ -1,0 +1,31 @@
+/*html body {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    font-family: 'Estonia', cursive;*/
+/*    font-size: 29px;*/
+/*    font-weight: lighter;*/
+/*    color: #222;*/
+/*}*/
+.navbar{
+    /*0.8: độ trong*/
+    background-color:rgba(33, 31, 25, 0.8) !important;
+}
+.navbar-branch img {
+    width: 55px;
+}
+.nameLogo {
+    font-size: 45px;
+    font-family: 'Estonia', cursive;
+    /*color: indigo;*/
+    text-shadow: 7px 3px 10px #CCCCCC;
+    color: white;
+}
+.nav-item {
+    font-size: 22px;
+    text-shadow: 7px 3px 7px #CCCCCC;
+    font-weight: lighter;
+    color: white;
+}
+.container img {
+    width: 100%;
+}
