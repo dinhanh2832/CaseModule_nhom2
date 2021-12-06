@@ -56,7 +56,7 @@ public class LogInServlet extends HttpServlet {
     }
 
     private void showProductOfUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProductOfUser.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("viewProductOfUser.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
         ClassifyProduct classifyProduct=classifyProductService.findById(product.getClassifyId());
@@ -67,7 +67,7 @@ public class LogInServlet extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
     private void showLogIn(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/adminSide.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminSide.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -98,17 +98,18 @@ public class LogInServlet extends HttpServlet {
         if (userName.equals("admin") && pass.equals("admin")) {
             session.setAttribute("uc", userName);
             session.setAttribute("pc", pass);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("theme/adminSide.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminSide.jsp");
             dispatcher.forward(request, response);
         } else {
             for (Customer customer : list) {
                 if (customer.getUserNameAcc().equals(userName) && customer.getPass().equals(pass)) {
                     check = true;
+                    session.setAttribute("us", userName);
+                    session.setAttribute("ps", pass);
+                    session.setAttribute("idC",customer.getId());
                 }
             }
             if(check){
-                session.setAttribute("us", userName);
-                session.setAttribute("ps", pass);
                 showCustomerSide(request,response);
             } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
@@ -134,7 +135,7 @@ public class LogInServlet extends HttpServlet {
         return list;
     }
     private void showCustomerSide(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/customerSide.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
 
         List<Product> productList = productService.printAll();
 

@@ -65,8 +65,6 @@ public class CustomerServiceImpl implements CustomerService {
             System.out.println(preparedStatement);
             preparedStatement.setString(1, "%" + key + "%");
             ResultSet rs = preparedStatement.executeQuery();
-
-            // Step 4: Process the ResultSet object.
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");

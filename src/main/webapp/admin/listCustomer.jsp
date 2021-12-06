@@ -26,16 +26,12 @@
     <h1> List Customer</h1>
     <br>
     <p><a href="/logIn?action=page"> Back home</a></p>
-    <p><a href="/customers?action=create"> Thêm người dùng</a> </p>
+    <p><a href="/customers?action=create"> THÊM NGƯỜI DÙNG</a> </p>
     <form action="/customers">
         <input type="text" name="key">
-        <button>tim theo id</button>
+        <button>NHẬP TÊN MUỐN TÌM</button>
     </form>
     <br>
-    <form action="/customers">
-        <input type="text" name="key" placeholder="Enter name you want find?">
-        <button style="background: darkorchid"> find</button>
-    </form>
     <form>
         <input type="hidden" name="action" value="sort">
         <button style="background: darkorchid"> Sort</button>
