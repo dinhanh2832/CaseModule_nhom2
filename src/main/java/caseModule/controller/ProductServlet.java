@@ -23,7 +23,6 @@ import java.util.List;
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
     ServerService serverService = new ServerServiceImpl();
   ClassifyProductService classifyProductService=new ClassifyProductServiceImpl();
 
@@ -51,6 +50,20 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "viewUser":
+                try {
+                    viewProductOfUser(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "sort":
+                try {
+                    sortByUp(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
                 try {
                     showListProduct(request, response);
@@ -62,11 +75,34 @@ public class ProductServlet extends HttpServlet {
 
     }
 
+    private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("theme/customerSide.jsp");
+        List<Product> productList = productService.printAllOrderByPrice();
+        request.setAttribute("products", productList);
+        requestDispatcher.forward(request, response);
+    }
+
+    private void viewProductOfUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProductOfUser.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        ClassifyProduct classifyProduct=classifyProductService.findById(product.getClassifyId());
+        Server server=serverService.findById(product.getServerId());
+        request.setAttribute("product", product);
+        request.setAttribute("server",server);
+        request.setAttribute("classifyProduct",classifyProduct);;
+        requestDispatcher.forward(request, response);
+    }
+
     private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProduct.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
+
+
         request.setAttribute("product", product);
+
         requestDispatcher.forward(request, response);
     }
 
