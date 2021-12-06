@@ -13,9 +13,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
@@ -85,11 +83,15 @@ public class ProductServlet extends HttpServlet {
         List<Cart> list1 = cartService.printAll();
         int idP = Integer.parseInt(request.getParameter("idP"));
         int idC = Integer.parseInt(request.getParameter("idC"));
+
         List<Cart> list2 = new ArrayList<>();
+        List<Product> list = new ArrayList<>();
         boolean check = true;
         for (Cart value : list1) {
             if (value.getIdCustomer() == idC) {
                 list2.add(value);
+                list = findAllProduct(list2);
+
             }
         }
 
@@ -97,24 +99,28 @@ public class ProductServlet extends HttpServlet {
             Cart cart = new Cart(idP, idC);
             cartService.add(cart);
             list2.add(cart);
+            list = findAllProduct(list2);
         } else {
             for (Cart cart : list2) {
                 if (cart.getIdProduct() == idP) {
                     check = false;
                 }
             }
-            if (check){
+            if (check) {
                 Cart cart = new Cart(idP, idC);
                 cartService.add(cart);
                 list2.add(cart);
+                list = findAllProduct(list2);
+
             }
         }
-
+        request.setAttribute("products",list );
         request.setAttribute("carts", list2);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
 
     }
+
 
     private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
@@ -178,6 +184,15 @@ public class ProductServlet extends HttpServlet {
         for (Product product : productList) {
             Server server = serverService.findById(product.getServerId());
             list.add(server);
+        }
+        return list;
+    }
+
+    private List<Product> findAllProduct(List<Cart> cartList) throws SQLException {
+        List<Product> list = new ArrayList<>();
+        for (Cart cart : cartList) {
+            Product product1 = productService.findById(cart.getIdProduct());
+            list.add(product1);
         }
         return list;
     }

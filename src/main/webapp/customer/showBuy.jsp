@@ -26,7 +26,7 @@
             <tr>
 
                 <td>${carts.get(i).idProduct}</td>
-<%--                <td>${product.price}</td>--%>
+                <td>${products.get(i).price}</td>
 
                 <td><a href="#">Xóa</a></td>
             </tr>
