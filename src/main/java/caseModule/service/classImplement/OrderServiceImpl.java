@@ -54,11 +54,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void add(Order order) throws SQLException {
-        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("insert into orders (id,time,customerId,productId) values (?,?,?,?,?)")) {
-            preparedStatement.setInt(1,order.getId());
-            preparedStatement.setString(2,order.getTime());
-            preparedStatement.setInt(3,order.getCustomerId());
-            preparedStatement.setInt(4,order.getProductId());
+        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("insert into orders (time,customerId,productId) values (?,?,?,?)")) {
+            preparedStatement.setString(1,order.getTime());
+            preparedStatement.setInt(2,order.getCustomerId());
+            preparedStatement.setInt(3,order.getProductId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

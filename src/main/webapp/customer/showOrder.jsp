@@ -11,6 +11,12 @@
     <title>Title</title>
 </head>
 <body>
+<center>
+    <h1> Hóa đơn </h1>
+</center>
+
+
+
 
 </body>
 </html>
