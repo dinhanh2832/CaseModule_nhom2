@@ -34,11 +34,6 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-            case "delete":
-
-                showDeleteForm(request,response);
-                break;
-
             default:
                 try {
                     ListCustomer(request, response);
@@ -47,17 +42,6 @@ public class CustomerServlet extends HttpServlet {
                 }
         }
     }
-
-    private void showDeleteForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Customer existingCustomer = customerServlet.delete(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/editCustomer.jsp");
-        request.setAttribute("customer", existingCustomer);
-        dispatcher.forward(request, response);
-        }
-
-
-
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/createCustomer.jsp");
         requestDispatcher.forward(request, response);
@@ -73,6 +57,7 @@ public class CustomerServlet extends HttpServlet {
         dispatcher.forward(request, response);
 
     }
+
     private void ListCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Customer> listCustomer = customerServlet.printAll();
         request.setAttribute("customers", listCustomer);
@@ -88,7 +73,7 @@ public class CustomerServlet extends HttpServlet {
         }
         switch (action) {
             case "create":
-                AddForm(request,response);
+                AddForm(request, response);
                 break;
             case "edit":
                 try {
@@ -97,8 +82,21 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "delete":
+                try {
+                    deleteProduct(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+    }
+
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -114,6 +112,7 @@ public class CustomerServlet extends HttpServlet {
         response.sendRedirect("/customers");
 
     }
+
     private void AddForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
@@ -123,7 +122,7 @@ public class CustomerServlet extends HttpServlet {
         String userNameAcc = request.getParameter("userNameAcc");
         String pass = request.getParameter("pass");
         try {
-            customerServlet.add(new Customer(name, age, numberPhone,email,money,userNameAcc,pass));
+            customerServlet.add(new Customer(name, age, numberPhone, email, money, userNameAcc, pass));
         } catch (SQLException e) {
             e.printStackTrace();
         }

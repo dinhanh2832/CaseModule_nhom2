@@ -50,13 +50,6 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-//            case "viewUser":
-//                try {
-//                    viewProductOfUser(request,response);
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
-//                break;
             case "sort":
                 try {
                     sortByUp(request,response);
@@ -76,7 +69,6 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-
         RequestDispatcher requestDispatcher=request.getRequestDispatcher("theme/customerSide.jsp");
         List<Product> productList = productService.printAllOrderByPrice();
         request.setAttribute("products", productList);
@@ -194,7 +186,6 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-//        int id= Integer.parseInt(request.getParameter("id"));
         int max = 1;
         List<Product> list = productService.printAll();
         for (Product value : list) {

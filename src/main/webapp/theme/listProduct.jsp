@@ -59,9 +59,9 @@
                     <td><input style="border: none" type="text" name="classifyId" value="${classifyProducts.get(i).category}"></td>
                     <td><input style="border: none" type="text" name="server" value="${servers.get(i).name}"></td>
 
-                    <td><a href="/products?action=edit&id=${product.getId()}"> Edit</a></td>
+                    <td><a href="/products?action=edit&id=${products.get(i).getId()}"> Edit</a></td>
 
-                    <td><a href="/products?action=delete&id=${product.id}"
+                    <td><a href="/products?action=delete&id=${products.get(i).id}"
                            onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
                            title="Link Title">
                         delete
