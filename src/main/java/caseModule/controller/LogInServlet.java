@@ -104,11 +104,12 @@ public class LogInServlet extends HttpServlet {
             for (Customer customer : list) {
                 if (customer.getUserNameAcc().equals(userName) && customer.getPass().equals(pass)) {
                     check = true;
+                    session.setAttribute("us", userName);
+                    session.setAttribute("ps", pass);
+                    session.setAttribute("idC",customer.getId());
                 }
             }
             if(check){
-                session.setAttribute("us", userName);
-                session.setAttribute("ps", pass);
                 showCustomerSide(request,response);
             } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
