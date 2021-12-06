@@ -19,6 +19,7 @@ import java.util.Set;
 
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
+
     CartService cartService = new CartServiceImpl();
     ProductService productService = new ProductServiceImpl();
     ServerService serverService = new ServerServiceImpl();
@@ -81,19 +82,35 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showBuy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        List<Cart> list1 = cartService.printAll();
         int idP = Integer.parseInt(request.getParameter("idP"));
         int idC = Integer.parseInt(request.getParameter("idC"));
-        Cart cart = new Cart(idP, idC);
-        cartService.add(cart);
+        List<Cart> list2 = new ArrayList<>();
+        boolean check = true;
+        for (Cart value : list1) {
+            if (value.getIdCustomer() == idC) {
+                list2.add(value);
+            }
+        }
 
-        Product product = productService.findById(idP);
-       request.setAttribute("product",product);
-        Set<Cart> list = new HashSet<>();
-        list.addAll(cartService.printAll());
-        Object[] list1=list.toArray();
-        int a=list1.length;
-        request.setAttribute("carts", list1);
+        if (list2.size() == 0) {
+            Cart cart = new Cart(idP, idC);
+            cartService.add(cart);
+            list2.add(cart);
+        } else {
+            for (Cart cart : list2) {
+                if (cart.getIdProduct() == idP) {
+                    check = false;
+                }
+            }
+            if (check){
+                Cart cart = new Cart(idP, idC);
+                cartService.add(cart);
+                list2.add(cart);
+            }
+        }
 
+        request.setAttribute("carts", list2);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/showBuy.jsp");
         requestDispatcher.forward(request, response);
 

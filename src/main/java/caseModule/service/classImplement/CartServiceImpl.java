@@ -28,13 +28,12 @@ public class CartServiceImpl implements CartService {
     public List<Cart> printAll() throws SQLException {
         List<Cart> carts = new ArrayList<>();
         Connection connection = getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("select *from cart");
+        PreparedStatement preparedStatement = connection.prepareStatement("select idProduct,idCustomer from cart");
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
-            int id=rs.getInt("id");
             int customerId=rs.getInt("idCustomer");
             int productId=rs.getInt("idProduct");
-            carts.add(new Cart(id,productId,customerId));
+            carts.add(new Cart(productId,customerId));
         }
         return carts;
     }
@@ -83,10 +82,10 @@ public class CartServiceImpl implements CartService {
         preparedStatement.setInt(1, id);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
-            int id1 = rs.getInt("id");
+
             int customerId=rs.getInt("idCustomer");
             int productId=rs.getInt("idProduct");
-            cart=new Cart(id1,productId,customerId);
+            cart=new Cart(productId,customerId);
         }
 
 
