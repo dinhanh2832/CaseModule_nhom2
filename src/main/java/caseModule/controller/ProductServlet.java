@@ -4,14 +4,8 @@ import caseModule.model.Cart;
 import caseModule.model.ClassifyProduct;
 import caseModule.model.Product;
 import caseModule.model.Server;
-import caseModule.service.classImplement.ClassifyProductServiceImpl;
-import caseModule.service.classImplement.OrderServiceImpl;
-import caseModule.service.classImplement.ProductServiceImpl;
-import caseModule.service.classImplement.ServerServiceImpl;
-import caseModule.service.interfacee.ClassifyProductService;
-import caseModule.service.interfacee.OrderService;
-import caseModule.service.interfacee.ProductService;
-import caseModule.service.interfacee.ServerService;
+import caseModule.service.classImplement.*;
+import caseModule.service.interfacee.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -115,7 +109,7 @@ public class ProductServlet extends HttpServlet {
         }
 
         request.setAttribute("carts", list2);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/showBuy.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
 
     }
@@ -145,7 +139,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showCreateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/createProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/createProduct.jsp");
         requestDispatcher.forward(request, response);
     }
 
