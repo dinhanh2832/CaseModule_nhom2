@@ -56,7 +56,7 @@ public class LogInServlet extends HttpServlet {
     }
 
     private void showProductOfUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/viewProductOfUser.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProductOfUser.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
         ClassifyProduct classifyProduct=classifyProductService.findById(product.getClassifyId());
@@ -67,7 +67,7 @@ public class LogInServlet extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
     private void showLogIn(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminSide.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/adminSide.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -135,7 +135,7 @@ public class LogInServlet extends HttpServlet {
         return list;
     }
     private void showCustomerSide(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/customer/customerSide.jsp");
 
         List<Product> productList = productService.printAll();
 

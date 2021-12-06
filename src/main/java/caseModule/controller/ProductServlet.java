@@ -13,7 +13,9 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
@@ -115,7 +117,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("customer/customerSide.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
         List<Product> productList = productService.printAllOrderByPrice();
         request.setAttribute("products", productList);
         requestDispatcher.forward(request, response);
@@ -209,6 +211,7 @@ public class ProductServlet extends HttpServlet {
         productService.delete(id);
         response.sendRedirect("/products");
     }
+
     private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
         int price = Integer.parseInt(request.getParameter("price"));
