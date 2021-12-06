@@ -115,6 +115,11 @@ public class ProductServlet extends HttpServlet {
             }
         }
         request.setAttribute("products",list );
+        int total=0;
+        for (int i = 0; i < list.size(); i++) {
+           total+=list.get(i).getPrice();
+        }
+        request.setAttribute("total",total);
         request.setAttribute("carts", list2);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
@@ -218,7 +223,17 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "buy":
+                butProduct(request,response);
+                break;
         }
+    }
+
+    private void butProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("customer/showOrder.jsp");
+
+
+        requestDispatcher.forward(request,response);
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
