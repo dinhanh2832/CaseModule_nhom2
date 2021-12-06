@@ -1,5 +1,6 @@
 package caseModule.service.classImplement;
 
+import caseModule.model.Customer;
 import caseModule.model.Product;
 import caseModule.service.interfacee.ProductService;
 
@@ -101,7 +102,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public Customer delete(int id) throws SQLException {
+
+        return null;
     }
 
     @Override
