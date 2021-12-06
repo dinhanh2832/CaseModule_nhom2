@@ -63,7 +63,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/view.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProduct.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
         request.setAttribute("product", product);
