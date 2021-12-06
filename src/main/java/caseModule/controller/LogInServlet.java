@@ -38,10 +38,35 @@ public class LogInServlet extends HttpServlet {
             case "page":
                 showLogIn(request, response);
                 break;
+            case "viewProduct":
+                try {
+                    showProductOfUser(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                try {
+                    showCustomerSide(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
-    private void showLogIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void showProductOfUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProductOfUser.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        ClassifyProduct classifyProduct=classifyProductService.findById(product.getClassifyId());
+        Server server=serverService.findById(product.getServerId());
+        request.setAttribute("product", product);
+        request.setAttribute("server",server);
+        request.setAttribute("classifyProduct",classifyProduct);;
+        requestDispatcher.forward(request, response);
+    }
+    private void showLogIn(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         RequestDispatcher dispatcher = request.getRequestDispatcher("theme/adminSide.jsp");
         dispatcher.forward(request, response);
     }
@@ -84,26 +109,7 @@ public class LogInServlet extends HttpServlet {
             if(check){
                 session.setAttribute("us", userName);
                 session.setAttribute("ps", pass);
-
-                RequestDispatcher dispatcher = request.getRequestDispatcher("theme/customerSide.jsp");
-
-                List<Product> productList = productService.printAll();
-
-                List<Product> list2 = new ArrayList<>();
-
-                for(Product product: productList){
-                    int status = product.getStatus();
-                    if(status == 1){
-                        list2.add(product);
-                    }
-                }
-
-                List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
-                List<Server> serverList = findAllServer(list2);
-                request.setAttribute("products", list2);
-                request.setAttribute("classifyProducts",classifyProducts);
-                request.setAttribute("servers",serverList);
-                dispatcher.forward(request, response);
+                showCustomerSide(request,response);
             } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
                 request.setAttribute("message", "Sai tai khoan hoac mat khau !");
@@ -126,5 +132,26 @@ public class LogInServlet extends HttpServlet {
             list.add(server);
         }
         return list;
+    }
+    private void showCustomerSide(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/customerSide.jsp");
+
+        List<Product> productList = productService.printAll();
+
+        List<Product> list2 = new ArrayList<>();
+
+        for(Product product: productList){
+            int status = product.getStatus();
+            if(status == 1){
+                list2.add(product);
+            }
+        }
+
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
+        List<Server> serverList = findAllServer(list2);
+        request.setAttribute("products", list2);
+        request.setAttribute("classifyProducts",classifyProducts);
+        request.setAttribute("servers",serverList);
+        dispatcher.forward(request, response);
     }
 }

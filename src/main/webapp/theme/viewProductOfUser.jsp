@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+<p><a href="http://localhost:8080/logIn">Back</a></p>
 <center>
 <%--    <a href="/logIn"> trở lại</a>--%>
     <br>

@@ -52,7 +52,7 @@
                 <td><input style="border: none" type="text" name="price" value="${products.get(i).price}"></td>
                 <td><input style="border: none" type="text" name="classifyId" value="${classifyProducts.get(i).category}"></td>
                 <td><input style="border: none" type="text" name="server" value="${servers.get(i).name}"></td>
-                <td><a href="/products?action=viewUser&id=${products.get(i).id}"> Xem chi tiết</a></td>
+                <td><a href="/logIn?action=viewProduct&id=${products.get(i).id}"> Xem chi tiết</a></td>
                 <td><a href=""> Mua </a></td>
 
             </tr>
