@@ -10,11 +10,12 @@ private double money;
 private String userNameAcc;
 private String pass;
 private int role;
+private int status;
 
     public Customer() {
     }
 
-    public Customer(int id, String name, int age, String numberPhone, String email,double money, String userNameAcc, String pass, int role) {
+    public Customer(int id, String name, int age, String numberPhone, String email,double money, String userNameAcc, String pass, int role,int status) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -24,6 +25,7 @@ private int role;
         this.userNameAcc = userNameAcc;
         this.pass = pass;
         this.role = role;
+        this.status = status;
     }
 
     public Customer(String name, int age, String numberPhone, String email, double money, String userNameAcc, String pass) {
@@ -34,6 +36,14 @@ private int role;
         this.money = money;
         this.userNameAcc = userNameAcc;
         this.pass = pass;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public int getId() {

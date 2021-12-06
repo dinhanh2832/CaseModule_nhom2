@@ -53,7 +53,7 @@
         </tr>
         <c:forEach items="${customers}" var="customer">
             <tr>
-                <td>  <a href="/customers?action=view&id=${customer.getId()}"></a></td>
+                <td>  <a href="/customers?action=viewCustomer&id=${customer.getId()}">Xem</a></td>
                 <td>  <input style="border: none" type="text" name="id" value="${customer.id}"></td>
                 <td>  <input style="border: none" type="text" name="name" value="${customer.name}"></td>
                 <td>  <input style="border: none" type="text" name="age" value="${customer.age}"></td>
@@ -65,7 +65,7 @@
 
                 <td><a href="/customers?action=edit&id=${customer.getId()}"> Edit</a></td>
 
-                <td> <a href="/customers?action=delete&id=${customer.id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">
+                <td> <a href="/customers?action=deleteCus&id=${customer.id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">
                     delete
                 </a> </td>
             </tr>

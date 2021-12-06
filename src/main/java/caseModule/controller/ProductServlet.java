@@ -57,6 +57,13 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "delete":
+                try {
+                    deleteProduct(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
                 try {
                     showListProduct(request, response);
@@ -75,26 +82,11 @@ public class ProductServlet extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
 
-//    private void viewProductOfUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProductOfUser.jsp");
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Product product = productService.findById(id);
-//        ClassifyProduct classifyProduct=classifyProductService.findById(product.getClassifyId());
-//        Server server=serverService.findById(product.getServerId());
-//        request.setAttribute("product", product);
-//        request.setAttribute("server",server);
-//        request.setAttribute("classifyProduct",classifyProduct);;
-//        requestDispatcher.forward(request, response);
-//    }
-
     private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProduct.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
-
-
         request.setAttribute("product", product);
-
         requestDispatcher.forward(request, response);
     }
 
@@ -170,6 +162,11 @@ public class ProductServlet extends HttpServlet {
                 }
                 break;
         }
+    }
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productService.delete(id);
+        response.sendRedirect("/products");
     }
     private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));

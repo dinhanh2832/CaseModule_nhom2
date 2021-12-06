@@ -1,6 +1,7 @@
 package caseModule.controller;
 
 import caseModule.model.Customer;
+import caseModule.model.Product;
 import caseModule.service.classImplement.CustomerServiceImpl;
 import caseModule.service.interfacee.CustomerService;
 
@@ -34,6 +35,20 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "deleteCus":
+                try {
+                    deleteCustomer(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "viewCustomer":
+                try {
+                    showViewCustomer(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
                 try {
                     ListCustomer(request, response);
@@ -42,6 +57,21 @@ public class CustomerServlet extends HttpServlet {
                 }
         }
     }
+
+    private void showViewCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewCustomer.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer customer = customerServlet.findById(id);
+        request.setAttribute("customer", customer);
+        requestDispatcher.forward(request, response);
+    }
+
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        customerServlet.delete(id);
+        response.sendRedirect("/customers");
+    }
+
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/createCustomer.jsp");
         requestDispatcher.forward(request, response);
@@ -60,7 +90,15 @@ public class CustomerServlet extends HttpServlet {
 
     private void ListCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Customer> listCustomer = customerServlet.printAll();
-        request.setAttribute("customers", listCustomer);
+
+        List<Customer> list = new ArrayList<>();
+        for(Customer customer: listCustomer){
+            int status = customer.getStatus();
+            if(status == 1){
+                list.add(customer);
+            }
+        }
+        request.setAttribute("customers", list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("theme/listCustomer.jsp");
         dispatcher.forward(request, response);
     }
@@ -82,19 +120,7 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-            case "delete":
-                try {
-                    deleteProduct(request, response);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
         }
-    }
-
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-
     }
 
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response)

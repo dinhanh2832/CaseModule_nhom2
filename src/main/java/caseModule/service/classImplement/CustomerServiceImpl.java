@@ -42,7 +42,8 @@ public class CustomerServiceImpl implements CustomerService {
                 String pass = rs.getString("pass");
                 int role = rs.getInt("role");
                 double money = rs.getDouble("money");
-                customers.add(new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role));
+                int status = rs.getInt("status");
+                customers.add(new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role, status));
             }
         } catch (SQLException e) {
         }
@@ -76,7 +77,8 @@ public class CustomerServiceImpl implements CustomerService {
                 String userNameAcc = rs.getString("userNameAcc");
                 String pass = rs.getString("pass");
                 int role = rs.getInt("role");
-                customer.add(new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role));
+                int status = rs.getInt("status");
+                customer.add(new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role, status));
             }
         } catch (SQLException e) {
         }
@@ -117,13 +119,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public Customer delete(int id) throws SQLException {
+    public void delete(int id) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("update customer set role=2  where id=?")) {
-            preparedStatement.setInt(8, id);
+             PreparedStatement preparedStatement = connection.prepareStatement("update customer set status=2  where id=?")) {
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         }
-        return null;
     }
     @Override
     public Customer findById(int key) throws SQLException {
@@ -146,7 +147,8 @@ public class CustomerServiceImpl implements CustomerService {
                 String userNameAcc = rs.getString("userNameAcc");
                 String pass = rs.getString("pass");
                 int role = rs.getInt("role");
-                customer = new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role);
+                int status = rs.getInt("status");
+                customer = new Customer(id, name, age, numberPhone, email,money, userNameAcc, pass, role, status);
             }
         } catch (SQLException e) {
         }
