@@ -1,9 +1,6 @@
 package caseModule.controller;
 
-import caseModule.model.Cart;
-import caseModule.model.ClassifyProduct;
-import caseModule.model.Product;
-import caseModule.model.Server;
+import caseModule.model.*;
 import caseModule.service.classImplement.*;
 import caseModule.service.interfacee.*;
 
@@ -12,14 +9,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
-
+OrderService orderService=new OrderServiceImpl();
     CartService cartService = new CartServiceImpl();
     ProductService productService = new ProductServiceImpl();
     ServerService serverService = new ServerServiceImpl();
@@ -85,11 +81,15 @@ public class ProductServlet extends HttpServlet {
         List<Cart> list1 = cartService.printAll();
         int idP = Integer.parseInt(request.getParameter("idP"));
         int idC = Integer.parseInt(request.getParameter("idC"));
+
         List<Cart> list2 = new ArrayList<>();
+        List<Product> list = new ArrayList<>();
         boolean check = true;
         for (Cart value : list1) {
             if (value.getIdCustomer() == idC) {
                 list2.add(value);
+                list = findAllProduct(list2);
+
             }
         }
 
@@ -97,25 +97,83 @@ public class ProductServlet extends HttpServlet {
             Cart cart = new Cart(idP, idC);
             cartService.add(cart);
             list2.add(cart);
+            list = findAllProduct(list2);
         } else {
             for (Cart cart : list2) {
                 if (cart.getIdProduct() == idP) {
                     check = false;
                 }
             }
-            if (check){
+            if (check) {
                 Cart cart = new Cart(idP, idC);
                 cartService.add(cart);
                 list2.add(cart);
+                list = findAllProduct(list2);
+
             }
         }
-
+        request.setAttribute("products",list );
+        int total=0;
+        for (int i = 0; i < list.size(); i++) {
+           total+=list.get(i).getPrice();
+        }
+        request.setAttribute("total",total);
         request.setAttribute("carts", list2);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
 
     }
 
+
+
+    private void buyProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("customer/showOrder.jsp");
+        String time= String.valueOf(LocalDateTime.now());
+
+        requestDispatcher.forward(request,response);
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productService.delete(id);
+        response.sendRedirect("/products");
+    }
+
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int price = Integer.parseInt(request.getParameter("price"));
+        int classifyId = Integer.parseInt(request.getParameter("classifyId"));
+        String description = request.getParameter("description");
+        String userProduct = request.getParameter("userProduct");
+        String pass = request.getParameter("pass");
+        int status = Integer.parseInt(request.getParameter("status"));
+        int serverId = Integer.parseInt(request.getParameter("serverId"));
+        Product product = new Product(price, classifyId, description, userProduct, pass, status, serverId);
+        productService.edit(id, product);
+        response.sendRedirect("/products");
+    }
+
+
+    private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int max = 1;
+        List<Product> list = productService.printAll();
+        for (Product value : list) {
+            if (max < value.getId()) {
+                max = value.getId();
+            }
+        }
+        int price = Integer.parseInt(request.getParameter("price"));
+        int classifyId = Integer.parseInt(request.getParameter("classifyId"));
+        String description = request.getParameter("description");
+        String userProduct = request.getParameter("userProduct");
+        String pass = request.getParameter("pass");
+        int status = Integer.parseInt(request.getParameter("status"));
+        int serverId = Integer.parseInt(request.getParameter("serverId"));
+        Product product = new Product(max + 1, price, classifyId, description, userProduct, pass, status, serverId);
+        productService.add(product);
+        response.sendRedirect("/products");
+
+    }
     private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
         List<Product> productList = productService.printAllOrderByPrice();
@@ -182,6 +240,15 @@ public class ProductServlet extends HttpServlet {
         return list;
     }
 
+    private List<Product> findAllProduct(List<Cart> cartList) throws SQLException {
+        List<Product> list = new ArrayList<>();
+        for (Cart cart : cartList) {
+            Product product1 = productService.findById(cart.getIdProduct());
+            list.add(product1);
+        }
+        return list;
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -203,47 +270,15 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "buy":
+                try {
+                    buyProduct(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        productService.delete(id);
-        response.sendRedirect("/products");
-    }
 
-    private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        int price = Integer.parseInt(request.getParameter("price"));
-        int classifyId = Integer.parseInt(request.getParameter("classifyId"));
-        String description = request.getParameter("description");
-        String userProduct = request.getParameter("userProduct");
-        String pass = request.getParameter("pass");
-        int status = Integer.parseInt(request.getParameter("status"));
-        int serverId = Integer.parseInt(request.getParameter("serverId"));
-        Product product = new Product(price, classifyId, description, userProduct, pass, status, serverId);
-        productService.edit(id, product);
-        response.sendRedirect("/products");
-    }
-
-    private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-        int max = 1;
-        List<Product> list = productService.printAll();
-        for (Product value : list) {
-            if (max < value.getId()) {
-                max = value.getId();
-            }
-        }
-        int price = Integer.parseInt(request.getParameter("price"));
-        int classifyId = Integer.parseInt(request.getParameter("classifyId"));
-        String description = request.getParameter("description");
-        String userProduct = request.getParameter("userProduct");
-        String pass = request.getParameter("pass");
-        int status = Integer.parseInt(request.getParameter("status"));
-        int serverId = Integer.parseInt(request.getParameter("serverId"));
-        Product product = new Product(max + 1, price, classifyId, description, userProduct, pass, status, serverId);
-        productService.add(product);
-        response.sendRedirect("/products");
-
-    }
 }
