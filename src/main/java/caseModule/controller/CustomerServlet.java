@@ -59,7 +59,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showViewCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/admin/viewCustomer.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/viewCustomer.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer = customerServlet.findById(id);
         request.setAttribute("customer", customer);
@@ -73,7 +73,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/admin/createCustomer.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/createCustomer.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -82,7 +82,7 @@ public class CustomerServlet extends HttpServlet {
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Customer existingCustomer = customerServlet.findById(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/admin/editCustomer.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/editCustomer.jsp");
         request.setAttribute("customer", existingCustomer);
         dispatcher.forward(request, response);
 
@@ -99,7 +99,7 @@ public class CustomerServlet extends HttpServlet {
             }
         }
         request.setAttribute("customers", list);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/admin/listCustomer.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/listCustomer.jsp");
         dispatcher.forward(request, response);
     }
 
