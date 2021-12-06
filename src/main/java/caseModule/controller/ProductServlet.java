@@ -111,20 +111,20 @@ public class ProductServlet extends HttpServlet {
         }
 
         request.setAttribute("carts", list2);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/showBuy.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
 
     }
 
     private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/customerSide.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/customer/customerSide.jsp");
         List<Product> productList = productService.printAllOrderByPrice();
         request.setAttribute("products", productList);
         requestDispatcher.forward(request, response);
     }
 
     private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/viewProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/admin/viewProduct.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
         request.setAttribute("product", product);
@@ -132,7 +132,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/editProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/admin/editProduct.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
         request.setAttribute("product", product);
@@ -141,13 +141,13 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showCreateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/createProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/admin/createProduct.jsp");
         requestDispatcher.forward(request, response);
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Product> productList = productService.printAll();
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/listProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/customer/listProduct.jsp");
         List<Product> list = new ArrayList<>();
         for (Product product : productList) {
             int status = product.getStatus();

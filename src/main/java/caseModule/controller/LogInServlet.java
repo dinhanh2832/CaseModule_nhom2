@@ -98,7 +98,7 @@ public class LogInServlet extends HttpServlet {
         if (userName.equals("admin") && pass.equals("admin")) {
             session.setAttribute("uc", userName);
             session.setAttribute("pc", pass);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("theme/adminSide.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("theme/admin/adminSide.jsp");
             dispatcher.forward(request, response);
         } else {
             for (Customer customer : list) {
@@ -135,7 +135,7 @@ public class LogInServlet extends HttpServlet {
         return list;
     }
     private void showCustomerSide(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/customerSide.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/customer/customerSide.jsp");
 
         List<Product> productList = productService.printAll();
 
