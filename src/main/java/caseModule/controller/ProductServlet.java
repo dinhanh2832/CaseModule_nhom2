@@ -1,5 +1,6 @@
 package caseModule.controller;
 
+import caseModule.model.Cart;
 import caseModule.model.ClassifyProduct;
 import caseModule.model.Product;
 import caseModule.model.Server;
@@ -22,9 +23,11 @@ import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
+
+    CartService cartService = new CartServiceImpl();
     ProductService productService = new ProductServiceImpl();
     ServerService serverService = new ServerServiceImpl();
-  ClassifyProductService classifyProductService=new ClassifyProductServiceImpl();
+    ClassifyProductService classifyProductService = new ClassifyProductServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +37,7 @@ public class ProductServlet extends HttpServlet {
         }
         switch (action) {
             case "create":
-                showCreateProduct(request,response);
+                showCreateProduct(request, response);
                 break;
             case "edit":
                 try {
@@ -45,14 +48,14 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "view":
                 try {
-                    viewProduct(request,response);
+                    viewProduct(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
             case "sort":
                 try {
-                    sortByUp(request,response);
+                    sortByUp(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -60,6 +63,13 @@ public class ProductServlet extends HttpServlet {
             case "delete":
                 try {
                     deleteProduct(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "buy":
+                try {
+                    showBuy(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -72,6 +82,41 @@ public class ProductServlet extends HttpServlet {
                 }
         }
 
+
+    }
+
+    private void showBuy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        List<Cart> list1 = cartService.printAll();
+        int idP = Integer.parseInt(request.getParameter("idP"));
+        int idC = Integer.parseInt(request.getParameter("idC"));
+        List<Cart> list2 = new ArrayList<>();
+        boolean check = true;
+        for (Cart value : list1) {
+            if (value.getIdCustomer() == idC) {
+                list2.add(value);
+            }
+        }
+
+        if (list2.size() == 0) {
+            Cart cart = new Cart(idP, idC);
+            cartService.add(cart);
+            list2.add(cart);
+        } else {
+            for (Cart cart : list2) {
+                if (cart.getIdProduct() == idP) {
+                    check = false;
+                }
+            }
+            if (check){
+                Cart cart = new Cart(idP, idC);
+                cartService.add(cart);
+                list2.add(cart);
+            }
+        }
+
+        request.setAttribute("carts", list2);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("theme/showBuy.jsp");
+        requestDispatcher.forward(request, response);
 
     }
 
@@ -108,21 +153,22 @@ public class ProductServlet extends HttpServlet {
         List<Product> productList = productService.printAll();
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
         List<Product> list = new ArrayList<>();
-        for(Product product: productList){
+        for (Product product : productList) {
             int status = product.getStatus();
-            if(status == 1){
+            if (status == 1) {
                 list.add(product);
             }
         }
         List<ClassifyProduct> classifyProducts = findClassifyProduct(list);
         List<Server> serverList = findAllServer(list);
         request.setAttribute("products", list);
-        request.setAttribute("classifyProducts",classifyProducts);
-        request.setAttribute("servers",serverList);
+        request.setAttribute("classifyProducts", classifyProducts);
+        request.setAttribute("servers", serverList);
         requestDispatcher.forward(request, response);
 
     }
-    private List<ClassifyProduct> findClassifyProduct(List<Product> products)throws SQLException, ServletException, IOException{
+
+    private List<ClassifyProduct> findClassifyProduct(List<Product> products) throws SQLException, ServletException, IOException {
         List<ClassifyProduct> list = new ArrayList<>();
         for (Product product : products) {
             ClassifyProduct classifyProduct = classifyProductService.findById(product.getClassifyId());
@@ -132,7 +178,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private List<Server> findAllServer(List<Product> productList) throws SQLException {
-        List<Server> list=new ArrayList<>();
+        List<Server> list = new ArrayList<>();
         for (Product product : productList) {
             Server server = serverService.findById(product.getServerId());
             list.add(server);
@@ -149,20 +195,21 @@ public class ProductServlet extends HttpServlet {
         switch (action) {
             case "create":
                 try {
-                    createProduct(request,response);
+                    createProduct(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
             case "edit":
                 try {
-                    editProduct(request,response);
+                    editProduct(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
         }
     }
+
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
         productService.delete(id);
@@ -171,14 +218,14 @@ public class ProductServlet extends HttpServlet {
     private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
         int price = Integer.parseInt(request.getParameter("price"));
-        int classifyId= Integer.parseInt(request.getParameter("classifyId"));
-        String description=request.getParameter("description");
-        String userProduct=request.getParameter("userProduct");
-        String pass=request.getParameter("pass");
-        int status= Integer.parseInt(request.getParameter("status"));
-        int serverId= Integer.parseInt(request.getParameter("serverId"));
-        Product product = new Product(price,classifyId,description,userProduct,pass,status,serverId);
-        productService.edit(id,product);
+        int classifyId = Integer.parseInt(request.getParameter("classifyId"));
+        String description = request.getParameter("description");
+        String userProduct = request.getParameter("userProduct");
+        String pass = request.getParameter("pass");
+        int status = Integer.parseInt(request.getParameter("status"));
+        int serverId = Integer.parseInt(request.getParameter("serverId"));
+        Product product = new Product(price, classifyId, description, userProduct, pass, status, serverId);
+        productService.edit(id, product);
         response.sendRedirect("/products");
     }
 
@@ -191,13 +238,13 @@ public class ProductServlet extends HttpServlet {
             }
         }
         int price = Integer.parseInt(request.getParameter("price"));
-        int classifyId= Integer.parseInt(request.getParameter("classifyId"));
-        String description=request.getParameter("description");
-        String userProduct=request.getParameter("userProduct");
-        String pass=request.getParameter("pass");
-        int status= Integer.parseInt(request.getParameter("status"));
-        int serverId= Integer.parseInt(request.getParameter("serverId"));
-        Product product = new Product(max + 1, price,classifyId,description,userProduct,pass,status,serverId);
+        int classifyId = Integer.parseInt(request.getParameter("classifyId"));
+        String description = request.getParameter("description");
+        String userProduct = request.getParameter("userProduct");
+        String pass = request.getParameter("pass");
+        int status = Integer.parseInt(request.getParameter("status"));
+        int serverId = Integer.parseInt(request.getParameter("serverId"));
+        Product product = new Product(max + 1, price, classifyId, description, userProduct, pass, status, serverId);
         productService.add(product);
         response.sendRedirect("/products");
 
