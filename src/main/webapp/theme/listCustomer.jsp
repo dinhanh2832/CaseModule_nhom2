@@ -27,6 +27,10 @@
     <br>
     <p><a href="/logIn?action=page"> Back home</a></p>
     <p><a href="/customers?action=create"> Thêm người dùng</a> </p>
+    <form action="/customers">
+        <input type="text" name="key">
+        <button>tim theo id</button>
+    </form>
     <br>
     <form action="/customers">
         <input type="text" name="key" placeholder="Enter name you want find?">

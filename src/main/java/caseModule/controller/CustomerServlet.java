@@ -42,6 +42,7 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+
             case "viewCustomer":
                 try {
                     showViewCustomer(request,response);
@@ -89,20 +90,9 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void ListCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        List<Customer> listCustomer = customerServlet.printAll();
 
-        List<Customer> list = new ArrayList<>();
-        for(Customer customer: listCustomer){
-            int status = customer.getStatus();
-            if(status == 1){
-                list.add(customer);
-            }
-        }
-        request.setAttribute("customers", list);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("theme/listCustomer.jsp");
-        dispatcher.forward(request, response);
+
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
