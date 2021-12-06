@@ -163,8 +163,9 @@
                             <input type="submit" value="Đăng Nhập" style="color: #222222;">
                         </div>
                         <div class="input-form">
-                            <p>Bạn Chưa Có Tài Khoản? <a href="admin/createCustomer.jsp">Đăng Ký</a></p>
+                            <p>Bạn Chưa Có Tài Khoản? <a href="admin/createCustomer.jsp">Đăng Ký</a><a href="customer/customerSide.jsp" style="color: #3f3f3f">    Mua Ngay</a></p>
                         </div>
+
                     </form>
                     <!--                    <h3>Đăng Nhập Bằng Mạng Xã Hội</h3>-->
                     <!--                    <ul class="icon-dang-nhap">-->
