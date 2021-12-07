@@ -118,7 +118,7 @@ public class LogInServlet extends HttpServlet {
             }
         }
     }
-    private List<ClassifyProduct> findClassifyProduct(List<Product> products)throws SQLException, ServletException, IOException{
+    private List<ClassifyProduct> findClassifyProduct(List<Product> products)throws SQLException{
         List<ClassifyProduct> list = new ArrayList<>();
         for (Product product : products) {
             ClassifyProduct classifyProduct = classifyProductService.findById(product.getClassifyId());

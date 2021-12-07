@@ -18,7 +18,7 @@ public class OrderServlet extends HttpServlet {
     OrderService orderService=new OrderServiceImpl();
     CustomerService customerServlet=new CustomerServiceImpl();
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)  {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";

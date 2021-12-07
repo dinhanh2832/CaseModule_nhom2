@@ -21,8 +21,10 @@
     }
 </style>
 <body>
-<p><a href="/products?action=showBuy">xem giỏ hàng</a></p>
+<p><a href="/products?action=showBuy&idP=1&idC=${sessionScope.idC}">xem giỏ hàng</a></p>
 <p>${sessionScope.us}</p>
+<p>${sessionScope.ps}</p>
+
 <center>
     <h1> List Product</h1>
     <br>
