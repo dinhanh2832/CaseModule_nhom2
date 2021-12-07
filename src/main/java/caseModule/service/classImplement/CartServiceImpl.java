@@ -67,7 +67,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public void delete(int id) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("delete from cart where id=?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("delete from cart where idProduct=?")) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         }

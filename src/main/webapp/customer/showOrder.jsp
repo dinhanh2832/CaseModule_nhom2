@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tien Dung
@@ -11,11 +12,20 @@
     <title>Title</title>
 </head>
 <body>
+<a href="/logIn">back</a>
 <center>
     <h1> Hóa đơn </h1>
+    <p>${idC}</p>
+    <p> ${time}</p>
+    <c:forEach var="i" begin="0" end="${products.size()-1}">
+        <p>${products.get(i).id}</p>
+        <p>${products.get(i).price}</p>
+        <p>${products.get(i).userProduct}</p>
+        <p>${products.get(i).pass}</p>
+
+    </c:forEach>
+    <p> ${total} </p>
 </center>
-
-
 
 
 </body>
