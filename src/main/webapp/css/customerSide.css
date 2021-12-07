@@ -192,10 +192,14 @@ footer{
     top: 80px;
 }
 .card{
-    background: #AAAAAA;
+    background-color: rgba(8, 12, 0, 0.7);
     -webkit-box-shadow: 29px 0px 63px -17px rgba(128,112,128,1);
     -moz-box-shadow: 29px 0px 63px -17px rgba(128,112,128,1);
     box-shadow: 29px 0px 63px -17px rgba(128,112,128,1);
+    border-radius: 36px 8px 36px 9px;
+    -moz-border-radius: 36px 8px 36px 9px;
+    -webkit-border-radius: 36px 8px 36px 9px;
+    border: 0px solid #000000;
 }
 .card:hover {
     transform: scale(1.05);

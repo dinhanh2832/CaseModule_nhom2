@@ -182,28 +182,33 @@
 </div>
 <div class="container-fluid mt-2">
     <div class="row">
-        <c:forEach var="i" begin="0" end="${products.size() - 1}">
-            <div class="col-3" id="cardproduct">
-                <div class="card mb-4" >
-                    <figure class="snip1361" style="width: 265px">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample45.jpg" alt="sample45"/>
-                        <figcaption>
-                            <h3>Acc số ${products.get(i).id}</h3>
-                            <p>
-                                Giá: ${products.get(i).price} <br>
-                                Loại:  ${classifyProducts.get(i).category} <br>
-                                Server:  ${servers.get(i).name}
-                            </p>
-                        </figcaption>
-                    </figure>
-                    <div class="card-body text-center">
-                        <h4 class="card-title"></h4>
-                        <a href="/logIn?action=viewProduct&id=${products.get(i).id}" class="btn btn-outline-secondary">Xem thông tin</a>
-                        <a href="/products?action=showBuy&idP=${products.get(i).id}&idC=${sessionScope.idC}" class="btn btn-outline-secondary">Mua</a>
+        <div class="col-1"></div>
+        <div class="col-11">
+            <div class="row">
+                <c:forEach var="i" begin="0" end="${products.size() - 1}">
+                    <div class="col-3" id="cardproduct">
+                        <div class="card mb-4" >
+                            <figure class="snip1361" style="width: 242px">
+                                <img src="img/logo.jpg" alt="sample45" style="width: 247px">
+                                <figcaption>
+                                    <h3>Acc số ${products.get(i).id}</h3>
+                                    <p>
+                                        Giá: ${products.get(i).price} <br>
+                                        Loại:  ${classifyProducts.get(i).category} <br>
+                                        Server:  ${servers.get(i).name}
+                                    </p>
+                                </figcaption>
+                            </figure>
+                            <div class="card-body text-center">
+                                <h4 class="card-title"></h4>
+                                <a href="/logIn?action=viewProduct&id=${products.get(i).id}" class="btn btn-outline-secondary">Xem thông tin</a>
+                                <a href="/products?action=showBuy&idP=${products.get(i).id}&idC=${sessionScope.idC}" class="btn btn-outline-secondary">Mua</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </c:forEach>
             </div>
-        </c:forEach>
+        </div>
     </div>
 </div>
 <hr class="my-2">

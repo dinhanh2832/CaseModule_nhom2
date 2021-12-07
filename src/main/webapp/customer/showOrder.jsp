@@ -18,11 +18,12 @@
     <p>${idC}</p>
     <p> ${time}</p>
     <c:forEach var="i" begin="0" end="${products.size()-1}">
+        <c:if test='${carts.get(i).idProduct != 1}'>
         <p>${products.get(i).id}</p>
         <p>${products.get(i).price}</p>
         <p>${products.get(i).userProduct}</p>
         <p>${products.get(i).pass}</p>
-
+        </c:if>
     </c:forEach>
     <p> ${total} </p>
 </center>
