@@ -21,7 +21,10 @@
     }
 </style>
 <body>
+<p><a href="/products?action=showBuy&idP=1&idC=${sessionScope.idC}">xem giỏ hàng</a></p>
 <p>${sessionScope.us}</p>
+<p>${sessionScope.ps}</p>
+
 <center>
     <h1> List Product</h1>
     <br>
@@ -53,7 +56,7 @@
                 <td><input style="border: none" type="text" name="classifyId" value="${classifyProducts.get(i).category}"></td>
                 <td><input style="border: none" type="text" name="server" value="${servers.get(i).name}"></td>
                 <td><a href="/logIn?action=viewProduct&id=${products.get(i).id}"> Xem chi tiết</a></td>
-                <td><a href="/products?action=buy&idP=${products.get(i).id}&idC=${sessionScope.idC}"> Mua </a></td>
+                <td><a href="/products?action=showBuy&idP=${products.get(i).id}&idC=${sessionScope.idC}"> Mua </a></td>
 
             </tr>
         </c:forEach>

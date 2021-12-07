@@ -16,6 +16,12 @@ public class Order {
         this.productId = productId;
     }
 
+    public Order(String time, int customerId, int productId) {
+        this.time = time;
+        this.customerId = customerId;
+        this.productId = productId;
+    }
+
     public int getId() {
         return id;
     }

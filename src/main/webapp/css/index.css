@@ -1,17 +1,186 @@
-.login {
-    height:180px; width:230px;
-    margin:0;
-    padding:10px;
-    border:1px #CCC solid;
+/*html body {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    font-family: 'Estonia', cursive;*/
+/*    font-size: 29px;*/
+/*    font-weight: lighter;*/
+/*    color: #222;*/
+/*}*/
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Estonia&family=Grey+Qo&display=swap');
+.navbar{
+    /*0.8: độ trong*/
+    background-color:rgba(17, 8, 70, 0.8) !important;
 }
-.login input {
-    padding:5px; margin:5px
+.navbar-branch img {
+    width: 55px;
 }
-html body {
-    width: 100%;
-    height: 100%;
+.nameLogo {
+    font-size: 45px;
     font-family: 'Estonia', cursive;
-    font-size: 29px;
+    text-shadow: 7px 3px 10px #CCCCCC;
+    color: white;
+}
+.nav-item {
+    font-size: 22px;
+    text-shadow: 7px 3px 9px #CCCCCC;
     font-weight: lighter;
-    color: #222;
+    color: white;
+}
+.container img {
+    width: 100%;
+}
+.fa-home {
+    font-size: 30px;
+    color: darkcyan;
+}
+.bx {
+    color: #CCCCCC;
+}
+.bp {
+    font-family: 'Dancing Script', cursive;
+    /*font-family: 'Estonia', cursive;*/
+    /*font-family: 'Grey Qo', cursive;*/
+    font-size: 40px;
+    height: 200px;
+    font-weight: lighter;
+    margin-top: -60px;
+    color: #3b5999;
+}
+.jumbotron{
+    height: 200px;
+    text-align: center;
+    background: url("https://toigingiuvedep.vn/wp-content/uploads/2021/01/background-dong-don-gian-ma-dep.gif");
+}
+.noi-dung .form .input-form{
+    margin-bottom: 20px;
+}
+.noi-dung .form .input-form span{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #607db8;
+    letter-spacing: 1px;
+}
+.noi-dung .form .input-form input{
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    border: 1px solid #607d8b;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+}
+.noi-dung .form .input-form input[type="submit"]{
+    background: darkgray;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12),
+    0 2px 2px rgba(0,0,0,0.12),
+    0 4px 4px rgba(0,0,0,0.12),
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+}
+.noi-dung .form .input-form input[type="submit"]:hover{
+    background: dimgray;
+}
+.noi-dung .form .nho-dang-nhap{
+    margin-bottom: 10px;
+    color: #607d8b;
+    font-size: 14px;
+}
+.noi-dung .form .input-form p{
+    color: #607d8b;
+}
+.noi-dung .form .input-form p a{
+    color: #ff4584;
+}
+.carousel-item img{
+    border-radius: 5%;
+}
+section .noi-dung .form h3{
+    color: #607d8b;
+    text-align: center;
+    margin: 80px 0 10px;
+    font-weight: 500;
+}
+section .noi-dung .form .icon-dang-nhap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section .noi-dung .form .icon-dang-nhap li{
+    list-style: none;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.noi-dung .form .icon-dang-nhap li:nth-child(1){
+    color: #3b5999;
+}
+.noi-dung .form .icon-dang-nhap li:nth-child(2){
+    color: #dd4b39;
+}
+.noi-dung .form .icon-dang-nhap li:nth-child(3){
+    color: #55acee;
+}
+.noi-dung .form .icon-dang-nhap li i{
+    font-size: 24px;
+}
+.my-2 {
+    width: 95%;
+}
+.social a{
+    font-size: 3em;
+    padding: 3rem;
+}
+.fa-facebook{
+    color: #3b5998;
+}
+.fa-twitter{
+    color: #00aced;
+}
+.fa-google-plus-g{
+    color: #dd4b39;
+}
+.fa-youtube{
+    color: #bb0000;
+}
+.fa-instagram{
+    color: #517fa4;
+}
+footer img {
+    margin-top: 10px;
+    width: 70px;
+}
+footer{
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+}
+.ba{
+    font-family: 'Grey Qo', cursive;
+    font-size: 25px;
+}
+.bl{
+    font-family: 'Grey Qo', cursive;
+    font-size: 45px;
+    font-weight: lighter;
+    text-shadow: 7px 3px 9px #55acee;
+}
+.bhp{
+    color:black;
+    text-shadow: 7px 3px 9px #ffffff;
+    font-family: 'Caramel', cursive;
+    font-weight: lighter;
+}
+.bb{
+    color: #dd4b39;
+    font-size: 50px;
 }
