@@ -88,7 +88,6 @@ public class ProductServlet extends HttpServlet {
         cartService.delete(id);
         int total = 0;
         List<Cart> list1 = cartService.printAll();
-        List<Product> listProduct = productService.printAll();
         int idC = Integer.parseInt(request.getParameter("idC"));
         List<Cart> list2 = new ArrayList<>();
         List<Product> list = new ArrayList<>();
@@ -102,18 +101,18 @@ public class ProductServlet extends HttpServlet {
         for (Product product : list) {
             total += product.getPrice();
         }
-        List<Cart> list3 = new ArrayList<>();
-        for (Cart cart: list2) {
-            if (cart.getIdProduct() != 1) {
-                list3.add(cart);
-                list = findAllProduct(list3);
-            }
-        }
+//        List<Cart> list3 = new ArrayList<>();
+//        for (Cart cart: list2) {
+//            if (cart.getIdProduct() != 1) {
+//                list3.add(cart);
+//                list = findAllProduct(list3);
+//            }
+//        }
 
         request.setAttribute("idC",idC);
         request.setAttribute("total", total);
         request.setAttribute("products", list);
-        request.setAttribute("carts",list3);
+        request.setAttribute("carts",list2);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -152,13 +151,13 @@ public class ProductServlet extends HttpServlet {
                 list = findAllProduct(list2);
             }
         }
-        List<Cart> list3 = new ArrayList<>();
-        for (Cart cart: list2) {
-            if (cart.getIdProduct() != 1) {
-                list3.add(cart);
-                list = findAllProduct(list3);
-            }
-        }
+//        List<Cart> list3 = new ArrayList<>();
+//        for (Cart cart: list2) {
+//            if (cart.getIdProduct() != 1) {
+//                list3.add(cart);
+//                list = findAllProduct(list3);
+//            }
+//        }
         int total = 0;
         for (Product product : list) {
             total += product.getPrice();
@@ -168,7 +167,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("idP", idP);
         request.setAttribute("idC", idC);
         request.setAttribute("total", total);
-        request.setAttribute("carts", list3);
+        request.setAttribute("carts", list2);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
 
