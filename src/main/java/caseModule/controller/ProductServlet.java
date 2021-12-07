@@ -66,7 +66,7 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-            case "":
+            case "deleteCart":
                 try {
                     deleteCart(request,response);
                 } catch (SQLException e) {
@@ -114,7 +114,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("idC",idC);
         request.setAttribute("total", total);
         request.setAttribute("products", list);
-        request.setAttribute("carts",list1);
+        request.setAttribute("carts",list2);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
     }
