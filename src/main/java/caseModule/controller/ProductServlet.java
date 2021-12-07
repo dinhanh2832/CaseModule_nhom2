@@ -21,7 +21,7 @@ import java.util.Set;
 public class ProductServlet extends HttpServlet {
 
     CartService cartService = new CartServiceImpl();
-    ProductService productService = new ProductServiceImpl();
+    ProductServiceImpl productService = new ProductServiceImpl();
     ServerService serverService = new ServerServiceImpl();
     ClassifyProductService classifyProductService = new ClassifyProductServiceImpl();
 
@@ -146,21 +146,50 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        List<Product> productList = productService.printAll();
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
-        List<Product> list = new ArrayList<>();
-        for (Product product : productList) {
-            int status = product.getStatus();
-            if (status == 1) {
-                list.add(product);
-            }
+        int key =0;
+        try{
+        key =   Integer.parseInt(request.getParameter("key"));
         }
-        List<ClassifyProduct> classifyProducts = findClassifyProduct(list);
-        List<Server> serverList = findAllServer(list);
-        request.setAttribute("products", list);
-        request.setAttribute("classifyProducts", classifyProducts);
-        request.setAttribute("servers", serverList);
-        requestDispatcher.forward(request, response);
+        catch (NumberFormatException ex){
+             key = 0;
+        }
+
+        if(key== 0){
+            List<Product> productList = productService.printAll();
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
+            List<Product> list = new ArrayList<>();
+            for (Product product : productList) {
+                int status = product.getStatus();
+                if (status == 1) {
+                    list.add(product);
+                }
+            }
+            List<ClassifyProduct> classifyProducts = findClassifyProduct(list);
+            List<Server> serverList = findAllServer(list);
+            request.setAttribute("products", list);
+            request.setAttribute("classifyProducts", classifyProducts);
+            request.setAttribute("servers", serverList);
+            requestDispatcher.forward(request, response);
+
+        }
+        else {
+            List<Product> productList = productService.findByClassify( key);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
+            List<Product> list = new ArrayList<>();
+            for (Product product : productList) {
+                int status = product.getStatus();
+                if (status == 1) {
+                    list.add(product);
+                }
+            }
+            List<ClassifyProduct> classifyProducts = findClassifyProduct(list);
+            List<Server> serverList = findAllServer(list);
+            request.setAttribute("products", list);
+            request.setAttribute("classifyProducts", classifyProducts);
+            request.setAttribute("servers", serverList);
+            requestDispatcher.forward(request, response);
+
+        }
 
     }
 

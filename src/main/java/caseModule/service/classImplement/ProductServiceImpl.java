@@ -63,10 +63,31 @@ public class ProductServiceImpl implements ProductService {
         }
         return productList;
     }
-
     @Override
     public List<Product> findByName(String name) throws SQLException {
         return null;
+    }
+
+    public List<Product> findByClassify(int key) throws SQLException {
+        List<Product> productList = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("Select * from product where classifyId = ?");) {
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1, key);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int price = rs.getInt("price");
+                int classifyId = rs.getInt("classifyId");
+                String description = rs.getString("description");
+                String userProduct = rs.getString("userProduct");
+                String pass = rs.getString("pass");
+                int status = rs.getInt("status");
+                int severId = rs.getInt("serverId");
+                productList.add(new Product(id, price, classifyId, description, userProduct, pass, status, severId));
+            }
+            return productList;
+        }
     }
 
     @Override
@@ -129,5 +150,10 @@ public class ProductServiceImpl implements ProductService {
             product=new Product(id1,price,classifyId,description,userProduct,pass,status,severId);
         }
         return product;
+    }
+
+    @Override
+    public List<Product> findByName(int key) throws SQLException {
+        return null;
     }
 }

@@ -37,7 +37,9 @@
         <input type="hidden" name="action" value="sort">
         <button style="background: darkorchid"> Sort</button>
     </form>
-
+    <td><a href="/products?key=1">NHẤN XEM ACC VIP</a></td>
+    <td><a href="/products?key=0">NHẤN XEM TẤT CẢ</a></td>
+    <td><a href="/products?key=2">NHẤN XEM ACC THƯỜNG</a></td>
 
     <br>
     <table>
