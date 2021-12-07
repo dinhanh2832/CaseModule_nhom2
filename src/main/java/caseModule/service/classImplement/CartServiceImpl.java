@@ -1,7 +1,6 @@
 package caseModule.service.classImplement;
 
 import caseModule.model.Cart;
-import caseModule.model.Order;
 import caseModule.service.interfacee.CartService;
 
 import java.sql.*;
@@ -12,18 +11,19 @@ public class CartServiceImpl implements CartService {
     public CartServiceImpl() {
     }
 
-    private Connection getConnection(){
-        Connection connection=null;
+    private Connection getConnection() {
+        Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/case_module3?useSSL=false", "root", "123456");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return connection;
     }
+
     @Override
     public List<Cart> printAll() throws SQLException {
         List<Cart> carts = new ArrayList<>();
@@ -31,9 +31,9 @@ public class CartServiceImpl implements CartService {
         PreparedStatement preparedStatement = connection.prepareStatement("select idProduct,idCustomer from cart");
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
-            int customerId=rs.getInt("idCustomer");
-            int productId=rs.getInt("idProduct");
-            carts.add(new Cart(productId,customerId));
+            int customerId = rs.getInt("idCustomer");
+            int productId = rs.getInt("idProduct");
+            carts.add(new Cart(productId, customerId));
         }
         return carts;
     }
@@ -51,8 +51,8 @@ public class CartServiceImpl implements CartService {
     @Override
     public void add(Cart cart) throws SQLException {
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("insert into cart (idProduct,idCustomer) values (?,?)")) {
-            preparedStatement.setInt(1,cart.getIdProduct());
-            preparedStatement.setInt(2,cart.getIdCustomer());
+            preparedStatement.setInt(1, cart.getIdProduct());
+            preparedStatement.setInt(2, cart.getIdCustomer());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,16 +76,16 @@ public class CartServiceImpl implements CartService {
     @Override
     public Cart findById(int id) throws SQLException {
 
-       Cart cart=null;
+        Cart cart = null;
         Connection connection = getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("select  *from cart where id=?");
         preparedStatement.setInt(1, id);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
 
-            int customerId=rs.getInt("idCustomer");
-            int productId=rs.getInt("idProduct");
-            cart=new Cart(productId,customerId);
+            int customerId = rs.getInt("idCustomer");
+            int productId = rs.getInt("idProduct");
+            cart = new Cart(productId, customerId);
         }
 
 

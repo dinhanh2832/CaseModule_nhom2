@@ -1,7 +1,6 @@
 package caseModule.controller;
 
 import caseModule.model.Customer;
-import caseModule.model.Product;
 import caseModule.service.classImplement.CustomerServiceImpl;
 import caseModule.service.interfacee.CustomerService;
 
@@ -124,7 +123,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
+            throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));

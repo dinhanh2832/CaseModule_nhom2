@@ -15,7 +15,6 @@ import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
-    OrderService orderService = new OrderServiceImpl();
     CartService cartService = new CartServiceImpl();
     ProductService productService = new ProductServiceImpl();
     ServerService serverService = new ServerServiceImpl();
@@ -100,17 +99,20 @@ public class ProductServlet extends HttpServlet {
 
             }
         }
-        for (int i = 0; i < list.size(); i++) {
-            total += list.get(i).getPrice();
+        for (Product product : list) {
+            total += product.getPrice();
         }
         for (int i = 0; i < list.size(); i++) {
+
             for (int j = 0; j < listProduct.size(); j++) {
+
                 if (list.get(i).getId() == listProduct.get(j).getId()) {
                     productService.delete(listProduct.get(j).getId());
                 }
             }
 
         }
+
         request.setAttribute("idC",idC);
         request.setAttribute("total", total);
         request.setAttribute("products", list);
@@ -143,6 +145,7 @@ public class ProductServlet extends HttpServlet {
             for (Cart cart : list2) {
                 if (cart.getIdProduct() == idP) {
                     check = false;
+                    break;
                 }
             }
             if (check) {
@@ -152,16 +155,23 @@ public class ProductServlet extends HttpServlet {
                 list = findAllProduct(list2);
             }
         }
-
-        int total = 0;
-        for (int i = 0; i < list.size(); i++) {
-            total += list.get(i).getPrice();
+        List<Cart> list3 = new ArrayList<>();
+        for (Cart cart: list2) {
+            if (cart.getIdProduct() != 1) {
+                list3.add(cart);
+                list = findAllProduct(list3);
+            }
         }
+        int total = 0;
+        for (Product product : list) {
+            total += product.getPrice();
+        }
+
         request.setAttribute("products", list);
         request.setAttribute("idP", idP);
         request.setAttribute("idC", idC);
         request.setAttribute("total", total);
-        request.setAttribute("carts", list2);
+        request.setAttribute("carts", list3);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
 
@@ -187,10 +197,13 @@ public class ProductServlet extends HttpServlet {
             total += product.getPrice();
         }
 
-        for (int i = 0; i < listProduct2.size(); i++) {
-            for (int j = 0; j < listProduct.size(); j++) {
-                if (listProduct2.get(i).getId() == listProduct.get(j).getId()) {
-                    productService.delete(listProduct.get(j).getId());
+        for (Product product : listProduct2) {
+            for (Product value : listProduct) {
+                if(product.getId() !=1 ){
+                    if (product.getId() == value.getId()) {
+                        productService.delete(value.getId());
+                        cartService.delete(value.getId());
+                    }
                 }
             }
         }
@@ -294,7 +307,7 @@ public class ProductServlet extends HttpServlet {
 
     }
 
-    private List<ClassifyProduct> findClassifyProduct(List<Product> products) throws SQLException, ServletException, IOException {
+    private List<ClassifyProduct> findClassifyProduct(List<Product> products) throws SQLException {
         List<ClassifyProduct> list = new ArrayList<>();
         for (Product product : products) {
             ClassifyProduct classifyProduct = classifyProductService.findById(product.getClassifyId());
@@ -370,6 +383,7 @@ public class ProductServlet extends HttpServlet {
             if (value.getIdCustomer() == idC) {
                 listCart.add(value);
                 listProduct2 = findAllProduct(listCart);
+
             }
         }
 
@@ -377,10 +391,13 @@ public class ProductServlet extends HttpServlet {
             total += product.getPrice();
         }
 
-        for (int i = 0; i < listProduct2.size(); i++) {
-            for (int j = 0; j < listProduct.size(); j++) {
-                if (listProduct2.get(i).getId() == listProduct.get(j).getId()) {
-                    productService.delete(listProduct.get(j).getId());
+        for (Product product : listProduct2) {
+            for (Product value : listProduct) {
+                if(product.getId() !=1 ){
+                    if (product.getId() == value.getId()) {
+                        productService.delete(value.getId());
+                        cartService.delete(value.getId());
+                    }
                 }
             }
         }
