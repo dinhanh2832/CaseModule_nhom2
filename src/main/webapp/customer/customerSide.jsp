@@ -190,9 +190,9 @@
                         <figcaption>
                             <h3>Acc số ${products.get(i).id}</h3>
                             <p>
-                                   Giá: ${products.get(i).price} <br>
-                                  Loại:  ${classifyProducts.get(i).category} <br>
-                                  Server:  ${servers.get(i).name}
+                                Giá: ${products.get(i).price} <br>
+                                Loại:  ${classifyProducts.get(i).category} <br>
+                                Server:  ${servers.get(i).name}
                             </p>
                         </figcaption>
                     </figure>
