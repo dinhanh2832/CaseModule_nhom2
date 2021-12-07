@@ -77,3 +77,13 @@
 .noi-dung .form .input-form p a{
     color: #ff4584;
 }
+#napThe {
+    background-color: powderblue;
+    border-radius: 10%;
+}
+#fixMenu{
+    position: fixed;
+    margin-right: 100px;
+    left: 1050px;
+    text-align: right;
+}
