@@ -91,10 +91,17 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void sortProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
+
         List<Product> productList = productService.printAllOrderByPrice();
+
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(productList);
+        List<Server> serverList = findAllServer(productList);
         request.setAttribute("products", productList);
+        request.setAttribute("classifyProducts", classifyProducts);
+        request.setAttribute("servers", serverList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
         requestDispatcher.forward(request, response);
+
 
     }
 
@@ -230,8 +237,7 @@ public class ProductServlet extends HttpServlet {
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
         productService.delete(id);
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("customer/showBuy.jsp");
-        requestDispatcher.forward(request,response);
+        response.sendRedirect("/products");
     }
 
     private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
