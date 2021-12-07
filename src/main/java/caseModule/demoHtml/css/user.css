@@ -1,0 +1,89 @@
+.navbar{
+    /*0.8: độ trong*/
+    background-color:rgba(17, 8, 70, 0.8) !important;
+}
+.navbar-branch img {
+    width: 55px;
+}
+.nameLogo {
+    font-size: 45px;
+    font-family: 'Estonia', cursive;
+    text-shadow: 7px 3px 10px #CCCCCC;
+    color: white;
+}
+.nav-item {
+    font-size: 22px;
+    text-shadow: 7px 3px 9px #CCCCCC;
+    font-weight: lighter;
+    color: white;
+}
+.bx {
+    color: #CCCCCC;
+}
+.navbar-nav img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+.fa-home {
+    font-size: 30px;
+    color: darkcyan;
+}
+.noi-dung .form .input-form{
+    margin-bottom: 20px;
+}
+.noi-dung .form .input-form span{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #607db8;
+    letter-spacing: 1px;
+}
+.noi-dung .form .input-form input{
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    border: 1px solid #607d8b;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+}
+.noi-dung .form .input-form input[type="submit"]{
+    background: darkgray;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12),
+    0 2px 2px rgba(0,0,0,0.12),
+    0 4px 4px rgba(0,0,0,0.12),
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+}
+.noi-dung .form .input-form input[type="submit"]:hover{
+    background: dimgray;
+}
+.noi-dung .form .nho-dang-nhap{
+    margin-bottom: 10px;
+    color: #607d8b;
+    font-size: 14px;
+}
+.noi-dung .form .input-form p{
+    color: #607d8b;
+}
+.noi-dung .form .input-form p a{
+    color: #ff4584;
+}
+#napThe {
+    background-color: powderblue;
+    border-radius: 10%;
+}
+#fixMenu{
+    position: fixed;
+    margin-right: 100px;
+    left: 1050px;
+    text-align: right;
+}
