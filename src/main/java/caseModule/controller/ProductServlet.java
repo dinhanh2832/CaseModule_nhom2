@@ -91,9 +91,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void sortProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-
         List<Product> productList = productService.printAllOrderByPrice();
-
         List<ClassifyProduct> classifyProducts = findClassifyProduct(productList);
         List<Server> serverList = findAllServer(productList);
         request.setAttribute("products", productList);
