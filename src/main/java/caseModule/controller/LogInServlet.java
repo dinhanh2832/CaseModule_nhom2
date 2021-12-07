@@ -56,7 +56,7 @@ public class LogInServlet extends HttpServlet {
     }
 
     private void showProductOfUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("viewProductOfUser.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/viewProductOfUser.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
         ClassifyProduct classifyProduct=classifyProductService.findById(product.getClassifyId());
