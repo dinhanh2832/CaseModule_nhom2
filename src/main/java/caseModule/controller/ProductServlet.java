@@ -418,9 +418,15 @@ public class ProductServlet extends HttpServlet {
                 }
             }
         }
+        List<Product> listProduct3 = new ArrayList<>();
+        for (Product product: listProduct2) {
+            if(product.getId() != 1){
+                listProduct3.add(product);
+            }
+        }
         String time = String.valueOf(LocalDateTime.now());
         request.setAttribute("total", total);
-        request.setAttribute("products", listProduct2);
+        request.setAttribute("products", listProduct3);
         request.setAttribute("time", time);
         request.setAttribute("idC", idC);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showOrder.jsp");

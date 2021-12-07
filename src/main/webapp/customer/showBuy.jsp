@@ -1,12 +1,3 @@
-
-
-<%--        <tr>--%>
-<%--            <td> Thành tiền</td>--%>
-
-<%--            <td><p>  </p></td>--%>
-<%--            <td>--%>
-
-
 <%--
   Created by IntelliJ IDEA.
   User: anh
@@ -199,11 +190,11 @@
         <div class="col-1">
         </div>
         <div class="col-11">
-            <div class="row" >
+            <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4">
                     <button style="width: 400px;height: 30px">Thành Tiền: ${total} </button>
-                    <form method="post" >
+                    <form method="post">
                         <input type="hidden" name="ok" value="idC=${idC}">
                         <button style="width: 400px;height: 27px">Thanh toán</button>
                     </form>
