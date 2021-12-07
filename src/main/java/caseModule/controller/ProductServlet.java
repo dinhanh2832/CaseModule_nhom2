@@ -102,21 +102,18 @@ public class ProductServlet extends HttpServlet {
         for (Product product : list) {
             total += product.getPrice();
         }
-        for (int i = 0; i < list.size(); i++) {
-
-            for (int j = 0; j < listProduct.size(); j++) {
-
-                if (list.get(i).getId() == listProduct.get(j).getId()) {
-                    productService.delete(listProduct.get(j).getId());
-                }
+        List<Cart> list3 = new ArrayList<>();
+        for (Cart cart: list2) {
+            if (cart.getIdProduct() != 1) {
+                list3.add(cart);
+                list = findAllProduct(list3);
             }
-
         }
 
         request.setAttribute("idC",idC);
         request.setAttribute("total", total);
         request.setAttribute("products", list);
-        request.setAttribute("carts",list2);
+        request.setAttribute("carts",list3);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
     }
