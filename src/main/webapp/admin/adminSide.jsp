@@ -45,10 +45,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">${sessionScope.mS}</b></a>
+                    <a class="nav-link " href="#"><b class="bx">Trung tâm</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">${sessionScope.uc}</b></a>
+                    <a class="nav-link " href="#"><b class="bx">Admin</b></a>
                 </li>
                 <img src="img/avtcus.jpg"/>
             </ul>
