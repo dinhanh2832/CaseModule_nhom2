@@ -149,7 +149,7 @@ footer{
     position: absolute;
     top: calc(77%);
     width: 100%;
-    background-color: #ffffff;
+    background-color: #DDDDDD;
     padding: 15px 25px 65px;
 }
 .snip1361 figcaption:before {
@@ -160,8 +160,8 @@ footer{
     left: 0;
     width: 100%;
     height: 80px;
-    background-image: -webkit-linear-gradient(top, transparent 0%, #ffffff 100%);
-    background-image: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+    background-image: -webkit-linear-gradient(top, transparent 0%, #DDDDDD 100%);
+    background-image: linear-gradient(to bottom, transparent 0%, #DDDDDD 100%);
 }
 .snip1361 h3,
 .snip1361 p {
