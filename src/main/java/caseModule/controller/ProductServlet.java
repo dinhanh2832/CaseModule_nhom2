@@ -280,7 +280,21 @@ public class ProductServlet extends HttpServlet {
     private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
         List<Product> productList = productService.printAllOrderByPrice();
-        request.setAttribute("products", productList);
+
+        List<Product> list2 = new ArrayList<>();
+
+        for(Product product: productList){
+            int status = product.getStatus();
+            if(status == 1){
+                list2.add(product);
+            }
+        }
+
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
+        List<Server> serverList = findAllServer(list2);
+        request.setAttribute("products", list2);
+        request.setAttribute("classifyProducts",classifyProducts);
+        request.setAttribute("servers",serverList);
         requestDispatcher.forward(request, response);
 
     }

@@ -34,8 +34,8 @@
         <input type="text" name="key" placeholder="Enter name you want find?">
         <button style="background: darkorchid"> find</button>
     </form>
-    <form >
-        <input type="hidden" name="action=" value="sort">
+    <form action="/products">
+        <input type="hidden" name="action" value="sort">
         <button style="background: darkorchid"> Sort</button>
     </form>
     <br>
