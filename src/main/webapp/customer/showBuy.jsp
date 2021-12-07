@@ -36,7 +36,11 @@
             <tr>
                 <td>${carts.get(i).idProduct}</td>
                 <td>${products.get(i).price}</td>
-                <td><a href="#">Hủy</a></td>
+                <td><a href="/products?action=deleteCart&id=${carts.get(i).idProduct}&idC=${idC}"
+                       onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();}"
+                       title="Link Title">
+                    Hủy
+                </a></td>
             </tr>
         </c:forEach>
         <tr>
@@ -45,8 +49,8 @@
             <td><p> ${total} </p></td>
             <td>
                 <form method="post">
-                    <button> Thanh toán</button>
-
+                    <input type="hidden" name="ok" value="idC=${idC}">
+                    <button>Thanh toán</button>
                 </form>
             </td>
         </tr>
