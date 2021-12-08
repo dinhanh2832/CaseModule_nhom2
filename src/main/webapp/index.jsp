@@ -176,7 +176,9 @@
             </div>
         </c:if >
         <c:if test='${sessionScope.uc != null}'>
-            <p style="font-size: 27px;text-align: center;margin-left: 130px">Bạn đã đăng nhập rồi!!</p>
+            <p style="font-size: 27px;text-align: center;margin-left: 130px">Bạn đã đăng nhập rồi!! <br>
+                <img src="https://i.pinimg.com/originals/bb/58/6d/bb586dbbfc32e95e0493eeb785f85e3f.gif">
+            </p>
         </c:if >
     </div>
 </div>

@@ -59,8 +59,8 @@
         <div class="col-11">
             <div class="row mt-3">
                 <div class="col-8">
-                    <a class="btn btn-outline-secondary" href="/logIn?action=page"  > Back home</a>
-                    <a class="btn btn-outline-secondary" href="/products?action=create" > Thêm Acc</a>
+                    <a class="btn btn-secondary" href="/logIn?action=page"  > Back home</a>
+                    <a class="btn btn-secondary" href="/products?action=create" > Thêm Acc</a>
                 </div>
                 <div class="col-4">
                     <form method="post" action="/products?action=searchAD">

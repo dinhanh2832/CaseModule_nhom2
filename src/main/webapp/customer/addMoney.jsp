@@ -72,6 +72,7 @@
             <div class="row mt-3">
                 <p style="color: white;font-size: 26px;text-align: center">Tài khoản của bạn không đủ tiền! Xin vui lòng nạp thêm tiền để trải nhiệm dịch vụ !!!</p>
             </div>
+            <img style="text-align: center; margin-left: 150px" src="https://cuocsongaz.com/wp-content/uploads/2020/04/40-hinh-anh-dong-de-thuong-kute-cho-powerpoint-dep-nhat-4.gif">
         </div>
         <div class="col-3"></div>
     </div>
