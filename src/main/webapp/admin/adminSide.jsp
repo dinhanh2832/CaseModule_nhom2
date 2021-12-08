@@ -25,6 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Estonia&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/customerSide.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top ">

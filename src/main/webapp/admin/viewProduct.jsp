@@ -66,68 +66,66 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a class="btn btn-outline-secondary" href="/products">Back home</a>
+                    <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/customers"> Back home</a>
                 </div>
             </div>
             <div class="row mt-3">
-                <div align="center">
-                    <form method="post">
-                        <table border="1" cellpadding="5">
+                <div align="center" class="formWe">
+                        <table class="table table-hover table-dark">
                             <caption>
-                                <h2>
+                                <h2 class="nameTb">
                                     Thông tin Nick
                                 </h2>
                             </caption>
                             <tr>
                                 <th>Mã số Id:</th>
                                 <td>
-                                    <input type="text" name="id" size="60" value="${product.getId()}"/>
+                                    <input class="bin" type="text" name="id" size="60" value="${product.getId()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Giá:</th>
                                 <td>
-                                    <input type="text" name="price" size="60" value="${product.getPrice()}"/>
+                                    <input class="bin" type="text" name="price" size="60" value="${product.getPrice()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Loại:</th>
                                 <td>
-                                    <input type="text" name="classifyId" size="60" value="${product.getClassifyId()}"/>
+                                    <input class="bin" type="text" name="classifyId" size="60" value="${product.getClassifyId()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Mô tả:</th>
                                 <td>
-                                    <input type="text" name="numberPhone" size="60" value="${product.getDescription()}"/>
+                                    <input class="bin" type="text" name="numberPhone" size="60" value="${product.getDescription()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Tài khoản Nick:</th>
                                 <td>
-                                    <input type="text" name="email" size="60" value="${product.getUserProduct()}"/>
+                                    <input class="bin" type="text" name="email" size="60" value="${product.getUserProduct()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Mật khẩu:</th>
                                 <td>
-                                    <input type="text" name="money" size="60" value="${product.getPass()}"/>
+                                    <input class="bin" type="text" name="money" size="60" value="${product.getPass()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Trạng thái:</th>
                                 <td>
-                                    <input type="text" name="userNameAcc" size="60" value="${product.getStatus()}"/>
+                                    <input class="bin" type="text" name="userNameAcc" size="60" value="${product.getStatus()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Server:</th>
                                 <td>
-                                    <input type="text" name="pass" size="60" value="${product.getServerId()}"/>
+                                    <input class="bin" type="text" name="pass" size="60" value="${product.getServerId()}"/>
                                 </td>
                             </tr>
                         </table>
-                    </form>
                 </div>
             </div>
         </div>
@@ -138,7 +136,7 @@
 <div class="container-fluid padding" style="background: white">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2>Liên hệ với chúng thôi</h2>
+            <h2 class="lh">Liên hệ với chúng thôi</h2>
         </div>
         <div class="col-12 social padding">
             <a href="#"><i class="fab fa-facebook"></i></a>

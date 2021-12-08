@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: anh
@@ -53,7 +52,7 @@
                 </li>
                 <img src="img/avtcus.jpg"/>
                 <li class="nav-item">
-                    <a class="nav-link " href="http://localhost:8080"><b class="bx">Đăng xuất</b></a>
+                    <a style="margin-top: 5px;margin-right: -5px" class="btn btn-secondary" href="http://localhost:8080"><b class="bx" >Đăng xuất</b></a>
                 </li>
             </ul>
         </div>
@@ -66,68 +65,70 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a class="btn btn-outline-secondary" href="/customers"> Back home</a>
+                    <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/customers"> Back home</a>
                 </div>
             </div>
             <div class="row mt-3">
-                <div align="center">
-                    <form method="post">
-                        <table border="1" cellpadding="5">
+                <div align="center" class="formWe">
+                        <table class="table table-hover table-dark">
                             <caption>
-                                <h2>
+                                <h2 class="nameTb">
                                     Thông tin khách hàng
                                 </h2>
                             </caption>
                             <tr>
                                 <th>Mã số Id:</th>
                                 <td>
-                                    <input type="text" name="id" size="60" value="${customer.getId()}"/>
+                                    <input type="text" name="id" size="60" value="${customer.getId()}" class="bin"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Tên:</th>
                                 <td>
-                                    <input type="text" name="name" size="60" value="${customer.getName()}"/>
+                                    <input type="text" name="name" size="60" value="${customer.getName()}" class="bin"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Tuổi:</th>
                                 <td>
-                                    <input type="text" name="age" size="60" value="${customer.getAge()}"/>
+                                    <input class="bin" type="text" name="age" size="60" value="${customer.getAge()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Số Điện thoại:</th>
                                 <td>
-                                    <input type="text" name="numberPhone" size="60" value="${customer.getNumberPhone()}"/>
+                                    <input class="bin" type="text" name="numberPhone" size="60"
+                                           value="${customer.getNumberPhone()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Email:</th>
                                 <td>
-                                    <input type="text" name="email" size="60" value="${customer.getEmail()}"/>
+                                    <input class="bin" type="text" name="email" size="60"
+                                           value="${customer.getEmail()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Số tiền khả dụng:</th>
                                 <td>
-                                    <input type="text" name="money" size="60" value="${customer.getMoney()}"/>
+                                    <input class="bin" type="text" name="money" size="60"
+                                           value="${customer.getMoney()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Tên tài khoản:</th>
                                 <td>
-                                    <input type="text" name="userNameAcc" size="60" value="${customer.getUserNameAcc()}"/>
+                                    <input class="bin" type="text" name="userNameAcc" size="60"
+                                           value="${customer.getUserNameAcc()}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Mật khẩu:</th>
                                 <td>
-                                    <input type="text" name="pass" size="60" value="${customer.getPass()}"/>
+                                    <input class="bin" type="text" name="pass" size="60" value="${customer.getPass()}"/>
                                 </td>
                             </tr>
                         </table>
-                    </form>
                 </div>
             </div>
         </div>
@@ -138,7 +139,7 @@
 <div class="container-fluid padding" style="background: white">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2>Liên hệ với chúng thôi</h2>
+            <h2 class="lh">Liên hệ với chúng thôi</h2>
         </div>
         <div class="col-12 social padding">
             <a href="#"><i class="fab fa-facebook"></i></a>

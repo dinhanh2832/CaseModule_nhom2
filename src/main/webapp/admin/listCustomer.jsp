@@ -65,7 +65,7 @@
         <div class="col-11">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a class="btn btn-outline-secondary" href="/logIn?action=page"  > Back home</a>
+                    <a style="width: 150px;" class="btn btn-secondary" href="/logIn?action=page"  > Back home</a>
                 </div>
             </div>
             <div class="row mt-3">
@@ -79,8 +79,6 @@
                                     <p>
                                         Tên: ${customer.name} Tuổi: ${customer.age} <br>
                                         Số đt: ${customer.numberPhone} <br>
-<%--                                        Emali: ${customer.email} <br>--%>
-<%--                                        Số tiền khả dụng: ${customer.money}<br>--%>
                                     </p>
                                 </figcaption>
                             </figure>

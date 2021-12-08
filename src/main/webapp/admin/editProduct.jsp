@@ -65,13 +65,14 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a class="btn btn-outline-secondary" href="/products"> Back home</a>
+                    <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/customers"> Back home</a>
                 </div>
             </div>
             <div class="row mt-3">
+                <div align="center" class="formWe">
                 <form method="post">
-                    <table border="1" cellpadding="5">
-                        <caption>
+                    <table class="table table-hover table-dark">
+                        <caption class="nameTb">
                             <h2>
                                 Sửa thông tin Nick
                             </h2>
@@ -82,7 +83,7 @@
                         <tr>
                             <th>Giá:</th>
                             <td>
-                                <input type="text" name="price" size="60"
+                                <input class="bin" type="text" name="price" size="60"
                                        value="<c:out value='${product.getPrice()}' />"
                                 />
                             </td>
@@ -90,7 +91,7 @@
                         <tr>
                             <th>Loại:</th>
                             <td>
-                                <input type="text" name="classifyId" size="60"
+                                <input class="bin" type="text" name="classifyId" size="60"
                                        value="<c:out value='${product.getClassifyId()}' />"
                                 />
                             </td>
@@ -98,7 +99,7 @@
                         <tr>
                             <th>Mô tả:</th>
                             <td>
-                                <input type="text" name="description" size="60"
+                                <input class="bin" type="text" name="description" size="60"
                                        value="<c:out value='${product.getDescription()}' />"
                                 />
                             </td>
@@ -106,7 +107,7 @@
                         <tr>
                             <th>Tài khoản Nick:</th>
                             <td>
-                                <input type="text" name="userProduct" size="60"
+                                <input class="bin" type="text" name="userProduct" size="60"
                                        value="<c:out value='${product.getUserProduct()}' />"
                                 />
                             </td>
@@ -114,7 +115,7 @@
                         <tr>
                             <th>Mật khẩu:</th>
                             <td>
-                                <input type="text" name="pass" size="60"
+                                <input class="bin" type="text" name="pass" size="60"
                                        value="<c:out value='${product.getPass()}' />"
                                 />
                             </td>
@@ -122,7 +123,7 @@
                         <tr>
                             <th>Trạng thái:</th>
                             <td>
-                                <input type="text" name="status" size="60"
+                                <input class="bin" type="text" name="status" size="60"
                                        value="<c:out value='${product.getStatus()}' />"
                                 />
                             </td>
@@ -130,18 +131,19 @@
                         <tr>
                             <th>Server:</th>
                             <td>
-                                <input type="text" name="serverId" size="60"
+                                <input class="bin" type="text" name="serverId" size="60"
                                        value="<c:out value='${product.getServerId()}' />"
                                 />
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <input type="submit" value="Lưu thông tin"/>
+                                <input class="bin" type="submit" value="Lưu thông tin"/>
                             </td>
                         </tr>
                     </table>
                 </form>
+                </div>
             </div>
         </div>
         <div class="col-3"></div>
@@ -151,7 +153,7 @@
 <div class="container-fluid padding" style="background: white">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2>Liên hệ với chúng thôi</h2>
+            <h2 class="lh">Liên hệ với chúng thôi</h2>
         </div>
         <div class="col-12 social padding">
             <a href="#"><i class="fab fa-facebook"></i></a>

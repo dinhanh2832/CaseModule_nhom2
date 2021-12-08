@@ -66,21 +66,22 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a class="btn btn-outline-secondary" href="/products"> Back home</a>
+                    <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/products"> Back home</a>
                 </div>
             </div>
             <div class="row mt-3">
+                <div align="center" class="formWe">
                 <form method="post">
-                    <table border="1" cellpadding="5">
+                    <table class="table table-hover table-dark">
                         <caption>
-                            <h2>
+                            <h2 class="nameTb">
                                 Thêm mới Acc
                             </h2>
                         </caption>
                         <tr>
                             <th>Giá:</th>
                             <td>
-                                <input type="text" name="price" size="60"
+                                <input class="bin" type="text" name="price" size="60"
                                        value=""
                                 />
                             </td>
@@ -88,7 +89,7 @@
                         <tr>
                             <th>Loại:</th>
                             <td>
-                                <input type="text" name="classifyId" size="60"
+                                <input class="bin" type="text" name="classifyId" size="60"
                                        value=""
                                 />
                             </td>
@@ -96,7 +97,7 @@
                         <tr>
                             <th>Mô tả:</th>
                             <td>
-                                <input type="text" name="description" size="60"
+                                <input class="bin" type="text" name="description" size="60"
                                        value=""
                                 />
                             </td>
@@ -104,7 +105,7 @@
                         <tr>
                             <th>Tài khoản Nick :</th>
                             <td>
-                                <input type="text" name="userProduct" size="85"
+                                <input class="bin" type="text" name="userProduct" size="60"
                                        value=""
                                 />
                             </td>
@@ -112,7 +113,7 @@
                         <tr>
                             <th>Mật khẩu:</th>
                             <td>
-                                <input type="text" name="pass" size="25"
+                                <input class="bin" type="text" name="pass" size="60"
                                        value=""
                                 />
                             </td>
@@ -120,7 +121,7 @@
                         <tr>
                             <th>Trạng thái:</th>
                             <td>
-                                <input type="text" name="status" size="25"
+                                <input class="bin" type="text" name="status" size="60"
                                        value=""
                                 />
                             </td>
@@ -128,18 +129,19 @@
                         <tr>
                             <th>Server:</th>
                             <td>
-                                <input type="text" name="serverId" size="25"
+                                <input class="bin" type="text" name="serverId" size="60"
                                        value=""
                                 />
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <input type="submit" value="Tạo Acc"/>
+                                <input class="bin" type="submit" value="Tạo Acc"/>
                             </td>
                         </tr>
                     </table>
                 </form>
+                </div>
             </div>
         </div>
         <div class="col-3"></div>
@@ -149,7 +151,7 @@
 <div class="container-fluid padding" style="background: white">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2>Liên hệ với chúng thôi</h2>
+            <h2 class="lh">Liên hệ với chúng thôi</h2>
         </div>
         <div class="col-12 social padding">
             <a href="#"><i class="fab fa-facebook"></i></a>

@@ -138,7 +138,7 @@
                     <a class="btn btn-outline-secondary" href="/products?action=create" > Thêm Acc</a>
                 </div>
                 <div class="col-4">
-                    <form>
+                    <form method="post">
                         <input type="text" name="search" placeholder="Nhập mã số Acc">
                         <button>Tìm Kiếm</button>
                     </form>

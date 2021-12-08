@@ -66,14 +66,15 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a class="btn btn-outline-secondary" href="/customers"> Back home</a>
+                    <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/customers"> Back home</a>
                 </div>
             </div>
             <div class="row mt-3">
+                <div align="center" class="formWe">
                 <form method="post">
-                    <table border="1" cellpadding="5">
+                    <table class="table table-hover table-dark" >
                         <caption>
-                            <h2>
+                            <h2 class="nameTb">
                                 Sửa thông tin khách
                             </h2>
                         </caption>
@@ -83,7 +84,7 @@
                         <tr>
                             <th>Tên người dùng:</th>
                             <td>
-                                <input type="text" name="name" size="60"
+                                <input class="bin" type="text" name="name" size="60"
                                        value="<c:out value='${customer.name}' />"
                                 />
                             </td>
@@ -91,7 +92,7 @@
                         <tr>
                             <th>Tuổi:</th>
                             <td>
-                                <input type="text" name="age" size="60"
+                                <input class="bin" type="text" name="age" size="60"
                                        value="<c:out value='${customer.age}' />"
                                 />
                             </td>
@@ -99,7 +100,7 @@
                         <tr>
                             <th>Số điện thoại:</th>
                             <td>
-                                <input type="text" name="numberPhone" size="60"
+                                <input class="bin" type="text" name="numberPhone" size="60"
                                        value="<c:out value='${customer.numberPhone}' />"
                                 />
                             </td>
@@ -107,7 +108,7 @@
                         <tr>
                             <th>Email :</th>
                             <td>
-                                <input type="text" name="email" size="60"
+                                <input class="bin" type="text" name="email" size="60"
                                        value="<c:out value='${customer.email}' />"
                                 />
                             </td>
@@ -115,7 +116,7 @@
                         <tr>
                             <th>Số tiền khả dụng:</th>
                             <td>
-                                <input type="text" name="money" size="60"
+                                <input class="bin" type="text" name="money" size="60"
                                        value="<c:out value='${customer.money}' />"
                                 />
                             </td>
@@ -123,7 +124,7 @@
                         <tr>
                             <th>Tài khoản:</th>
                             <td>
-                                <input type="text" name="userNameAcc" size="60"
+                                <input class="bin" type="text" name="userNameAcc" size="60"
                                        value="<c:out value='${customer.userNameAcc}' />"
                                 />
                             </td>
@@ -131,7 +132,7 @@
                         <tr>
                             <th>Mật khẩu:</th>
                             <td>
-                                <input type="text" name="pass" size="60"
+                                <input class="bin" type="text" name="pass" size="60"
                                        value="<c:out value='${customer.pass}' />"
                                 />
                             </td>
@@ -143,6 +144,7 @@
                         </tr>
                     </table>
                 </form>
+                </div>
             </div>
         </div>
         <div class="col-3"></div>
@@ -152,7 +154,7 @@
 <div class="container-fluid padding" style="background: white">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2>Liên hệ với chúng thôi</h2>
+            <h2 class="lh">Liên hệ với chúng thôi</h2>
         </div>
         <div class="col-12 social padding">
             <a href="#"><i class="fab fa-facebook"></i></a>

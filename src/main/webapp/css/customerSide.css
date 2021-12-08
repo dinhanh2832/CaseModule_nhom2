@@ -2,6 +2,8 @@
     /*0.8: độ trong*/
     background-color:rgba(17, 8, 70, 0.8) !important;
 }
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Estonia&family=Grey+Qo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caramel&family=Dancing+Script:wght@700&family=Estonia&display=swap');
 .navbar-branch img {
     width: 55px;
 }
@@ -227,4 +229,26 @@ body {
     height: 160px;
     text-align: center;
     background: url("https://toigingiuvedep.vn/wp-content/uploads/2021/01/background-dong-don-gian-ma-dep.gif");
+}
+.table tr td {
+    border-radius: 5%;
+    border: #222222 1px solid;
+}
+.nameTb {
+    color: #222222;
+    text-align: center;
+    font-family: 'Caramel', cursive;
+}
+.bin {
+    border-radius: 5px;
+    height: 36px;
+    background: #DDDDDD;
+}
+.formWe {
+    background: #607db8; border-radius: 3%;
+}
+.lh {
+    font-family: 'Estonia', cursive;
+    font-size: 70px;
+    font-weight: lighter;
 }
