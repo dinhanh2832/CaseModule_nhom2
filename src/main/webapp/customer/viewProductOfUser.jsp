@@ -13,7 +13,6 @@
 <body>
 <p><a href="http://localhost:8080/logIn">Back</a></p>
 <center>
-<%--    <a href="/logIn"> trở lại</a>--%>
     <br>
     <br>
     <p>id<input type="text" name="id1" value="${product.getId()}"></p>

@@ -107,6 +107,8 @@ public class LogInServlet extends HttpServlet {
                     session.setAttribute("us", userName);
                     session.setAttribute("ps", pass);
                     session.setAttribute("idC",customer.getId());
+                    session.setAttribute("mS",customer.getMoney());
+                    session.setAttribute("name",customer.getName());
                 }
             }
             if(check){

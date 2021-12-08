@@ -123,13 +123,6 @@ public class ProductServlet extends HttpServlet {
         for (Product product : list) {
             total += product.getPrice();
         }
-//        List<Cart> list3 = new ArrayList<>();
-//        for (Cart cart: list2) {
-//            if (cart.getIdProduct() != 1) {
-//                list3.add(cart);
-//                list = findAllProduct(list3);
-//            }
-//        }
 
         request.setAttribute("idC",idC);
         request.setAttribute("total", total);
@@ -173,13 +166,6 @@ public class ProductServlet extends HttpServlet {
                 list = findAllProduct(list2);
             }
         }
-//        List<Cart> list3 = new ArrayList<>();
-//        for (Cart cart: list2) {
-//            if (cart.getIdProduct() != 1) {
-//                list3.add(cart);
-//                list = findAllProduct(list3);
-//            }
-//        }
         int total = 0;
         for (Product product : list) {
             total += product.getPrice();
