@@ -46,7 +46,7 @@
                 </li>
                 <img src="img/avtcus.jpg"/>
                 <li class="nav-item">
-                    <a class="nav-link " href="http://localhost:8080"> <% session.removeAttribute("uc");%><b class="bx">Đăng xuất</b></a>
+                    <a class="nav-link " href="http://localhost:8080"><b class="bx">Đăng xuất</b></a>
                 </li>
             </ul>
         </div>

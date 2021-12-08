@@ -145,7 +145,7 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-            default:
+            case "edit2":
                 try {
                     updateCustomerA(request,response);
                 } catch (SQLException e) {
@@ -191,7 +191,7 @@ public class CustomerServlet extends HttpServlet {
         String numberPhone = request.getParameter("numberPhone");
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
-        int money = Integer.parseInt(request.getParameter("money"));
+        double money = Double.parseDouble(request.getParameter("money"));
         Customer customer = new Customer(age, numberPhone, email,money ,pass);
         customerServlet.editA(id, customer);
         List<Product> productList = productService.printAll();

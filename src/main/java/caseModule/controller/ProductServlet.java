@@ -412,13 +412,13 @@ public class ProductServlet extends HttpServlet {
                 }
                 break;
 
-            default:
-                try {
-                    showSearchUser(request, response);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
+//            default:
+//                try {
+//                    showSearchUser(request, response);
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//                break;
         }
     }
 
@@ -439,80 +439,7 @@ public class ProductServlet extends HttpServlet {
 
     }
 
-    private void showSearchUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        int price = Integer.parseInt(request.getParameter("price"));
-        int serverId = Integer.parseInt(request.getParameter("serverId"));
-        int classifyId = Integer.parseInt(request.getParameter("classifyId"));
-        List<Product> productList = productService.printAll();
-        List<Product> list2 = new ArrayList<>();
-        for (Product product : productList) {
-            int status = product.getStatus();
-            if (status == 1 || status == 3) {
-                list2.add(product);
-            }
-        }
-        List<Product> list3 = new ArrayList<>();
-        if (price == 0 && classifyId == 0 && serverId == 0) {
-            list3 = list2;
-        }
-        if (price == 0 && classifyId == 0 && serverId != 0) {
-            for (Product product : list2) {
-                if (product.getServerId() == serverId || product.getStatus() == 3) {
-                    list3.add(product);
-                }
-            }
 
-        }
-        if (price == 0 && classifyId != 0 && serverId == 0) {
-            for (Product product : list2) {
-                if (product.getClassifyId() == classifyId || product.getStatus() == 3) {
-                    list3.add(product);
-                }
-            }
-        }
-        if (price != 0 && classifyId == 0 && serverId == 0) {
-            for (Product product : list2) {
-                if (product.getPrice() < price || product.getStatus() == 3) {
-                    list3.add(product);
-                }
-            }
-        }
-        if (price == 0 && classifyId != 0 && serverId != 0) {
-            for (Product product : list2) {
-                if ((product.getClassifyId() == classifyId && product.getServerId() == serverId) || product.getStatus() == 3) {
-                    list3.add(product);
-                }
-            }
-        }
-        if (price != 0 && classifyId != 0 && serverId == 0) {
-            for (Product product : list2) {
-                if ((product.getClassifyId() == classifyId && product.getPrice() < price) || product.getStatus() == 3) {
-                    list3.add(product);
-                }
-            }
-        }
-        if (price != 0 && classifyId == 0 && serverId != 0) {
-            for (Product product : list2) {
-                if ((product.getServerId() == serverId && product.getPrice() < price) || product.getStatus() == 3) {
-                    list3.add(product);
-                }
-            }
-        }
-        if (price != 0 && classifyId != 0 && serverId != 0) {
-            for (Product product : list2) {
-                if ((product.getServerId() == serverId && product.getPrice() < price && product.getClassifyId() == classifyId) || product.getStatus() == 3) {
-                    list3.add(product);
-                }
-            }
-        }
-        List<ClassifyProduct> classifyProducts = findClassifyProduct(list3);
-        List<Server> serverList = findAllServer(list3);
-        request.setAttribute("products", list3);
-        request.setAttribute("classifyProducts", classifyProducts);
-        request.setAttribute("servers", serverList);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
-        requestDispatcher.forward(request, response);
-    }
 
     private void buyProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int idC = Integer.parseInt(request.getParameter("idC"));

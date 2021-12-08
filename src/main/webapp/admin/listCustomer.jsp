@@ -52,7 +52,7 @@
                 </li>
                 <img src="img/avtcus.jpg"/>
                 <li class="nav-item">
-                    <a class="nav-link " href="http://localhost:8080"><% session.removeAttribute("uc");%><b class="bx">Đăng
+                    <a class="nav-link " href="http://localhost:8080"><b class="bx">Đăng
                         xuất</b></a>
                 </li>
             </ul>
@@ -90,7 +90,7 @@
                                     <p style="color: white">Mật khẩu: ${customer.pass}</p>
                                     <a href="/customers?action=viewCustomer&id=${customer.getId()}"
                                        class="btn btn-outline-secondary">Xem</a>
-                                    <a href="/customers?action=edit&id=${customer.getId()}"
+                                    <a href="/customers?action=edit2&id=${customer.getId()}"
                                        class="btn btn-outline-secondary">Sửa</a>
                                     <a href="/customers?action=deleteCus&id=${customer.id}"
                                        class="btn btn-outline-secondary"

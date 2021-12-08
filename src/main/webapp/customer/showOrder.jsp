@@ -53,7 +53,7 @@
                 </c:if>
                 <c:if test='${sessionScope.idC == 0}'>
                     <li class="nav-item">
-                        <a class="nav-link " href="/customers?action=create"><% session.removeAttribute("uc");%><b class="bx">Đăng ký</b></a>
+                        <a class="nav-link " href="/customers?action=create"><b class="bx">Đăng ký</b></a>
                     </li>
                 </c:if>
             </ul>

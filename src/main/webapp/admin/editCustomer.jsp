@@ -44,15 +44,33 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
+                <c:if test='${sessionScope.role == 1}'>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><b class="bx">Hướng dẫn</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><b class="bx">Nạp thẻ</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><b class="bx">${sessionScope.mS}</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><b class="bx">${sessionScope.name}</b></a>
+                    </li>
+                    <img src="img/avtcus.jpg"/>
+                </c:if>
+                <c:if test='${sessionScope.role == 2}'>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><b class="bx">${sessionScope.mS}</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><b class="bx">Admin</b></a>
+                    </li>
+                    <img src="img/avtcus.jpg"/>
+                </c:if>
+
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">${sessionScope.mS}</b></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">${sessionScope.uc}</b></a>
-                </li>
-                <img src="img/avtcus.jpg"/>
-                <li class="nav-item">
-                    <a class="nav-link " href="http://localhost:8080"><% session.removeAttribute("uc");%><b class="bx">Đăng
+                    <a class="nav-link " href="http://localhost:8080"><b class="bx">Đăng
                         xuất</b></a>
                 </li>
             </ul>
@@ -66,18 +84,19 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <c:if test='${sessionScope.uc == 100}'>
+                    <c:if test='${sessionScope.role == 2}'>
                         <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/customers"> Back
                             home</a>
                     </c:if>
-                    <c:if test='${sessionScope.uc != 100}'>
-                        <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="http://localhost:8080/logIn"> Back
+                    <c:if test='${sessionScope.role == 1}'>
+                        <a style="width: 150px;margin-left: 230px" class="btn btn-secondary"
+                           href="http://localhost:8080/logIn"> Back
                             home</a>
                     </c:if>
                 </div>
             </div>
             <div class="row mt-3">
-                <c:if test='${sessionScope.uc != 100}'>
+                <c:if test='${sessionScope.role == 1}'>
                     <div align="center" class="formWe">
                         <form method="post">
                             <table class="table table-hover table-dark">
@@ -127,7 +146,7 @@
                         </form>
                     </div>
                 </c:if>
-                <c:if test='${sessionScope.uc == 100}'>
+                <c:if test='${sessionScope.role == 2}'>
                     <div align="center" class="formWe">
                         <form method="post">
                             <table class="table table-hover table-dark">

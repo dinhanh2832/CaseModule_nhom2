@@ -47,7 +47,7 @@
                 <li class="nav-item">
                     <a class="nav-link " href="#"><b class="bx">Hướng dẫn</b></a>
                 </li>
-                <c:if test='${sessionScope.uc != null}'>
+                <c:if test='${sessionScope.role == 1}'>
                     <li class="nav-item">
                         <a class="nav-link " href="#"><b class="bx">Nạp thẻ</b></a>
                     </li>
@@ -56,10 +56,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#"><b class="bx">${customer.name}</b></a>
+
                     </li>
                     <img src="img/avtcus.jpg"/>
                 </c:if>
-                <c:if test='${sessionScope.uc == null}'>
+                <c:if test='${sessionScope.role == 3}'>
                     <li class="nav-item">
                         <a class="nav-link " href="/customers?action=create"><b class="bx">Đăng ký</b></a>
                     </li>
@@ -166,7 +167,8 @@
 <div class="jumbotron mt-3">
     <div class="row">
         <div class="col-12">
-            <form method="post" id="from" action="/products">
+            <form method="post" id="from" action="/logIn?action=sea">
+                <input type="hidden" name="id" value="${sessionScope.idC}">
                 <select name="price">
                     <option value="0">Chọn theo giá</option>
                     <option value="500000">Dưới 500k</option>

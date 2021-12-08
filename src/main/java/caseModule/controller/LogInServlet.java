@@ -80,7 +80,84 @@ public class LogInServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    private void showSearchUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int price = Integer.parseInt(request.getParameter("price"));
+        int serverId = Integer.parseInt(request.getParameter("serverId"));
+        int classifyId = Integer.parseInt(request.getParameter("classifyId"));
+        int id = Integer.parseInt(request.getParameter("id"));
+        List<Product> productList = productService.printAll();
+        List<Product> list2 = new ArrayList<>();
+        for (Product product : productList) {
+            int status = product.getStatus();
+            if (status == 1 || status == 3) {
+                list2.add(product);
+            }
+        }
+        List<Product> list3 = new ArrayList<>();
+        if (price == 0 && classifyId == 0 && serverId == 0) {
+            list3 = list2;
+        }
+        if (price == 0 && classifyId == 0 && serverId != 0) {
+            for (Product product : list2) {
+                if (product.getServerId() == serverId || product.getStatus() == 3) {
+                    list3.add(product);
+                }
+            }
 
+        }
+        if (price == 0 && classifyId != 0 && serverId == 0) {
+            for (Product product : list2) {
+                if (product.getClassifyId() == classifyId || product.getStatus() == 3) {
+                    list3.add(product);
+                }
+            }
+        }
+        if (price != 0 && classifyId == 0 && serverId == 0) {
+            for (Product product : list2) {
+                if (product.getPrice() < price || product.getStatus() == 3) {
+                    list3.add(product);
+                }
+            }
+        }
+        if (price == 0 && classifyId != 0 && serverId != 0) {
+            for (Product product : list2) {
+                if ((product.getClassifyId() == classifyId && product.getServerId() == serverId) || product.getStatus() == 3) {
+                    list3.add(product);
+                }
+            }
+        }
+        if (price != 0 && classifyId != 0 && serverId == 0) {
+            for (Product product : list2) {
+                if ((product.getClassifyId() == classifyId && product.getPrice() < price) || product.getStatus() == 3) {
+                    list3.add(product);
+                }
+            }
+        }
+        if (price != 0 && classifyId == 0 && serverId != 0) {
+            for (Product product : list2) {
+                if ((product.getServerId() == serverId && product.getPrice() < price) || product.getStatus() == 3) {
+                    list3.add(product);
+                }
+            }
+        }
+        if (price != 0 && classifyId != 0 && serverId != 0) {
+            for (Product product : list2) {
+                if ((product.getServerId() == serverId && product.getPrice() < price && product.getClassifyId() == classifyId) || product.getStatus() == 3) {
+                    list3.add(product);
+                }
+            }
+        }
+
+        Customer customer = customerServlet.findById(id);
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(list3);
+        List<Server> serverList = findAllServer(list3);
+        request.setAttribute("products", list3);
+        request.setAttribute("customer",customer);
+        request.setAttribute("classifyProducts", classifyProducts);
+        request.setAttribute("servers", serverList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
+        requestDispatcher.forward(request,response);
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -88,6 +165,13 @@ public class LogInServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "sea":
+                try {
+                    showSearchUser(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
                 try {
                     logIn(request, response);
@@ -110,12 +194,14 @@ public class LogInServlet extends HttpServlet {
             if (customer.getUserNameAcc().equals(userName) && customer.getPass().equals(pass)) {
                 check = true;
                 session.setAttribute("uc", userName);
+                session.setAttribute("role",1);
                 session.setAttribute("pc", pass);
                 session.setAttribute("idC", customer.getId());
                 session.setAttribute("mS", customer.getMoney());
                 session.setAttribute("name", customer.getName());
                 session.setAttribute("email", customer.getEmail());
                 session.setAttribute("sdt", customer.getNumberPhone());
+                session.setAttribute("menu",1);
             }
         }
         if (check) {
@@ -123,6 +209,8 @@ public class LogInServlet extends HttpServlet {
         } else if (userName.equals("admin") && pass.equals("admin")) {
             session.setAttribute("uc", 100);
             session.setAttribute("pc", pass);
+            session.setAttribute("role",2);
+            session.setAttribute("menu",2);
             RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminSide.jsp");
             dispatcher.forward(request, response);
         } else {
@@ -184,6 +272,7 @@ public class LogInServlet extends HttpServlet {
                 session.setAttribute("name", customer.getName());
                 session.setAttribute("email", customer.getEmail());
                 session.setAttribute("sdt", customer.getNumberPhone());
+                session.setAttribute("role", 3);
             }
         }
         for (Product product : productList) {

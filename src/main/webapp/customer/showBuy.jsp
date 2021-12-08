@@ -151,7 +151,7 @@
                                        class="btn btn-outline-secondary"><b style="margin-top: -10px;">Đổi mật khẩu</b></a>
                                     <a href="http://localhost:8080/logIn" class="btn btn-outline-secondary"><b>Back</b></a>
                                     <a href="#" class="btn btn-outline-secondary"><b>Liên hệ</b></a>
-                                    <a href="http://localhost:8080" class="btn btn-outline-secondary"><% session.removeAttribute("uc");%><b>Đăng
+                                    <a href="http://localhost:8080" class="btn btn-outline-secondary"><b>Đăng
                                         xuất</b></a>
                                 </div>
                             </div>
