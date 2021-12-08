@@ -156,6 +156,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public void editMoneyOfCustomer(int id,int money ) throws SQLException  {
+         try(Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("update customer set money=?  where id=?")) {
+             preparedStatement.setInt(1,money);
+             preparedStatement.setInt(2,id);
+             preparedStatement.executeUpdate();
+         }
+
+    }
+
+    @Override
     public void delete(int id, Customer customer) throws SQLException {
 
     }

@@ -13,4 +13,5 @@ public interface Service <T>{
     void edit(int id,T t) throws SQLException;
     void delete(int id) throws SQLException;
     T findById(int id) throws SQLException;
+    void editMoneyOfCustomer(int id,int money) throws SQLException;
 }

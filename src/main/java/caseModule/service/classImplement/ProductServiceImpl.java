@@ -129,4 +129,9 @@ public class ProductServiceImpl implements ProductService {
         }
         return product;
     }
+
+    @Override
+    public void editMoneyOfCustomer(int id, int money) {
+
+    }
 }
