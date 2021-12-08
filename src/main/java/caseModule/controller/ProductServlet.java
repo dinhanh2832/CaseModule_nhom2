@@ -411,13 +411,7 @@ public class ProductServlet extends HttpServlet {
         }
         List<Product> list3 = new ArrayList<>();
         if (price == 0 && classifyId == 0 && serverId == 0) {
-            List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
-            List<Server> serverList = findAllServer(list2);
-            request.setAttribute("products", list2);
-            request.setAttribute("classifyProducts", classifyProducts);
-            request.setAttribute("servers", serverList);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
-            requestDispatcher.forward(request, response);
+            list3=list2;
         }
         if (price == 0 && classifyId == 0 && serverId != 0) {
             switch (serverId) {
@@ -485,6 +479,40 @@ public class ProductServlet extends HttpServlet {
                     break;
             }
         }
+        if (price != 0 && classifyId == 0 && serverId == 0) {
+            switch (price) {
+                case 500000:
+                    for (Product product : list2) {
+                        if (product.getPrice() < 500000) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+                case 1000000:
+                    for (Product product : list2) {
+                        if (product.getPrice() < 1000000) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+                case 1500000:
+                    for (Product product : list2) {
+                        if (product.getPrice() < 1500000) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+                case 2000000:
+                    for (Product product : list2) {
+                        if (product.getPrice() <2000000) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+            }
+
+        }
+
 
         List<ClassifyProduct> classifyProducts = findClassifyProduct(list3);
         List<Server> serverList = findAllServer(list3);
