@@ -51,7 +51,7 @@
                     <a class="nav-link " href="#"><b class="bx">Nạp thẻ</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">${sessionScope.mS}</b></a>
+                    <a class="nav-link " href="#"><b class="bx">${customer.money}</b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="#"><b class="bx">${sessionScope.name}</b></a>

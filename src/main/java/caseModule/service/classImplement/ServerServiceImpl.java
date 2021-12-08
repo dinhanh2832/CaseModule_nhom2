@@ -111,4 +111,9 @@ public class ServerServiceImpl implements ServerService {
 
         return server;
     }
+
+    @Override
+    public void editMoneyOfCustomer(int id, int money) {
+
+    }
 }

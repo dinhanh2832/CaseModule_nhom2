@@ -114,4 +114,9 @@ public class ClassifyProductServiceImpl implements ClassifyProductService {
         }
         return classifyProduct;
     }
+
+    @Override
+    public void editMoneyOfCustomer(int id, int money) {
+
+    }
 }

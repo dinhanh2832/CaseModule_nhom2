@@ -91,4 +91,9 @@ public class CartServiceImpl implements CartService {
 
         return cart;
     }
+
+    @Override
+    public void editMoneyOfCustomer(int id, int money) {
+
+    }
 }

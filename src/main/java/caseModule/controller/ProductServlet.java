@@ -19,6 +19,7 @@ public class ProductServlet extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
     ServerService serverService = new ServerServiceImpl();
     ClassifyProductService classifyProductService = new ClassifyProductServiceImpl();
+    CustomerService customerService=new CustomerServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -121,7 +122,10 @@ public class ProductServlet extends HttpServlet {
         for (Product product : list) {
             total += product.getPrice();
         }
-
+        HttpSession session = request.getSession(false);
+        int id1 =(Integer) session.getAttribute("idC");
+        Customer customer = customerService.findById(id1);
+        request.setAttribute("customer",customer);
         request.setAttribute("idC", idC);
         request.setAttribute("total", total);
         request.setAttribute("products", list);
@@ -168,7 +172,10 @@ public class ProductServlet extends HttpServlet {
         for (Product product : list) {
             total += product.getPrice();
         }
-
+        HttpSession session = request.getSession(false);
+        int id =(Integer) session.getAttribute("idC");
+        Customer customer = customerService.findById(id);
+        request.setAttribute("customer",customer);
         request.setAttribute("products", list);
         request.setAttribute("idP", idP);
         request.setAttribute("idC", idC);
@@ -181,10 +188,12 @@ public class ProductServlet extends HttpServlet {
 
 
     private void buyProduct1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        int idC = Integer.parseInt(request.getParameter("idC"));
         int total = 0;
+        Customer customer=customerService.findById(idC);
         List<Cart> list1 = cartService.printAll();
         List<Product> listProduct = productService.printAll();
-        int idC = Integer.parseInt(request.getParameter("idC"));
+
         List<Cart> listCart = new ArrayList<>();
         List<Product> listProduct2 = new ArrayList<>();
 
@@ -198,24 +207,35 @@ public class ProductServlet extends HttpServlet {
         for (Product product : listProduct2) {
             total += product.getPrice();
         }
+        if(customer.getMoney()<total){
+            RequestDispatcher requestDispatcher=request.getRequestDispatcher("customer/addMoney.jsp");
+            requestDispatcher.forward(request,response);
+        }else {
+            int money= (int) (customer.getMoney()-total);
 
-        for (Product product : listProduct2) {
-            for (Product value : listProduct) {
-                if (product.getId() != 1) {
-                    if (product.getId() == value.getId()) {
-                        productService.delete(value.getId());
-                        cartService.delete(value.getId());
+            customerService.editMoneyOfCustomer(idC,money);
+            for (Product product : listProduct2) {
+                for (Product value : listProduct) {
+                    if (product.getId() != 1) {
+                        if (product.getId() == value.getId()) {
+                            productService.delete(value.getId());
+                            cartService.delete(value.getId());
+                        }
                     }
                 }
             }
+            HttpSession session = request.getSession(false);
+            int id =(Integer) session.getAttribute("idC");
+            Customer customer1 = customerService.findById(id);
+            request.setAttribute("customer",customer1);
+            String time = String.valueOf(LocalDateTime.now());
+            request.setAttribute("total", total);
+            request.setAttribute("products", listProduct2);
+            request.setAttribute("time", time);
+            request.setAttribute("idC", idC);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showOrder.jsp");
+            requestDispatcher.forward(request, response);
         }
-        String time = String.valueOf(LocalDateTime.now());
-        request.setAttribute("total", total);
-        request.setAttribute("products", listProduct2);
-        request.setAttribute("time", time);
-        request.setAttribute("idC", idC);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showOrder.jsp");
-        requestDispatcher.forward(request, response);
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
@@ -238,7 +258,6 @@ public class ProductServlet extends HttpServlet {
         response.sendRedirect("/products");
     }
 
-
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int max = 1;
         List<Product> list = productService.printAll();
@@ -259,7 +278,6 @@ public class ProductServlet extends HttpServlet {
         response.sendRedirect("/products");
 
     }
-
 
     private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
@@ -386,9 +404,17 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "searchAD":
+                try {
+                    searchAdmin(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+
             default:
                 try {
-                    showSearch(request, response);
+                    showSearchUser(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -396,7 +422,24 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void showSearch(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+    private void searchAdmin(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int idProduct = Integer.parseInt(request.getParameter("idProduct"));
+        List<Product> listProduct = new ArrayList<>();
+        Product product=productService.findById(idProduct);
+        listProduct.add(product);
+
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(listProduct);
+        List<Server> serverList = findAllServer(listProduct);
+        request.setAttribute("products", listProduct);
+        request.setAttribute("classifyProducts", classifyProducts);
+        request.setAttribute("servers", serverList);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
+        requestDispatcher.forward(request,response);
+
+    }
+
+    private void showSearchUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         int price = Integer.parseInt(request.getParameter("price"));
         int serverId = Integer.parseInt(request.getParameter("serverId"));
         int classifyId = Integer.parseInt(request.getParameter("classifyId"));
@@ -462,12 +505,6 @@ public class ProductServlet extends HttpServlet {
                 }
             }
         }
-//        for(Product product: list3){
-//            int status = product.getStatus();
-//            if(status == 1){
-//
-//            }
-//        }
         List<ClassifyProduct> classifyProducts = findClassifyProduct(list3);
         List<Server> serverList = findAllServer(list3);
         request.setAttribute("products", list3);
@@ -478,10 +515,11 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void buyProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        int idC = Integer.parseInt(request.getParameter("idC"));
+
         int total = 0;
         List<Cart> list1 = cartService.printAll();
         List<Product> listProduct = productService.printAll();
-        int idC = Integer.parseInt(request.getParameter("idC"));
         List<Cart> listCart = new ArrayList<>();
         List<Product> listProduct2 = new ArrayList<>();
 
@@ -489,36 +527,40 @@ public class ProductServlet extends HttpServlet {
             if (value.getIdCustomer() == idC) {
                 listCart.add(value);
                 listProduct2 = findAllProduct(listCart);
-
             }
         }
-
         for (Product product : listProduct2) {
             total += product.getPrice();
         }
-
-        for (Product product : listProduct2) {
-            for (Product value : listProduct) {
-                if (product.getId() != 1) {
-                    if (product.getId() == value.getId()) {
-                        productService.delete(value.getId());
-                        cartService.delete(value.getId());
+            for (Product product : listProduct2) {
+                for (Product value : listProduct) {
+                    if (product.getId() != 1) {
+                        if (product.getId() == value.getId()) {
+                            productService.delete(value.getId());
+                            cartService.delete(value.getId());
+                        }
                     }
                 }
             }
-        }
-        List<Product> listProduct3 = new ArrayList<>();
-        for (Product product : listProduct2) {
-            if (product.getId() != 1) {
-                listProduct3.add(product);
+            List<Product> listProduct3 = new ArrayList<>();
+            for (Product product : listProduct2) {
+                if (product.getId() != 1) {
+                    listProduct3.add(product);
+                }
             }
-        }
-        String time = String.valueOf(LocalDateTime.now());
-        request.setAttribute("total", total);
-        request.setAttribute("products", listProduct3);
-        request.setAttribute("time", time);
-        request.setAttribute("idC", idC);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showOrder.jsp");
-        requestDispatcher.forward(request, response);
+            String time = String.valueOf(LocalDateTime.now());
+        HttpSession session = request.getSession(false);
+        int id =(Integer) session.getAttribute("idC");
+        Customer customer = customerService.findById(id);
+        request.setAttribute("customer",customer);
+            request.setAttribute("total", total);
+            request.setAttribute("products", listProduct3);
+            request.setAttribute("time", time);
+            request.setAttribute("idC", idC);
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showOrder.jsp");
+            requestDispatcher.forward(request, response);
+
+
     }
 }

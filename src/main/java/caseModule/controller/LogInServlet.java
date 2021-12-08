@@ -154,6 +154,10 @@ public class LogInServlet extends HttpServlet {
         }
         List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
         List<Server> serverList = findAllServer(list2);
+        HttpSession session = request.getSession(false);
+        int id =(Integer) session.getAttribute("idC");
+        Customer customer = customerServlet.findById(id);
+        request.setAttribute("customer",customer);
         request.setAttribute("products", list2);
         request.setAttribute("classifyProducts",classifyProducts);
         request.setAttribute("servers",serverList);
