@@ -456,7 +456,13 @@ public class ProductServlet extends HttpServlet {
                 }
             }
         }
-
+        if(price!=0&&classifyId!=0&&serverId!=0){
+            for (Product product:list2) {
+                if(product.getServerId()==serverId && product.getPrice()<price&&product.getClassifyId()==classifyId){
+                    list3.add(product);
+                }
+            }
+        }
 
         List<ClassifyProduct> classifyProducts = findClassifyProduct(list3);
         List<Server> serverList = findAllServer(list3);
