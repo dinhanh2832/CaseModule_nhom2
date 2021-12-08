@@ -173,6 +173,7 @@
                 <select name="classifyId">
                     <option value="0">Chọn theo độ Vip</option>
                     <option value="1">Acc Vip</option>
+                    <option value="3">Acc trung</option>
                     <option value="2">Acc Thường</option>
                 </select>
                 <button style="height: 40px;width: 100px;">Tìm Kiếm</button>

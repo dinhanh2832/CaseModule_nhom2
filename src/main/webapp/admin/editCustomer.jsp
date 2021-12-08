@@ -83,7 +83,7 @@
                         <tr>
                             <th>Tên người dùng:</th>
                             <td>
-                                <input type="text" name="name" size="45"
+                                <input type="text" name="name" size="60"
                                        value="<c:out value='${customer.name}' />"
                                 />
                             </td>
@@ -91,7 +91,7 @@
                         <tr>
                             <th>Tuổi:</th>
                             <td>
-                                <input type="text" name="age" size="15"
+                                <input type="text" name="age" size="60"
                                        value="<c:out value='${customer.age}' />"
                                 />
                             </td>
@@ -99,7 +99,7 @@
                         <tr>
                             <th>Số điện thoại:</th>
                             <td>
-                                <input type="text" name="numberPhone" size="25"
+                                <input type="text" name="numberPhone" size="60"
                                        value="<c:out value='${customer.numberPhone}' />"
                                 />
                             </td>
@@ -107,7 +107,7 @@
                         <tr>
                             <th>Email :</th>
                             <td>
-                                <input type="text" name="email" size="85"
+                                <input type="text" name="email" size="60"
                                        value="<c:out value='${customer.email}' />"
                                 />
                             </td>
@@ -115,7 +115,7 @@
                         <tr>
                             <th>Số tiền khả dụng:</th>
                             <td>
-                                <input type="text" name="money" size="25"
+                                <input type="text" name="money" size="60"
                                        value="<c:out value='${customer.money}' />"
                                 />
                             </td>
@@ -123,7 +123,7 @@
                         <tr>
                             <th>Tài khoản:</th>
                             <td>
-                                <input type="text" name="userNameAcc" size="25"
+                                <input type="text" name="userNameAcc" size="60"
                                        value="<c:out value='${customer.userNameAcc}' />"
                                 />
                             </td>
@@ -131,7 +131,7 @@
                         <tr>
                             <th>Mật khẩu:</th>
                             <td>
-                                <input type="text" name="pass" size="25"
+                                <input type="text" name="pass" size="60"
                                        value="<c:out value='${customer.pass}' />"
                                 />
                             </td>
