@@ -86,7 +86,13 @@ public class LogInServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+
         }
+
+    }
+
+    private void showSearch(HttpServletRequest request, HttpServletResponse response) {
+
     }
 
     private void logIn(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
@@ -138,18 +144,14 @@ public class LogInServlet extends HttpServlet {
     }
     private void showCustomerSide(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
-
         List<Product> productList = productService.printAll();
-
         List<Product> list2 = new ArrayList<>();
-
         for(Product product: productList){
             int status = product.getStatus();
             if(status == 1){
                 list2.add(product);
             }
         }
-
         List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
         List<Server> serverList = findAllServer(list2);
         request.setAttribute("products", list2);

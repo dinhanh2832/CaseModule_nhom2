@@ -53,7 +53,7 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "sortProduct":
                 try {
-                    sortProduct(request,response);
+                    sortProduct(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -74,7 +74,7 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "deleteCart":
                 try {
-                    deleteCart(request,response);
+                    deleteCart(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -104,7 +104,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void deleteCart(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        int id= Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         cartService.delete(id);
         int total = 0;
         List<Cart> list1 = cartService.printAll();
@@ -122,10 +122,10 @@ public class ProductServlet extends HttpServlet {
             total += product.getPrice();
         }
 
-        request.setAttribute("idC",idC);
+        request.setAttribute("idC", idC);
         request.setAttribute("total", total);
         request.setAttribute("products", list);
-        request.setAttribute("carts",list2);
+        request.setAttribute("carts", list2);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showBuy.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -201,7 +201,7 @@ public class ProductServlet extends HttpServlet {
 
         for (Product product : listProduct2) {
             for (Product value : listProduct) {
-                if(product.getId() !=1 ){
+                if (product.getId() != 1) {
                     if (product.getId() == value.getId()) {
                         productService.delete(value.getId());
                         cartService.delete(value.getId());
@@ -267,9 +267,9 @@ public class ProductServlet extends HttpServlet {
 
         List<Product> list2 = new ArrayList<>();
 
-        for(Product product: productList){
+        for (Product product : productList) {
             int status = product.getStatus();
-            if(status == 1){
+            if (status == 1) {
                 list2.add(product);
             }
         }
@@ -277,8 +277,8 @@ public class ProductServlet extends HttpServlet {
         List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
         List<Server> serverList = findAllServer(list2);
         request.setAttribute("products", list2);
-        request.setAttribute("classifyProducts",classifyProducts);
-        request.setAttribute("servers",serverList);
+        request.setAttribute("classifyProducts", classifyProducts);
+        request.setAttribute("servers", serverList);
         requestDispatcher.forward(request, response);
 
     }
@@ -386,8 +386,115 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            default:
+                try {
+                    showSearch(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
+
+    private void showSearch(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int price = Integer.parseInt(request.getParameter("price"));
+        int serverId = Integer.parseInt(request.getParameter("serverId"));
+        int classifyId = Integer.parseInt(request.getParameter("classifyId"));
+        List<Product> productList = productService.printAll();
+        List<Product> list2 = new ArrayList<>();
+        for (Product product : productList) {
+            int status = product.getStatus();
+            if (status == 1) {
+                list2.add(product);
+
+            }
+        }
+        List<Product> list3 = new ArrayList<>();
+        if (price == 0 && classifyId == 0 && serverId == 0) {
+            List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
+            List<Server> serverList = findAllServer(list2);
+            request.setAttribute("products", list2);
+            request.setAttribute("classifyProducts", classifyProducts);
+            request.setAttribute("servers", serverList);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
+            requestDispatcher.forward(request, response);
+        }
+        if (price == 0 && classifyId == 0 && serverId != 0) {
+            switch (serverId) {
+                case 1:
+                    for (Product product : list2) {
+                        if (product.getServerId() == 1) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+                case 2:
+                    for (Product product : list2) {
+                        if (product.getServerId() == 2) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+                case 3:
+                    for (Product product : list2) {
+                        if (product.getServerId() == 3) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+                case 4:
+                    for (Product product : list2) {
+                        if (product.getServerId() == 4) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+                case 5:
+                    for (Product product : list2) {
+                        if (product.getServerId() == 5) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+                case 6:
+                    for (Product product : list2) {
+                        if (product.getServerId() == 6) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+
+            }
+
+        }
+        if (price == 0 && classifyId != 0 && serverId == 0) {
+            switch (classifyId) {
+                case 1:
+                    for (Product product : list2) {
+                        if (product.getClassifyId() == 1) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+                case 2:
+                    for (Product product : list2) {
+                        if (product.getClassifyId() == 2) {
+                            list3.add(product);
+                        }
+                    }
+                    break;
+            }
+        }
+
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(list3);
+        List<Server> serverList = findAllServer(list3);
+        request.setAttribute("products", list3);
+        request.setAttribute("classifyProducts", classifyProducts);
+        request.setAttribute("servers", serverList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
+        requestDispatcher.forward(request, response);
+    }
+
     private void buyProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int total = 0;
         List<Cart> list1 = cartService.printAll();
@@ -410,7 +517,7 @@ public class ProductServlet extends HttpServlet {
 
         for (Product product : listProduct2) {
             for (Product value : listProduct) {
-                if(product.getId() !=1 ){
+                if (product.getId() != 1) {
                     if (product.getId() == value.getId()) {
                         productService.delete(value.getId());
                         cartService.delete(value.getId());
@@ -419,8 +526,8 @@ public class ProductServlet extends HttpServlet {
             }
         }
         List<Product> listProduct3 = new ArrayList<>();
-        for (Product product: listProduct2) {
-            if(product.getId() != 1){
+        for (Product product : listProduct2) {
+            if (product.getId() != 1) {
                 listProduct3.add(product);
             }
         }
