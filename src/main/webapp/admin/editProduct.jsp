@@ -14,6 +14,7 @@
 <center>
   <h1> Edit</h1>
   <form method="post">
+
     <p> price<input type="text" name="price" value="${product.getPrice()}"></p>
     <p>classifyId<input type="text" name="classifyId" value="${product.getClassifyId()}"></p>
     <p> description<input type="text" name="description" value="${product.getDescription()}"></p>
@@ -21,6 +22,7 @@
     <p>pass<input type="text" name="pass" value="${product.getPass()}"></p>
     <p>status<input type="text" name="status" value="${product.getStatus()}"></p>
     <p>serverId<input type="text" name="serverId" value="${product.getServerId()}"></p>
+
     <button> Sửa</button>
   </form>
 </center>

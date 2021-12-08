@@ -186,6 +186,7 @@
         <div class="col-11">
             <div class="row">
                 <c:forEach var="i" begin="0" end="${products.size() - 1}">
+                    <c:if test='${products.get(i).status != 3}'>
                     <div class="col-3" id="cardproduct">
                         <div class="card mb-4" >
                             <figure class="snip1361" style="width: 242px">
@@ -206,6 +207,7 @@
                             </div>
                         </div>
                     </div>
+                    </c:if>
                 </c:forEach>
             </div>
         </div>

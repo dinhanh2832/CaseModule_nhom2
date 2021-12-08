@@ -404,66 +404,70 @@ public class ProductServlet extends HttpServlet {
         List<Product> list2 = new ArrayList<>();
         for (Product product : productList) {
             int status = product.getStatus();
-            if (status == 1) {
+            if (status == 1 || status == 3) {
                 list2.add(product);
-
             }
         }
         List<Product> list3 = new ArrayList<>();
         if (price == 0 && classifyId == 0 && serverId == 0) {
-            list3=list2;
+            list3 = list2;
         }
         if (price == 0 && classifyId == 0 && serverId != 0) {
-            for (Product product:list2){
-                if (product.getServerId()==serverId){
+            for (Product product : list2) {
+                if (product.getServerId() == serverId || product.getStatus() == 3) {
                     list3.add(product);
                 }
             }
 
         }
         if (price == 0 && classifyId != 0 && serverId == 0) {
-            for (Product product:list2) {
-                if(product.getClassifyId()==classifyId){
+            for (Product product : list2) {
+                if (product.getClassifyId() == classifyId || product.getStatus() == 3) {
                     list3.add(product);
                 }
             }
         }
         if (price != 0 && classifyId == 0 && serverId == 0) {
             for (Product product : list2) {
-                if (product.getPrice() < price) {
+                if (product.getPrice() < price || product.getStatus() == 3) {
                     list3.add(product);
                 }
             }
         }
-        if(price==0&&classifyId!=0&&serverId!=0){
-            for (Product product:list2) {
-                if(product.getClassifyId()==classifyId && product.getServerId()==serverId){
+        if (price == 0 && classifyId != 0 && serverId != 0) {
+            for (Product product : list2) {
+                if ((product.getClassifyId() == classifyId && product.getServerId() == serverId) || product.getStatus() == 3) {
                     list3.add(product);
                 }
             }
         }
-        if(price!=0&&classifyId!=0&&serverId==0){
-            for (Product product:list2) {
-                if(product.getClassifyId()==classifyId && product.getPrice()<price){
+        if (price != 0 && classifyId != 0 && serverId == 0) {
+            for (Product product : list2) {
+                if ((product.getClassifyId() == classifyId && product.getPrice() < price) || product.getStatus() == 3) {
                     list3.add(product);
                 }
             }
         }
-        if(price!=0&&classifyId==0&&serverId!=0){
-            for (Product product:list2) {
-                if(product.getServerId()==serverId && product.getPrice()<price){
+        if (price != 0 && classifyId == 0 && serverId != 0) {
+            for (Product product : list2) {
+                if ((product.getServerId() == serverId && product.getPrice() < price) || product.getStatus() == 3) {
                     list3.add(product);
                 }
             }
         }
-        if(price!=0&&classifyId!=0&&serverId!=0){
-            for (Product product:list2) {
-                if(product.getServerId()==serverId && product.getPrice()<price&&product.getClassifyId()==classifyId){
+        if (price != 0 && classifyId != 0 && serverId != 0) {
+            for (Product product : list2) {
+                if ((product.getServerId() == serverId && product.getPrice() < price && product.getClassifyId() == classifyId) || product.getStatus() == 3) {
                     list3.add(product);
                 }
             }
         }
-
+//        for(Product product: list3){
+//            int status = product.getStatus();
+//            if(status == 1){
+//
+//            }
+//        }
         List<ClassifyProduct> classifyProducts = findClassifyProduct(list3);
         List<Server> serverList = findAllServer(list3);
         request.setAttribute("products", list3);
