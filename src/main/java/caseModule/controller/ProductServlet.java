@@ -238,7 +238,6 @@ public class ProductServlet extends HttpServlet {
         response.sendRedirect("/products");
     }
 
-
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int max = 1;
         List<Product> list = productService.printAll();
@@ -259,7 +258,6 @@ public class ProductServlet extends HttpServlet {
         response.sendRedirect("/products");
 
     }
-
 
     private void sortByUp(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
@@ -386,9 +384,17 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "searchAD":
+                try {
+                    searchAdmin(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+
             default:
                 try {
-                    showSearch(request, response);
+                    showSearchUser(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -396,7 +402,24 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void showSearch(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+    private void searchAdmin(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int idProduct = Integer.parseInt(request.getParameter("idProduct"));
+        List<Product> listProduct = new ArrayList<>();
+        Product product=productService.findById(idProduct);
+        listProduct.add(product);
+
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(listProduct);
+        List<Server> serverList = findAllServer(listProduct);
+        request.setAttribute("products", listProduct);
+        request.setAttribute("classifyProducts", classifyProducts);
+        request.setAttribute("servers", serverList);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
+        requestDispatcher.forward(request,response);
+
+    }
+
+    private void showSearchUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         int price = Integer.parseInt(request.getParameter("price"));
         int serverId = Integer.parseInt(request.getParameter("serverId"));
         int classifyId = Integer.parseInt(request.getParameter("classifyId"));
@@ -462,12 +485,6 @@ public class ProductServlet extends HttpServlet {
                 }
             }
         }
-//        for(Product product: list3){
-//            int status = product.getStatus();
-//            if(status == 1){
-//
-//            }
-//        }
         List<ClassifyProduct> classifyProducts = findClassifyProduct(list3);
         List<Server> serverList = findAllServer(list3);
         request.setAttribute("products", list3);
