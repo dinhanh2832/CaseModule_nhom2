@@ -153,7 +153,7 @@
 <div class="jumbotron mt-3">
     <div class="row">
         <div class="col-12">
-            <form method="post" id="from">
+            <form method="post" id="from" action="/products">
                 <select name="price">
                     <option value="0">Chọn theo giá</option>
                     <option value="500000">Dưới 500k</option>
