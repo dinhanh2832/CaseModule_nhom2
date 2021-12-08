@@ -225,10 +225,12 @@ public class ProductServlet extends HttpServlet {
                 }
             }
         }
+        
         String time = String.valueOf(LocalDateTime.now());
+        request.setAttribute("time", time);
+
         request.setAttribute("total", total);
         request.setAttribute("products", listProduct2);
-        request.setAttribute("time", time);
         request.setAttribute("idC", idC);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/showOrder.jsp");
         requestDispatcher.forward(request, response);
