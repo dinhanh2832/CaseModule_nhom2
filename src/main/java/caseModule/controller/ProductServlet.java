@@ -386,6 +386,7 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+
         }
     }
     private void buyProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {

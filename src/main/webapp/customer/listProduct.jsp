@@ -133,9 +133,15 @@
         <div class="col-1"></div>
         <div class="col-11">
             <div class="row mt-3">
-                <div class="col-12">
+                <div class="col-8">
                     <a class="btn btn-outline-secondary" href="/logIn?action=page"  > Back home</a>
                     <a class="btn btn-outline-secondary" href="/products?action=create" > Thêm Acc</a>
+                </div>
+                <div class="col-4">
+                    <form>
+                        <input type="text" name="search" placeholder="Nhập mã số Acc">
+                        <button>Tìm Kiếm</button>
+                    </form>
                 </div>
             </div>
             <div class="row mt-3">
