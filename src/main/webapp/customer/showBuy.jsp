@@ -50,13 +50,20 @@
                 <li class="nav-item">
                     <a class="nav-link " href="#"><b class="bx">Nạp thẻ</b></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">${customer.money}</b></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">${sessionScope.name}</b></a>
-                </li>
-                <img src="img/avtcus.jpg"/>
+                <c:if test='${sessionScope.idC != 0}'>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><b class="bx">${customer.money}</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><b class="bx">${sessionScope.name}</b></a>
+                    </li>
+                    <img src="img/avtcus.jpg"/>
+                </c:if>
+                <c:if test='${sessionScope.idC == 0}'>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/customers?action=create"><b class="bx">Đăng ký</b></a>
+                    </li>
+                </c:if>
             </ul>
         </div>
     </div>
@@ -164,7 +171,7 @@
                     <option value="500000">Dưới 500k</option>
                     <option value="1000000">Dưới 1Tr</option>
                     <option value="1500000">Dưới 1Tr5</option>
-                    <option value="2000000">Trên 2Tr</option>
+                    <option value="2500000">Dưới 2Tr5</option>
                 </select>
                 <select name="serverId">
                     <option value="0">Chọn theo Server</option>
@@ -212,6 +219,7 @@
                                         <h3>Acc số ${carts.get(i).idProduct}</h3>
                                         <p>
                                             Giá: ${products.get(i).price} <br>
+                                            Giá: ${servers.get(i).name}
                                         </p>
                                     </figcaption>
                                 </figure>

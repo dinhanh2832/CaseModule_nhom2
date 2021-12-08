@@ -1,8 +1,17 @@
 package caseModule.controller;
 
+import caseModule.model.ClassifyProduct;
 import caseModule.model.Customer;
+import caseModule.model.Product;
+import caseModule.model.Server;
+import caseModule.service.classImplement.ClassifyProductServiceImpl;
 import caseModule.service.classImplement.CustomerServiceImpl;
+import caseModule.service.classImplement.ProductServiceImpl;
+import caseModule.service.classImplement.ServerServiceImpl;
+import caseModule.service.interfacee.ClassifyProductService;
 import caseModule.service.interfacee.CustomerService;
+import caseModule.service.interfacee.ProductService;
+import caseModule.service.interfacee.ServerService;
 
 
 import javax.servlet.*;
@@ -16,7 +25,9 @@ import java.util.List;
 @WebServlet(name = "CustomerServlet", value = "/customers")
 public class CustomerServlet extends HttpServlet {
     CustomerService customerServlet = new CustomerServiceImpl();
-
+    ProductService productService = new ProductServiceImpl();
+    ServerService serverService = new ServerServiceImpl();
+    ClassifyProductService classifyProductService=new ClassifyProductServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -48,6 +59,13 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "watch":
+                try {
+                    watchOfCustomer(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
                 try {
                     ListCustomer(request, response);
@@ -55,6 +73,14 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
         }
+    }
+
+    private void watchOfCustomer(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, SQLException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/viewCustomerOfUser.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer customer = customerServlet.findById(id);
+        request.setAttribute("customer", customer);
+        requestDispatcher.forward(request, response);
     }
 
     private void showViewCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
@@ -123,22 +149,36 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
         String numberPhone = request.getParameter("numberPhone");
         String email = request.getParameter("email");
-        String userNameAcc = request.getParameter("userNameAcc");
-        double money = Double.parseDouble(request.getParameter("money"));
         String pass = request.getParameter("pass");
-        Customer customer = new Customer(name, age, numberPhone, email, money, userNameAcc, pass);
+        Customer customer = new Customer(age, numberPhone, email, pass);
         customerServlet.edit(id, customer);
-        response.sendRedirect("/customers");
-
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/customerSide.jsp");
+        List<Product> productList = productService.printAll();
+        List<Product> list2 = new ArrayList<>();
+        for(Product product: productList){
+            int status = product.getStatus();
+            if(status == 1){
+                list2.add(product);
+            }
+        }
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
+        List<Server> serverList = findAllServer(list2);
+        HttpSession session = request.getSession(false);
+        int id1 =(Integer) session.getAttribute("idC");
+        Customer customer1 = customerServlet.findById(id1);
+        request.setAttribute("customer",customer1);
+        request.setAttribute("products", list2);
+        request.setAttribute("classifyProducts",classifyProducts);
+        request.setAttribute("servers",serverList);
+        dispatcher.forward(request, response);
     }
 
-    private void AddForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void AddForm(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
         String numberPhone = request.getParameter("numberPhone");
@@ -150,6 +190,23 @@ public class CustomerServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        response.sendRedirect("/customers");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+        requestDispatcher.forward(request,response);
+    }
+    private List<ClassifyProduct> findClassifyProduct(List<Product> products)throws SQLException{
+        List<ClassifyProduct> list = new ArrayList<>();
+        for (Product product : products) {
+            ClassifyProduct classifyProduct = classifyProductService.findById(product.getClassifyId());
+            list.add(classifyProduct);
+        }
+        return list;
+    }
+    private List<Server> findAllServer(List<Product> productList) throws SQLException {
+        List<Server> list=new ArrayList<>();
+        for (Product product : productList) {
+            Server server = serverService.findById(product.getServerId());
+            list.add(server);
+        }
+        return list;
     }
 }

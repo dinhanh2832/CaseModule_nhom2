@@ -47,23 +47,16 @@
                 <li class="nav-item">
                     <a class="nav-link " href="#"><b class="bx">Hướng dẫn</b></a>
                 </li>
-                <c:if test='${sessionScope.uc != null}'>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#"><b class="bx">Nạp thẻ</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#"><b class="bx">${customer.money}</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#"><b class="bx">${sessionScope.name}</b></a>
-                    </li>
-                    <img src="img/avtcus.jpg"/>
-                </c:if>
-                <c:if test='${sessionScope.uc == null}'>
-                    <li class="nav-item">
-                        <a class="nav-link " href="/customers?action=create"><b class="bx">Đăng ký</b></a>
-                    </li>
-                </c:if>
+                <li class="nav-item">
+                    <a class="nav-link " href="#"><b class="bx">Nạp thẻ</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#"><b class="bx">${customer.money}</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#"><b class="bx">${sessionScope.name}</b></a>
+                </li>
+                <img src="img/avtcus.jpg"/>
             </ul>
         </div>
     </div>
@@ -145,12 +138,11 @@
                         <div class="col-12">
                             <div class="card mb-4" id="ndMenu">
                                 <div class="card-body text-center">
-                                    <a href="/customers?action=watch&id=${sessionScope.idC}"
-                                       class="btn btn-outline-secondary"><b>Tài khoản</b></a>
+                                    <a href="" class="btn btn-outline-secondary"><b>Tài khoản</b></a>
                                     <a href="/customers?action=edit&id=${sessionScope.idC}"
                                        class="btn btn-outline-secondary"><b style="margin-top: -10px;">Đổi mật khẩu</b></a>
-                                    <a href="/products?action=showBuy&idP=1&idC=${sessionScope.idC}"
-                                       class="btn btn-outline-secondary"><b>Giỏ hàng</b></a>
+                                    <a href="http://localhost:8080/logIn"
+                                       class="btn btn-outline-secondary"><b>Back</b></a>
                                     <a href="#" class="btn btn-outline-secondary"><b>Liên hệ</b></a>
                                     <a href="http://localhost:8080" class="btn btn-outline-secondary"><b>Đăng
                                         xuất</b></a>
@@ -172,7 +164,7 @@
                     <option value="500000">Dưới 500k</option>
                     <option value="1000000">Dưới 1Tr</option>
                     <option value="1500000">Dưới 1Tr5</option>
-                    <option value="2000000">Trên 2Tr</option>
+                    <option value="2500000">Dưới 2Tr5</option>
                 </select>
                 <select name="serverId">
                     <option value="0">Chọn theo Server</option>
@@ -196,50 +188,80 @@
 </div>
 <div class="container-fluid mt-2">
     <div class="row">
-        <div class="col-1"></div>
-        <div class="col-11">
+        <div class="col-3"></div>
+        <div class="col-6">
             <div class="row">
-                <c:forEach var="i" begin="0" end="${products.size() - 1}">
-                    <c:if test='${products.get(i).status != 3}'>
-                        <div class="col-3" id="cardproduct">
-                            <div class="card mb-4">
-                                <figure class="snip1361" style="width: 242px">
-                                    <img src="img/logo.jpg" alt="sample45" style="width: 247px">
-                                    <figcaption>
-                                        <h3>Acc số ${products.get(i).id}</h3>
-                                        <p>
-                                            Giá: ${products.get(i).price} <br>
-                                            Loại: ${classifyProducts.get(i).category} <br>
-                                            Server: ${servers.get(i).name}
-                                        </p>
-                                    </figcaption>
-                                </figure>
-                                <div class="card-body text-center">
-                                    <h4 class="card-title"></h4>
-                                    <a href="/logIn?action=viewProduct&id=${products.get(i).id}"
-                                       class="btn btn-outline-secondary">Xem thông tin</a>
-                                    <c:if test='${sessionScope.uc != null}'>
-                                        <a href="/products?action=showBuy&idP=${products.get(i).id}&idC=${sessionScope.idC}"
-                                           class="btn btn-outline-secondary">Mua</a>
-                                    </c:if>
-                                    <c:if test='${sessionScope.uc == null}'>
-                                        <a href="/products?action=showBuy&idP=${products.get(i).id}&idC=${sessionScope.idC}"
-                                           class="btn btn-outline-secondary">Mua</a>
-                                    </c:if>
-                                </div>
-                            </div>
-                        </div>
-                    </c:if>
-                </c:forEach>
+                <div align="center" class="formWe">
+                    <table class="table table-hover table-dark">
+                        <caption>
+                            <h2 class="nameTb">
+                                Thông tin của bạn
+                            </h2>
+                        </caption>
+                        <tr>
+                            <th>Mã số Id:</th>
+                            <td>
+                                <input type="text" name="id" size="60" value="${customer.getId()}" class="bin"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Tên:</th>
+                            <td>
+                                <input type="text" name="name" size="60" value="${customer.getName()}" class="bin"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Tuổi:</th>
+                            <td>
+                                <input class="bin" type="text" name="age" size="60" value="${customer.getAge()}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Số Điện thoại:</th>
+                            <td>
+                                <input class="bin" type="text" name="numberPhone" size="60"
+                                       value="${customer.getNumberPhone()}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>
+                                <input class="bin" type="text" name="email" size="60"
+                                       value="${customer.getEmail()}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Số tiền khả dụng:</th>
+                            <td>
+                                <input class="bin" type="text" name="money" size="60"
+                                       value="${customer.getMoney()}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Tên tài khoản:</th>
+                            <td>
+                                <input class="bin" type="text" name="userNameAcc" size="60"
+                                       value="${customer.getUserNameAcc()}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Mật khẩu:</th>
+                            <td>
+                                <input class="bin" type="text" name="pass" size="60" value="${customer.getPass()}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
+        <div class="col-3"></div>
     </div>
 </div>
 <hr class="my-2">
 <div class="container-fluid padding" style="background: white">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2>Liên hệ với chúng thôi</h2>
+            <h2 class="lh">Liên hệ với chúng thôi</h2>
         </div>
         <div class="col-12 social padding">
             <a href="#"><i class="fab fa-facebook"></i></a>

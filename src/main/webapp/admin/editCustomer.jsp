@@ -79,16 +79,8 @@
                             </h2>
                         </caption>
                         <c:if test="${customer != null}">
-                            <input type="hidden" name="id" value="<c:out value='${customer.id}' />"/>
+                            <input type="text" name="id" value="<c:out value='${customer.id}' />"/>
                         </c:if>
-                        <tr>
-                            <th>Tên người dùng:</th>
-                            <td>
-                                <input class="bin" type="text" name="name" size="60"
-                                       value="<c:out value='${customer.name}' />"
-                                />
-                            </td>
-                        </tr>
                         <tr>
                             <th>Tuổi:</th>
                             <td>
@@ -110,22 +102,6 @@
                             <td>
                                 <input class="bin" type="text" name="email" size="60"
                                        value="<c:out value='${customer.email}' />"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Số tiền khả dụng:</th>
-                            <td>
-                                <input class="bin" type="text" name="money" size="60"
-                                       value="<c:out value='${customer.money}' />"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Tài khoản:</th>
-                            <td>
-                                <input class="bin" type="text" name="userNameAcc" size="60"
-                                       value="<c:out value='${customer.userNameAcc}' />"
                                 />
                             </td>
                         </tr>

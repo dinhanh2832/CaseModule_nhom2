@@ -138,42 +138,46 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
-            <p>
-                <c:if test='${requestScope["message"] != null}'>
-                    <span class="message">${requestScope["message"]}</span>
-                </c:if>
-            </p>
-            <form method="post" action="/logIn">
-                <div class="noi-dung">
-                    <div class="form">
-                        <h2>Trang Đăng Nhập</h2>
-                        <form action="">
-                            <div class="input-form">
-                                <span>Tên Người Dùng</span>
-                                <input type="text" name="username" placeholder="username"/>
-                            </div>
-                            <div class="input-form">
-                                <span>Mật Khẩu</span>
-                                <input type="password" name="password" placeholder="password"/>
-                            </div>
-                            <div class="nho-dang-nhap">
-                                <label><input type="checkbox" name=""> Nhớ Đăng Nhập</label>
-                            </div>
-                            <div class="input-form">
-                                <input type="submit" value="Đăng Nhập" style="color: #222222;">
-                            </div>
-                            <div class="input-form">
-                                <p>Bạn Chưa Có Tài Khoản? <a href="/customers?action=create">Đăng Ký</a><a href=""
-                                                                                                           style="color: #3f3f3f">
-                                    Mua Ngay</a></p>
-                            </div>
-
-                        </form>
+        <c:if test='${sessionScope.uc == null}'>
+            <div class="col-6">
+                <p>
+                    <c:if test='${requestScope["message"] != null}'>
+                        <span class="message">${requestScope["message"]}</span>
+                    </c:if >
+                </p>
+                <form method="post" action="/logIn">
+                    <div class="noi-dung">
+                        <div class="form">
+                            <h2>Trang Đăng Nhập</h2>
+                            <form action="">
+                                <div class="input-form">
+                                    <span>Tên Người Dùng</span>
+                                    <input type="text" name="username" placeholder="username"/>
+                                </div>
+                                <div class="input-form">
+                                    <span>Mật Khẩu</span>
+                                    <input type="password" name="password" placeholder="password"/>
+                                </div>
+                                <div class="nho-dang-nhap">
+                                    <label><input type="checkbox" name=""> Nhớ Đăng Nhập</label>
+                                </div>
+                                <div class="input-form">
+                                    <input type="submit" value="Đăng Nhập" style="color: #222222;">
+                                </div>
+                                <div class="input-form">
+                                    <p>Bạn Chưa Có Tài Khoản? <a href="/customers?action=create">Đăng Ký</a><a href="/logIn?action=show"
+                                                                                                               style="color: #3f3f3f">
+                                        Mua Ngay</a></p>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        </c:if >
+        <c:if test='${sessionScope.uc != null}'>
+            <p style="font-size: 27px;text-align: center;margin-left: 130px">Bạn đã đăng nhập rồi!!</p>
+        </c:if >
     </div>
 </div>
 <hr class="my-2">

@@ -65,50 +65,53 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a class="btn btn-outline-secondary" href="http://localhost:8080/">Back</a>
+                    <a style="width: 150px;" class="btn btn-secondary" href="http://localhost:8080/">Back</a>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-3"></div>
                 <div class="col-8">
-                    <form method="post">
-                        <div class="noi-dung">
-                            <div class="form" style="border: white 1px solid; border-radius: 3%;background-color: rgba(8, 12, 0, 0.7);">
-                                <h2 style="text-align: center;">Trang Đăng Nhập</h2>
-                                <div class="input-form">
-                                    <span>Nhập tên</span>
-                                    <input type="text" name="name" style="background-color: white">
-                                </div>
-                                <div class="input-form">
-                                    <span>Nhập tuổi của bạn</span>
-                                    <input type="text" name="age" style="background-color: white">
-                                </div>
-                                <div class="input-form">
-                                    <span>Nhập số điện thoại</span>
-                                    <input type="text" name="numberPhone" style="background-color: white">
-                                </div>
-                                <div class="input-form">
-                                    <span>Nhập email</span>
-                                    <input type="text" name="email" style="background-color: white">
-                                </div>
-                                <div class="input-form">
-                                    <span>Nhập tên đăng nhập</span>
-                                    <input type="text" name="userNameAcc" style="background-color: white">
-                                </div>
-                                <div class="input-form">
-                                    <span>Nhập mật khẩu</span>
-                                    <input type="text" name="pass" style="background-color: white">
-                                </div>
-                                <%--                <div class="input-form">--%>
-                                <%--                    <span>Nhập lại mật khẩu</span>--%>
-                                <%--                    <input type="text" name="pass2" style="background-color: white">--%>
-                                <%--                </div>--%>
-                                <div class="input-form">
-                                    <input type="submit" value="Tạo" style="color: #222222;">
+                    <div style="background: white;border-radius: 3%">
+                        <form method="post">
+                            <div class="noi-dung">
+                                <div class="form" style="border: white 1px solid; border-radius: 3%;background-color: rgba(8, 12, 0, 0.7);">
+                                    <h2 style="text-align: center;">Trang Đăng Nhập</h2>
+                                    <div class="input-form">
+                                        <span>Nhập tên</span>
+                                        <input type="text" name="name" style="background-color: white">
+                                    </div>
+                                    <div class="input-form">
+                                        <span>Nhập tuổi của bạn</span>
+                                        <input type="text" name="age" style="background-color: white">
+                                    </div>
+                                    <div class="input-form">
+                                        <span>Nhập số điện thoại</span>
+                                        <input type="text" name="numberPhone" style="background-color: white">
+                                    </div>
+                                    <div class="input-form">
+                                        <span>Nhập email</span>
+                                        <input type="text" name="email" style="background-color: white">
+                                    </div>
+                                    <div class="input-form">
+                                        <span>Nhập tên đăng nhập</span>
+                                        <input type="text" name="userNameAcc" style="background-color: white">
+                                    </div>
+                                    <div class="input-form">
+                                        <span>Nhập mật khẩu</span>
+                                        <input type="text" name="pass" style="background-color: white">
+                                    </div>
+                                    <%--                <div class="input-form">--%>
+                                    <%--                    <span>Nhập lại mật khẩu</span>--%>
+                                    <%--                    <input type="text" name="pass2" style="background-color: white">--%>
+                                    <%--                </div>--%>
+                                    <div class="input-form">
+                                        <input type="submit" value="Tạo" style="color: #222222;">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+
                 </div>
                 <div class="col-2"></div>
             </div>

@@ -104,15 +104,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void edit(int id, Customer customer) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("update customer set name=?,age=?,numberPhone=?,email=?,money=?,userNameAcc=?,pass=?  where id=?")) {
-            preparedStatement.setInt(8,id);
-            preparedStatement.setString(1, customer.getName());
-            preparedStatement.setInt(2, customer.getAge());
-            preparedStatement.setString(3, customer.getNumberPhone());
-            preparedStatement.setString(4, customer.getEmail());
-            preparedStatement.setDouble(5, customer.getMoney());
-            preparedStatement.setString(6, customer.getUserNameAcc());
-            preparedStatement.setString(7, customer.getPass());
+             PreparedStatement preparedStatement = connection.prepareStatement("update customer set age=?,numberPhone=?,email=?,pass=?  where id=?")) {
+            preparedStatement.setInt(5,id);
+            preparedStatement.setInt(1, customer.getAge());
+            preparedStatement.setString(2, customer.getNumberPhone());
+            preparedStatement.setString(3, customer.getEmail());
+            preparedStatement.setString(4, customer.getPass());
             preparedStatement.executeUpdate();
         }
     }

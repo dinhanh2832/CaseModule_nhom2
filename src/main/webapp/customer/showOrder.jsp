@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -43,7 +42,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="#"><b class="bx">Nạp thẻ</b></a>
-                </li>
+                    <c:if test='${sessionScope.idC != 0}'>
                 <li class="nav-item">
                     <a class="nav-link " href="#"><b class="bx">${customer.money}</b></a>
                 </li>
@@ -51,6 +50,12 @@
                     <a class="nav-link " href="#"><b class="bx">${sessionScope.name}</b></a>
                 </li>
                 <img src="img/avtcus.jpg"/>
+                </c:if>
+                <c:if test='${sessionScope.idC == 0}'>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/customers?action=create"><b class="bx">Đăng ký</b></a>
+                    </li>
+                </c:if>
             </ul>
         </div>
     </div>
@@ -182,69 +187,76 @@
 <div class="container-fluid mt-2">
     <div class="row">
         <div class="col-3"></div>
-        <div class="col-6">
-            <c:forEach var="i" begin="0" end="${products.size()-1}">
-                <c:if test='${products.get(i).id != 1}'>
-                    <div align="center">
-                        <form method="post">
-                            <table border="1" cellpadding="5">
-                                <caption>
-                                    <h2>
-                                        Hóa đơn
-                                    </h2>
-                                </caption>
-                                <tr>
-                                    <th>Người mua:</th>
-                                    <td>
-                                        <input type="text" name="name" size="60"
-                                               value="<c:out value='${sessionScope.name}' />"
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Thời gian:</th>
-                                    <td>
-                                        <input type="text" name="name" size="60" value="<c:out value='${time}' />"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Acc số:</th>
-                                    <td>
-                                        <input type="text" name="name" size="60"
-                                               value="<c:out value='${products.get(i).id}' />"
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Giá:</th>
-                                    <td>
-                                        <input type="text" name="age" size="60"
-                                               value="<c:out value='${products.get(i).price}' />"
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Tài khoản:</th>
-                                    <td>
-                                        <input type="text" name="numberPhone" size="60"
-                                               value="<c:out value='${products.get(i).userProduct}' />"
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Mật khẩu :</th>
-                                    <td>
-                                        <input type="text" name="email" size="60"
-                                               value="<c:out value='${products.get(i).pass}' />"
-                                        />
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                </c:if>
-            </c:forEach>
-        </div>
+        <c:if test='${sessionScope.idC != 0}'>
+            <div class="col-6">
+                <c:forEach var="i" begin="0" end="${products.size()-1}">
+                    <c:if test='${products.get(i).id != 1}'>
+                        <div align="center">
+                            <form method="post">
+                                <table border="1" cellpadding="5">
+                                    <caption>
+                                        <h2>
+                                            Hóa đơn
+                                        </h2>
+                                    </caption>
+                                    <tr>
+                                        <th>Người mua:</th>
+                                        <td>
+                                            <input type="text" name="name" size="60"
+                                                   value="<c:out value='${sessionScope.name}' />"
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Thời gian:</th>
+                                        <td>
+                                            <input type="text" name="name" size="60" value="<c:out value='${time}' />"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Acc số:</th>
+                                        <td>
+                                            <input type="text" name="name" size="60"
+                                                   value="<c:out value='${products.get(i).id}' />"
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Giá:</th>
+                                        <td>
+                                            <input type="text" name="age" size="60"
+                                                   value="<c:out value='${products.get(i).price}' />"
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tài khoản:</th>
+                                        <td>
+                                            <input type="text" name="numberPhone" size="60"
+                                                   value="<c:out value='${products.get(i).userProduct}' />"
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mật khẩu :</th>
+                                        <td>
+                                            <input type="text" name="email" size="60"
+                                                   value="<c:out value='${products.get(i).pass}' />"
+                                            />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </c:if>
+                </c:forEach>
+            </div>
+        </c:if>
+        <c:if test='${sessionScope.idC == 0}'>
+            <div class="col-6">
+                <p style="font-size: 25px;color: white;text-align: center"> Hãy liên hệ với chủ shop qua link fb bên dưới để được mua sản phẩm !</p>
+            </div>
+        </c:if>
         <div class="col-3"></div>
     </div>
 </div>
