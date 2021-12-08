@@ -48,7 +48,7 @@
                     <a class="nav-link " href="#"><b class="bx">${sessionScope.mS}</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">${customer.name}</b></a>
+                    <a class="nav-link " href="#"><b class="bx">${sessionScope.uc}</b></a>
                 </li>
                 <img src="img/avtcus.jpg"/>
                 <li class="nav-item">
@@ -66,18 +66,18 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <c:if test="${sessionScope.uc == 100}">
+                    <c:if test='${sessionScope.uc == 100}'>
                         <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/customers"> Back
                             home</a>
                     </c:if>
-                    <c:if test="${sessionScope.uc != 100}">
+                    <c:if test='${sessionScope.uc != 100}'>
                         <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="http://localhost:8080/logIn"> Back
                             home</a>
                     </c:if>
                 </div>
             </div>
             <div class="row mt-3">
-                <c:if test="${sessionScope.uc != 100}">
+                <c:if test='${sessionScope.uc != 100}'>
                     <div align="center" class="formWe">
                         <form method="post">
                             <table class="table table-hover table-dark">
@@ -127,7 +127,7 @@
                         </form>
                     </div>
                 </c:if>
-                <c:if test="${sessionScope.uc == 100}">
+                <c:if test='${sessionScope.uc == 100}'>
                     <div align="center" class="formWe">
                         <form method="post">
                             <table class="table table-hover table-dark">
@@ -136,9 +136,15 @@
                                         Sửa thông tin khách
                                     </h2>
                                 </caption>
-                                <c:if test="${customer != null}">
-                                    <input type="text" name="id" value="<c:out value='${customer.id}' />"/>
-                                </c:if>
+                                <tr>
+                                    <th>Id:</th>
+                                    <td>
+                                        <input class="bin" type="text" name="id" size="60"
+                                               value="<c:out value='${customer.id}' />"
+                                        />
+                                    </td>
+                                </tr>
+
                                 <tr>
                                     <th>Tuổi:</th>
                                     <td>
@@ -172,16 +178,16 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" align="center">
-                                        <input type="submit" value="Lưu thông tin"/>
-                                    </td>
-                                </tr>
-                                <tr>
                                     <th>Tiền:</th>
                                     <td>
                                         <input class="bin" type="text" name="money" size="60"
                                                value="<c:out value='${customer.money}' />"
                                         />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input type="submit" value="Lưu thông tin"/>
                                     </td>
                                 </tr>
                             </table>
@@ -235,9 +241,9 @@
                 <p style="font-size: 25px;">Thông tin Web</p>
                 <hr class="light">
                 <p>Web được thành lập và quản lý bởi</p>
-                <img style="margin-top: 10px" src="img/dungkk.jpg" class="img-fluid">
-                <img style="margin-top: 10px" src="img/anhkk.jpg" class="img-fluid">
-                <img style="margin-top: 10px" src="img/binhkk.jpg" class="img-fluid"> <br>
+                <img style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
+                <img style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
+                <img style="margin-top: 10px" src="img/logo.jpg" class="img-fluid"> <br>
                 Ánh - Dũng - Bình
                 <p>Nơi niềm tin và hạnh phúc được gửi gắm</p>
                 <p>Hoàng Mai- Hà Nội</p>
