@@ -49,7 +49,7 @@
                     <a class="nav-link " href="#"><b class="bx">Trung tâm</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">Admin</b></a>
+                    <a class="nav-link " href="#"><b class="bx"></b></a>
                 </li>
                 <img src="img/avtcus.jpg"/>
                 <li class="nav-item">
@@ -134,9 +134,9 @@
                 <p style="font-size: 25px;">Thông tin Web</p>
                 <hr class="light">
                 <p>Web được thành lập và quản lý bởi</p>
-                <img  style="margin-top: 10px" src="img/dungkk.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/anhkk.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/binhkk.jpg" class="img-fluid"> <br>
+                <img  style="margin-top: 10px;border-radius: 50%" src="img/dungkk.jpg" class="img-fluid">
+                <img  style="margin-top: 10px;border-radius: 50%" src="img/anhkk.jpg" class="img-fluid">
+                <img  style="margin-top: 10px;border-radius: 50%" src="img/binhkk.jpg" class="img-fluid"> <br>
                 Ánh - Dũng - Bình
                 <p>Nơi niềm tin và hạnh phúc được gửi gắm</p>
                 <p>Hoàng Mai- Hà Nội</p>

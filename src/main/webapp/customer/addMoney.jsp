@@ -46,10 +46,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">Trung tâm</b></a>
+                    <a class="nav-link " href="#"><b class="bx">Hướng dẫn</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">Admin</b></a>
+                    <a class="nav-link " href="#"><b class="bx">Nạp thẻ</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#"><b class="bx">${customer.money}</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#"><b class="bx">${customer.name}</b></a>
                 </li>
                 <img src="img/avtcus.jpg"/>
                 <li class="nav-item">

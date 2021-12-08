@@ -190,33 +190,35 @@ public class LogInServlet extends HttpServlet {
         String pass = request.getParameter("password");
         HttpSession session = request.getSession();
         boolean check = false;
-        for (Customer customer : list) {
-            if (customer.getUserNameAcc().equals(userName) && customer.getPass().equals(pass)) {
-                check = true;
-                session.setAttribute("uc", userName);
-                session.setAttribute("role",1);
-                session.setAttribute("pc", pass);
-                session.setAttribute("idC", customer.getId());
-                session.setAttribute("mS", customer.getMoney());
-                session.setAttribute("name", customer.getName());
-                session.setAttribute("email", customer.getEmail());
-                session.setAttribute("sdt", customer.getNumberPhone());
-                session.setAttribute("menu",1);
-            }
-        }
-        if (check) {
-            showCustomerSide(request, response);
-        } else if (userName.equals("admin") && pass.equals("admin")) {
-            session.setAttribute("uc", 100);
+        if (userName.equals("admin") && pass.equals("admin")) {
+            session.setAttribute("uc", userName);
             session.setAttribute("pc", pass);
-            session.setAttribute("role",2);
-            session.setAttribute("menu",2);
+            session.setAttribute("role", 2);
+            session.setAttribute("menu", 2);
             RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminSide.jsp");
             dispatcher.forward(request, response);
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            request.setAttribute("message", "Sai tai khoan hoac mat khau !");
-            dispatcher.forward(request, response);
+            for (Customer customer : list) {
+                if (customer.getUserNameAcc().equals(userName) && customer.getPass().equals(pass)) {
+                    check = true;
+                    session.setAttribute("role",1);
+                    session.setAttribute("idC", customer.getId());
+                    session.setAttribute("mS", customer.getMoney());
+                    session.setAttribute("name", customer.getName());
+                    session.setAttribute("email", customer.getEmail());
+                    session.setAttribute("sdt", customer.getNumberPhone());
+                    session.setAttribute("menu",1);
+                }
+            }
+            if (check) {
+                session.setAttribute("pc", pass);
+                session.setAttribute("uc", userName);
+                showCustomerSide(request, response);
+            }  else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+                request.setAttribute("message", "Sai tai khoan hoac mat khau !");
+                dispatcher.forward(request, response);
+            }
         }
     }
 
