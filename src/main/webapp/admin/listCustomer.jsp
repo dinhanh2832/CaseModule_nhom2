@@ -66,7 +66,6 @@
             <div class="row mt-3">
                 <div class="col-12">
                     <a class="btn btn-outline-secondary" href="/logIn?action=page"  > Back home</a>
-                    <a class="btn btn-outline-secondary" href="/customers?action=create" > Thêm người dùng</a>
                 </div>
             </div>
             <div class="row mt-3">

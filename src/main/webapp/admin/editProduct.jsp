@@ -66,7 +66,7 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a class="btn btn-outline-secondary" href="/customers"> Back home</a>
+                    <a class="btn btn-outline-secondary" href="/products"> Back home</a>
                 </div>
             </div>
             <div class="row mt-3">

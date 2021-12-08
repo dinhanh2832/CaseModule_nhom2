@@ -135,6 +135,7 @@
             <div class="row mt-3">
                 <div class="col-12">
                     <a class="btn btn-outline-secondary" href="/logIn?action=page"  > Back home</a>
+                    <a class="btn btn-outline-secondary" href="/products?action=create" > Thêm Acc</a>
                 </div>
             </div>
             <div class="row mt-3">
