@@ -38,6 +38,15 @@ private int status;
         this.pass = pass;
     }
 
+    public Customer(String name, int age, String numberPhone, String email, String userNameAcc, String pass) {
+        this.name = name;
+        this.age = age;
+        this.numberPhone = numberPhone;
+        this.email = email;
+        this.userNameAcc = userNameAcc;
+        this.pass = pass;
+    }
+
     public int getStatus() {
         return status;
     }

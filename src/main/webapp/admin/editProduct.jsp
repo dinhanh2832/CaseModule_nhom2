@@ -83,7 +83,7 @@
                         <tr>
                             <th>Giá:</th>
                             <td>
-                                <input type="text" name="name" size="60"
+                                <input type="text" name="price" size="60"
                                        value="<c:out value='${product.getPrice()}' />"
                                 />
                             </td>
@@ -91,7 +91,7 @@
                         <tr>
                             <th>Loại:</th>
                             <td>
-                                <input type="text" name="age" size="60"
+                                <input type="text" name="classifyId" size="60"
                                        value="<c:out value='${product.getClassifyId()}' />"
                                 />
                             </td>
@@ -99,7 +99,7 @@
                         <tr>
                             <th>Mô tả:</th>
                             <td>
-                                <input type="text" name="numberPhone" size="60"
+                                <input type="text" name="description" size="60"
                                        value="<c:out value='${product.getDescription()}' />"
                                 />
                             </td>
@@ -107,7 +107,7 @@
                         <tr>
                             <th>Tài khoản Nick:</th>
                             <td>
-                                <input type="text" name="email" size="60"
+                                <input type="text" name="userProduct" size="60"
                                        value="<c:out value='${product.getUserProduct()}' />"
                                 />
                             </td>
@@ -115,7 +115,7 @@
                         <tr>
                             <th>Mật khẩu:</th>
                             <td>
-                                <input type="text" name="money" size="60"
+                                <input type="text" name="pass" size="60"
                                        value="<c:out value='${product.getPass()}' />"
                                 />
                             </td>
@@ -123,7 +123,7 @@
                         <tr>
                             <th>Trạng thái:</th>
                             <td>
-                                <input type="text" name="userNameAcc" size="60"
+                                <input type="text" name="status" size="60"
                                        value="<c:out value='${product.getStatus()}' />"
                                 />
                             </td>
@@ -131,7 +131,7 @@
                         <tr>
                             <th>Server:</th>
                             <td>
-                                <input type="text" name="pass" size="60"
+                                <input type="text" name="serverId" size="60"
                                        value="<c:out value='${product.getServerId()}' />"
                                 />
                             </td>

@@ -48,12 +48,12 @@
                     <a class="nav-link " href="#"><b class="bx">Trung tâm</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">Admin</b></a>
+                    <a class="nav-link " href="#"><b class="bx">Trợ giúp</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#"><b class="bx">Thắc mắc</b></a>
                 </li>
                 <img src="img/avtcus.jpg"/>
-                <li class="nav-item">
-                    <a class="nav-link " href="http://localhost:8080"><b class="bx">Đăng xuất</b></a>
-                </li>
             </ul>
         </div>
     </div>
@@ -65,80 +65,52 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a class="btn btn-outline-secondary" href="/customers"> Back home</a>
+                    <a class="btn btn-outline-secondary" href="http://localhost:8080/">Back</a>
                 </div>
             </div>
             <div class="row mt-3">
-                <form method="post">
-                    <table border="1" cellpadding="5">
-                        <caption>
-                            <h2>
-                                Thêm mới khách
-                            </h2>
-                        </caption>
-                        <tr>
-                            <th>Tên người dùng:</th>
-                            <td>
-                                <input type="text" name="name" size="45"
-                                       value=""
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Tuổi:</th>
-                            <td>
-                                <input type="text" name="age" size="15"
-                                       value=""
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Số điện thoại:</th>
-                            <td>
-                                <input type="text" name="numberPhone" size="25"
-                                       value=""
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Email :</th>
-                            <td>
-                                <input type="text" name="email" size="85"
-                                       value=""
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Số tiền khả dụng:</th>
-                            <td>
-                                <input type="text" name="money" size="25"
-                                       value=""
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Tài khoản:</th>
-                            <td>
-                                <input type="text" name="userNameAcc" size="25"
-                                       value=""
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Mật khẩu:</th>
-                            <td>
-                                <input type="text" name="pass" size="25"
-                                       value=""
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" align="center">
-                                <input type="submit" value="Lưu thông tin"/>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
+                <div class="col-3"></div>
+                <div class="col-8">
+                    <form method="post">
+                        <div class="noi-dung">
+                            <div class="form" style="border: white 1px solid; border-radius: 3%;background-color: rgba(8, 12, 0, 0.7);">
+                                <h2 style="text-align: center;">Trang Đăng Nhập</h2>
+                                <div class="input-form">
+                                    <span>Nhập tên</span>
+                                    <input type="text" name="name" style="background-color: white">
+                                </div>
+                                <div class="input-form">
+                                    <span>Nhập tuổi của bạn</span>
+                                    <input type="text" name="age" style="background-color: white">
+                                </div>
+                                <div class="input-form">
+                                    <span>Nhập số điện thoại</span>
+                                    <input type="text" name="numberPhone" style="background-color: white">
+                                </div>
+                                <div class="input-form">
+                                    <span>Nhập email</span>
+                                    <input type="text" name="email" style="background-color: white">
+                                </div>
+                                <div class="input-form">
+                                    <span>Nhập tên đăng nhập</span>
+                                    <input type="text" name="userNameAcc" style="background-color: white">
+                                </div>
+                                <div class="input-form">
+                                    <span>Nhập mật khẩu</span>
+                                    <input type="text" name="pass" style="background-color: white">
+                                </div>
+                                <%--                <div class="input-form">--%>
+                                <%--                    <span>Nhập lại mật khẩu</span>--%>
+                                <%--                    <input type="text" name="pass2" style="background-color: white">--%>
+                                <%--                </div>--%>
+                                <div class="input-form">
+                                    <input type="submit" value="Tạo" style="color: #222222;">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-2"></div>
             </div>
         </div>
         <div class="col-3"></div>

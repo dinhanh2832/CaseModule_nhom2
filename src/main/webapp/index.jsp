@@ -41,7 +41,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsiver">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a target="_self" data-target="fa-home" class="nav-link active" href="http://localhost:8080" title="Home">
+                    <a target="_self" data-target="fa-home" class="nav-link active" href="http://localhost:8080"
+                       title="Home">
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
@@ -82,7 +83,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img  src="img/clc.jpg" class="d-block w-100" alt="...">
+                            <img src="img/clc.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 class="bhp">Cực Lạc Cốc</h5>
                                 <p class="bhp">Sức tấn công mạnh mẽ, linh hoạt</p>
@@ -144,31 +145,33 @@
                 </c:if>
             </p>
             <form method="post" action="/logIn">
-            <div class="noi-dung">
-                <div class="form">
-                    <h2>Trang Đăng Nhập</h2>
-                    <form action="">
-                        <div class="input-form">
-                            <span>Tên Người Dùng</span>
-                            <input type="text" name="username" placeholder="username" />
-                        </div>
-                        <div class="input-form">
-                            <span>Mật Khẩu</span>
-                            <input type="password" name="password" placeholder="password" />
-                        </div>
-                        <div class="nho-dang-nhap">
-                            <label><input type="checkbox" name=""> Nhớ Đăng Nhập</label>
-                        </div>
-                        <div class="input-form">
-                            <input type="submit" value="Đăng Nhập" style="color: #222222;">
-                        </div>
-                        <div class="input-form">
-                            <p>Bạn Chưa Có Tài Khoản? <a href="/customers?action=create">Đăng Ký</a><a href="" style="color: #3f3f3f">    Mua Ngay</a></p>
-                        </div>
+                <div class="noi-dung">
+                    <div class="form">
+                        <h2>Trang Đăng Nhập</h2>
+                        <form action="">
+                            <div class="input-form">
+                                <span>Tên Người Dùng</span>
+                                <input type="text" name="username" placeholder="username"/>
+                            </div>
+                            <div class="input-form">
+                                <span>Mật Khẩu</span>
+                                <input type="password" name="password" placeholder="password"/>
+                            </div>
+                            <div class="nho-dang-nhap">
+                                <label><input type="checkbox" name=""> Nhớ Đăng Nhập</label>
+                            </div>
+                            <div class="input-form">
+                                <input type="submit" value="Đăng Nhập" style="color: #222222;">
+                            </div>
+                            <div class="input-form">
+                                <p>Bạn Chưa Có Tài Khoản? <a href="/customers?action=create">Đăng Ký</a><a href=""
+                                                                                                           style="color: #3f3f3f">
+                                    Mua Ngay</a></p>
+                            </div>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
             </form>
         </div>
     </div>
@@ -188,9 +191,9 @@
         </div>
     </div>
 </div>
-<footer >
+<footer>
     <div class="container-fluid padding">
-        <div class="row text-center" >
+        <div class="row text-center">
             <div class="col-md-4">
                 <img src="img/logo.jpg" class="img-fluid">
                 <hr class="light">
