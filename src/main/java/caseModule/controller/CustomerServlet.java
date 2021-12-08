@@ -164,11 +164,10 @@ public class CustomerServlet extends HttpServlet {
         int age = Integer.parseInt(request.getParameter("age"));
         String numberPhone = request.getParameter("numberPhone");
         String email = request.getParameter("email");
-        double money = Double.parseDouble(request.getParameter("money"));
         String userNameAcc = request.getParameter("userNameAcc");
         String pass = request.getParameter("pass");
         try {
-            customerServlet.add(new Customer(name, age, numberPhone, email, money, userNameAcc, pass));
+            customerServlet.add(new Customer(name, age, numberPhone, email, userNameAcc, pass));
         } catch (SQLException e) {
             e.printStackTrace();
         }

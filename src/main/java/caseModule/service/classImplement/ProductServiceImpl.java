@@ -109,16 +109,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void edit(int id,Product product) throws SQLException {
         Connection connection=getConnection();
-        PreparedStatement preparedStatement=connection.prepareStatement("update product set id=?,price=?,classifyId=?,description=?,userProduct=?,pass=?,status=?,serverId=? where id=?");
-        preparedStatement.setInt(1,product.getId());
-        preparedStatement.setInt(2,product.getPrice());
-        preparedStatement.setInt(3,product.getClassifyId());
-        preparedStatement.setString(4,product.getDescription());
-        preparedStatement.setString(5,product.getUserProduct());
-        preparedStatement.setString(6,product.getPass());
-        preparedStatement.setInt(7,product.getStatus());
-        preparedStatement.setInt(8,product.getServerId());
-        preparedStatement.setInt(9,id);
+        PreparedStatement preparedStatement=connection.prepareStatement("update product set price=?,classifyId=?,description=?,userProduct=?,pass=?,status=?,serverId=? where id=?");
+        preparedStatement.setInt(1,product.getPrice());
+        preparedStatement.setInt(2,product.getClassifyId());
+        preparedStatement.setString(3,product.getDescription());
+        preparedStatement.setString(4,product.getUserProduct());
+        preparedStatement.setString(5,product.getPass());
+        preparedStatement.setInt(6,product.getStatus());
+        preparedStatement.setInt(7,product.getServerId());
+        preparedStatement.setInt(8,id);
         preparedStatement.executeUpdate();
     }
 
