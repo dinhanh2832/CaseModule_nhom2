@@ -25,6 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Estonia&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/customerSide.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top ">
@@ -65,11 +66,11 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a style="width: 150px;" class="btn btn-secondary" href="http://localhost:8080/">Back</a>
+                    <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="http://localhost:8080/">Back</a>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-3"></div>
+                <div class="col-2"></div>
                 <div class="col-8">
                     <div style="background: white;border-radius: 3%">
                         <form method="post">
@@ -77,27 +78,27 @@
                                 <div class="form" style="border: white 1px solid; border-radius: 3%;background-color: rgba(8, 12, 0, 0.7);">
                                     <h2 style="text-align: center;">Trang Đăng Nhập</h2>
                                     <div class="input-form">
-                                        <span>Nhập tên</span>
+                                        <span style="color: black">Nhập tên</span>
                                         <input type="text" name="name" style="background-color: white">
                                     </div>
                                     <div class="input-form">
-                                        <span>Nhập tuổi của bạn</span>
+                                        <span style="color: black">Nhập tuổi của bạn</span>
                                         <input type="text" name="age" style="background-color: white">
                                     </div>
                                     <div class="input-form">
-                                        <span>Nhập số điện thoại</span>
+                                        <span style="color: black">Nhập số điện thoại</span>
                                         <input type="text" name="numberPhone" style="background-color: white">
                                     </div>
                                     <div class="input-form">
-                                        <span>Nhập email</span>
+                                        <span style="color: black">Nhập email</span>
                                         <input type="text" name="email" style="background-color: white">
                                     </div>
                                     <div class="input-form">
-                                        <span>Nhập tên đăng nhập</span>
+                                        <span style="color: black">Nhập tên đăng nhập</span>
                                         <input type="text" name="userNameAcc" style="background-color: white">
                                     </div>
                                     <div class="input-form">
-                                        <span>Nhập mật khẩu</span>
+                                        <span style="color: black">Nhập mật khẩu</span>
                                         <input type="text" name="pass" style="background-color: white">
                                     </div>
                                     <%--                <div class="input-form">--%>
@@ -120,10 +121,10 @@
     </div>
 </div>
 <hr class="my-2">
-<div class="container-fluid padding" style="background: white">
+<div class="container-fluid padding" style="background: #d5d5d5">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2>Liên hệ với chúng thôi</h2>
+            <h2 class="lh">Liên hệ với chúng tôi</h2>
         </div>
         <div class="col-12 social padding">
             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -138,24 +139,34 @@
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
-                <img src="img/logo.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
                 <hr class="light">
                 <p>000-111-222</p>
                 <p>anhnguyen@gmail.com</p>
+                <p>binhkk@gmail.com</p>
+                <p>dungchimto@gmail.com</p>
                 <p>Hoàng Mai- Hà Nội</p>
             </div>
             <div class="col-md-4">
                 <hr class="light">
-                <p>Giờ làm việc</p>
+                <p style="font-size: 25px;">Giờ làm việc</p>
                 <hr class="light">
                 <p>Sáng: 8h-12h</p>
                 <p>Chiều: 13h-17h</p>
+                <p>Tất cả các ngày trong tuần</p>
+                <p>Trừ ngày lễ</p>
+                <p>Các bạn có thể liên hệ qua link fb để được hỗ trợ</p>
             </div>
             <div class="col-md-4">
                 <hr class="light">
-                <p>000-111-222</p>
+                <p style="font-size: 25px;">Thông tin Web</p>
                 <hr class="light">
-                <p>anhnguyen@gmail.com</p>
+                <p>Web được thành lập và quản lý bởi</p>
+                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid"> <br>
+                Ánh - Dũng - Bình
+                <p>Nơi niềm tin và hạnh phúc được gửi gắm</p>
                 <p>Hoàng Mai- Hà Nội</p>
             </div>
             <div class="col-12">

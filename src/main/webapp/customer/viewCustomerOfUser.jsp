@@ -258,10 +258,10 @@
     </div>
 </div>
 <hr class="my-2">
-<div class="container-fluid padding" style="background: white">
+<div class="container-fluid padding" style="background: #d5d5d5">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2 class="lh">Liên hệ với chúng thôi</h2>
+            <h2 class="lh">Liên hệ với chúng tôi</h2>
         </div>
         <div class="col-12 social padding">
             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -276,24 +276,34 @@
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
-                <img src="img/logo.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
                 <hr class="light">
                 <p>000-111-222</p>
                 <p>anhnguyen@gmail.com</p>
+                <p>binhkk@gmail.com</p>
+                <p>dungchimto@gmail.com</p>
                 <p>Hoàng Mai- Hà Nội</p>
             </div>
             <div class="col-md-4">
                 <hr class="light">
-                <p>Giờ làm việc</p>
+                <p style="font-size: 25px;">Giờ làm việc</p>
                 <hr class="light">
                 <p>Sáng: 8h-12h</p>
                 <p>Chiều: 13h-17h</p>
+                <p>Tất cả các ngày trong tuần</p>
+                <p>Trừ ngày lễ</p>
+                <p>Các bạn có thể liên hệ qua link fb để được hỗ trợ</p>
             </div>
             <div class="col-md-4">
                 <hr class="light">
-                <p>000-111-222</p>
+                <p style="font-size: 25px;">Thông tin Web</p>
                 <hr class="light">
-                <p>anhnguyen@gmail.com</p>
+                <p>Web được thành lập và quản lý bởi</p>
+                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid"> <br>
+                Ánh - Dũng - Bình
+                <p>Nơi niềm tin và hạnh phúc được gửi gắm</p>
                 <p>Hoàng Mai- Hà Nội</p>
             </div>
             <div class="col-12">
