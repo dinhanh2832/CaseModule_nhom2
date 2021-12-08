@@ -121,7 +121,7 @@ public class LogInServlet extends HttpServlet {
         if (check) {
             showCustomerSide(request, response);
         } else if (userName.equals("admin") && pass.equals("admin")) {
-            session.setAttribute("uc", userName);
+            session.setAttribute("uc", 100);
             session.setAttribute("pc", pass);
             RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminSide.jsp");
             dispatcher.forward(request, response);

@@ -55,7 +55,7 @@
                         <a class="nav-link " href="#"><b class="bx">${customer.money}</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#"><b class="bx">${sessionScope.name}</b></a>
+                        <a class="nav-link " href="#"><b class="bx">${customer.name}</b></a>
                     </li>
                     <img src="img/avtcus.jpg"/>
                 </c:if>
@@ -152,7 +152,7 @@
                                     <a href="/products?action=showBuy&idP=1&idC=${sessionScope.idC}"
                                        class="btn btn-outline-secondary"><b>Giỏ hàng</b></a>
                                     <a href="#" class="btn btn-outline-secondary"><b>Liên hệ</b></a>
-                                    <a href="http://localhost:8080" class="btn btn-outline-secondary"><b>Đăng
+                                    <a href="http://localhost:8080" class="btn btn-outline-secondary"><% session.removeAttribute("uc");%><b>Đăng
                                         xuất</b></a>
                                 </div>
                             </div>
@@ -277,9 +277,9 @@
                 <p style="font-size: 25px;">Thông tin Web</p>
                 <hr class="light">
                 <p>Web được thành lập và quản lý bởi</p>
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid"> <br>
+                <img  style="margin-top: 10px" src="img/dungkk.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/anhkk.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/binhkk.jpg" class="img-fluid"> <br>
                 Ánh - Dũng - Bình
                 <p>Nơi niềm tin và hạnh phúc được gửi gắm</p>
                 <p>Hoàng Mai- Hà Nội</p>

@@ -145,6 +145,13 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            default:
+                try {
+                    updateCustomerA(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
@@ -177,7 +184,33 @@ public class CustomerServlet extends HttpServlet {
         request.setAttribute("servers",serverList);
         dispatcher.forward(request, response);
     }
-
+    private void updateCustomerA(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int age = Integer.parseInt(request.getParameter("age"));
+        String numberPhone = request.getParameter("numberPhone");
+        String email = request.getParameter("email");
+        String pass = request.getParameter("pass");
+        int money = Integer.parseInt(request.getParameter("money"));
+        Customer customer = new Customer(age, numberPhone, email,money ,pass);
+        customerServlet.editA(id, customer);
+        List<Product> productList = productService.printAll();
+        List<Product> list2 = new ArrayList<>();
+        for(Product product: productList){
+            int status = product.getStatus();
+            if(status == 1){
+                list2.add(product);
+            }
+        }
+        List<ClassifyProduct> classifyProducts = findClassifyProduct(list2);
+        List<Server> serverList = findAllServer(list2);
+        Customer customer1 = customerServlet.findById(id);
+        request.setAttribute("customer",customer1);
+        request.setAttribute("products", list2);
+        request.setAttribute("classifyProducts",classifyProducts);
+        request.setAttribute("servers",serverList);
+        response.sendRedirect("/customers");
+    }
     private void AddForm(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));

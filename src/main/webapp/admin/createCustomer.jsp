@@ -162,9 +162,9 @@
                 <p style="font-size: 25px;">Thông tin Web</p>
                 <hr class="light">
                 <p>Web được thành lập và quản lý bởi</p>
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid"> <br>
+                <img  style="margin-top: 10px" src="img/dungkk.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/anhkk.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/binhkk.jpg" class="img-fluid"> <br>
                 Ánh - Dũng - Bình
                 <p>Nơi niềm tin và hạnh phúc được gửi gắm</p>
                 <p>Hoàng Mai- Hà Nội</p>

@@ -151,7 +151,7 @@
                                        class="btn btn-outline-secondary"><b style="margin-top: -10px;">Đổi mật khẩu</b></a>
                                     <a href="http://localhost:8080/logIn" class="btn btn-outline-secondary"><b>Back</b></a>
                                     <a href="#" class="btn btn-outline-secondary"><b>Liên hệ</b></a>
-                                    <a href="http://localhost:8080" class="btn btn-outline-secondary"><b>Đăng
+                                    <a href="http://localhost:8080" class="btn btn-outline-secondary"><% session.removeAttribute("uc");%><b>Đăng
                                         xuất</b></a>
                                 </div>
                             </div>
@@ -281,9 +281,9 @@
                 <p style="font-size: 25px;">Thông tin Web</p>
                 <hr class="light">
                 <p>Web được thành lập và quản lý bởi</p>
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid"> <br>
+                <img  style="margin-top: 10px" src="img/dungkk.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/anhkk.jpg" class="img-fluid">
+                <img  style="margin-top: 10px" src="img/binhkk.jpg" class="img-fluid"> <br>
                 Ánh - Dũng - Bình
                 <p>Nơi niềm tin và hạnh phúc được gửi gắm</p>
                 <p>Hoàng Mai- Hà Nội</p>

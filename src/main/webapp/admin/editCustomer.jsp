@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: anh
@@ -49,11 +48,12 @@
                     <a class="nav-link " href="#"><b class="bx">${sessionScope.mS}</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"><b class="bx">${sessionScope.uc}</b></a>
+                    <a class="nav-link " href="#"><b class="bx">${customer.name}</b></a>
                 </li>
                 <img src="img/avtcus.jpg"/>
                 <li class="nav-item">
-                    <a class="nav-link " href="http://localhost:8080"><b class="bx">Đăng xuất</b></a>
+                    <a class="nav-link " href="http://localhost:8080"><% session.removeAttribute("uc");%><b class="bx">Đăng
+                        xuất</b></a>
                 </li>
             </ul>
         </div>
@@ -66,61 +66,128 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/customers"> Back home</a>
+                    <c:if test="${sessionScope.uc == 100}">
+                        <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/customers"> Back
+                            home</a>
+                    </c:if>
+                    <c:if test="${sessionScope.uc != 100}">
+                        <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="http://localhost:8080/logIn"> Back
+                            home</a>
+                    </c:if>
                 </div>
             </div>
             <div class="row mt-3">
-                <div align="center" class="formWe">
-                <form method="post">
-                    <table class="table table-hover table-dark" >
-                        <caption>
-                            <h2 class="nameTb">
-                                Sửa thông tin khách
-                            </h2>
-                        </caption>
-                        <c:if test="${customer != null}">
-                            <input type="text" name="id" value="<c:out value='${customer.id}' />"/>
-                        </c:if>
-                        <tr>
-                            <th>Tuổi:</th>
-                            <td>
-                                <input class="bin" type="text" name="age" size="60"
-                                       value="<c:out value='${customer.age}' />"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Số điện thoại:</th>
-                            <td>
-                                <input class="bin" type="text" name="numberPhone" size="60"
-                                       value="<c:out value='${customer.numberPhone}' />"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Email :</th>
-                            <td>
-                                <input class="bin" type="text" name="email" size="60"
-                                       value="<c:out value='${customer.email}' />"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Mật khẩu:</th>
-                            <td>
-                                <input class="bin" type="text" name="pass" size="60"
-                                       value="<c:out value='${customer.pass}' />"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" align="center">
-                                <input type="submit" value="Lưu thông tin"/>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-                </div>
+                <c:if test="${sessionScope.uc != 100}">
+                    <div align="center" class="formWe">
+                        <form method="post">
+                            <table class="table table-hover table-dark">
+                                <caption>
+                                    <h2 class="nameTb">
+                                        Sửa thông tin khách
+                                    </h2>
+                                </caption>
+                                <tr>
+                                    <th>Tuổi:</th>
+                                    <td>
+                                        <input class="bin" type="text" name="age" size="60"
+                                               value="<c:out value='${customer.age}' />"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Số điện thoại:</th>
+                                    <td>
+                                        <input class="bin" type="text" name="numberPhone" size="60"
+                                               value="<c:out value='${customer.numberPhone}' />"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Email :</th>
+                                    <td>
+                                        <input class="bin" type="text" name="email" size="60"
+                                               value="<c:out value='${customer.email}' />"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Mật khẩu:</th>
+                                    <td>
+                                        <input class="bin" type="text" name="pass" size="60"
+                                               value="<c:out value='${customer.pass}' />"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input type="submit" value="Lưu thông tin"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.uc == 100}">
+                    <div align="center" class="formWe">
+                        <form method="post">
+                            <table class="table table-hover table-dark">
+                                <caption>
+                                    <h2 class="nameTb">
+                                        Sửa thông tin khách
+                                    </h2>
+                                </caption>
+                                <c:if test="${customer != null}">
+                                    <input type="text" name="id" value="<c:out value='${customer.id}' />"/>
+                                </c:if>
+                                <tr>
+                                    <th>Tuổi:</th>
+                                    <td>
+                                        <input class="bin" type="text" name="age" size="60"
+                                               value="<c:out value='${customer.age}' />"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Số điện thoại:</th>
+                                    <td>
+                                        <input class="bin" type="text" name="numberPhone" size="60"
+                                               value="<c:out value='${customer.numberPhone}' />"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Email :</th>
+                                    <td>
+                                        <input class="bin" type="text" name="email" size="60"
+                                               value="<c:out value='${customer.email}' />"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Mật khẩu:</th>
+                                    <td>
+                                        <input class="bin" type="text" name="pass" size="60"
+                                               value="<c:out value='${customer.pass}' />"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input type="submit" value="Lưu thông tin"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Tiền:</th>
+                                    <td>
+                                        <input class="bin" type="text" name="money" size="60"
+                                               value="<c:out value='${customer.money}' />"
+                                        />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </c:if>
             </div>
         </div>
         <div class="col-3"></div>
@@ -145,7 +212,7 @@
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
+                <img style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
                 <hr class="light">
                 <p>000-111-222</p>
                 <p>anhnguyen@gmail.com</p>
@@ -168,9 +235,9 @@
                 <p style="font-size: 25px;">Thông tin Web</p>
                 <hr class="light">
                 <p>Web được thành lập và quản lý bởi</p>
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid"> <br>
+                <img style="margin-top: 10px" src="img/dungkk.jpg" class="img-fluid">
+                <img style="margin-top: 10px" src="img/anhkk.jpg" class="img-fluid">
+                <img style="margin-top: 10px" src="img/binhkk.jpg" class="img-fluid"> <br>
                 Ánh - Dũng - Bình
                 <p>Nơi niềm tin và hạnh phúc được gửi gắm</p>
                 <p>Hoàng Mai- Hà Nội</p>

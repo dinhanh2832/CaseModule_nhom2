@@ -52,7 +52,8 @@
                 </li>
                 <img src="img/avtcus.jpg"/>
                 <li class="nav-item">
-                    <a class="nav-link " href="http://localhost:8080"><b class="bx">Đăng xuất</b></a>
+                    <a class="nav-link " href="http://localhost:8080"><% session.removeAttribute("uc");%><b class="bx">Đăng
+                        xuất</b></a>
                 </li>
             </ul>
         </div>
@@ -65,37 +66,40 @@
         <div class="col-11">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a style="width: 150px;" class="btn btn-secondary" href="/logIn?action=page"  > Back home</a>
+                    <a style="width: 150px;" class="btn btn-secondary" href="/logIn?action=page"> Back home</a>
                 </div>
             </div>
             <div class="row mt-3">
                 <c:forEach items="${customers}" var="customer">
-                    <div class="col-3" id="cardproduct">
-                        <div class="card mb-4">
-                            <figure class="snip1361" style="width: 242px">
-                                <img src="img/logo.jpg" alt="sample45" style="width: 247px">
-                                <figcaption>
-                                    <h3>Id người dùng ${customer.id}</h3>
-                                    <p>
-                                        Tên: ${customer.name} Tuổi: ${customer.age} <br>
-                                        Số đt: ${customer.numberPhone} <br>
-                                    </p>
-                                </figcaption>
-                            </figure>
-                            <div class="card-body text-center">
-                                <h4 class="card-title"></h4>
-                                <p>Tài khoản: ${customer.userNameAcc}</p>
-                                <p>Mật khẩu: ${customer.pass}</p>
-                                <a href="/customers?action=viewCustomer&id=${customer.getId()}"
-                                   class="btn btn-outline-secondary">Xem</a>
-                                <a href="/customers?action=edit&id=${customer.getId()}"
-                                   class="btn btn-outline-secondary">Sửa</a>
-                                <a href="/customers?action=deleteCus&id=${customer.id}"
-                                   class="btn btn-outline-secondary" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
-                                   title="Link Title">Xóa</a>
+                    <c:if test='${customer.id != 0}'>
+                        <div class="col-3" id="cardproduct">
+                            <div class="card mb-4">
+                                <figure class="snip1361" style="width: 242px">
+                                    <img src="img/logo.jpg" alt="sample45" style="width: 247px">
+                                    <figcaption>
+                                        <h3>Id người dùng ${customer.id}</h3>
+                                        <p>
+                                            Tên: ${customer.name} Tuổi: ${customer.age} <br>
+                                            Số đt: ${customer.numberPhone} <br>
+                                        </p>
+                                    </figcaption>
+                                </figure>
+                                <div class="card-body text-center">
+                                    <h4 class="card-title"></h4>
+                                    <p style="color: white">Tài khoản: ${customer.userNameAcc}</p>
+                                    <p style="color: white">Mật khẩu: ${customer.pass}</p>
+                                    <a href="/customers?action=viewCustomer&id=${customer.getId()}"
+                                       class="btn btn-outline-secondary">Xem</a>
+                                    <a href="/customers?action=edit&id=${customer.getId()}"
+                                       class="btn btn-outline-secondary">Sửa</a>
+                                    <a href="/customers?action=deleteCus&id=${customer.id}"
+                                       class="btn btn-outline-secondary"
+                                       onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
+                                       title="Link Title">Xóa</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </c:if>
                 </c:forEach>
             </div>
         </div>
@@ -120,7 +124,7 @@
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
+                <img style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
                 <hr class="light">
                 <p>000-111-222</p>
                 <p>anhnguyen@gmail.com</p>
@@ -143,9 +147,9 @@
                 <p style="font-size: 25px;">Thông tin Web</p>
                 <hr class="light">
                 <p>Web được thành lập và quản lý bởi</p>
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid">
-                <img  style="margin-top: 10px" src="img/logo.jpg" class="img-fluid"> <br>
+                <img style="margin-top: 10px" src="img/dungkk.jpg" class="img-fluid">
+                <img style="margin-top: 10px" src="img/anhkk.jpg" class="img-fluid">
+                <img style="margin-top: 10px" src="img/binhkk.jpg" class="img-fluid"> <br>
                 Ánh - Dũng - Bình
                 <p>Nơi niềm tin và hạnh phúc được gửi gắm</p>
                 <p>Hoàng Mai- Hà Nội</p>
