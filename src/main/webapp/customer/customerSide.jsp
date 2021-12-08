@@ -27,46 +27,6 @@
     <link rel="stylesheet" href="css/customerSide.css">
 </head>
 <body>
-<<<<<<< HEAD
-<p><a href="/products?action=showBuy&idP=1&idC=${sessionScope.idC}">xem giỏ hàng</a></p>
-<p>${sessionScope.us}</p>
-<p>${sessionScope.ps}</p>
-
-<center>
-    <h1> List Product</h1>
-    <br>
-    <p><a href="http://localhost:8080/">Đăng xuất</a></p>
-    <br>
-    <form action="/products">
-        <input type="text" name="key" placeholder="Enter name you want find?">
-        <button style="background: darkorchid"> find</button>
-    </form>
-    <form action="/products">
-        <input type="hidden" name="action" value="sort">
-        <button style="background: darkorchid"> Sort</button>
-    </form>
-    <br>
-    <table>
-        <tr style="background: pink">
-
-            <td > Id</td>
-            <td> Price</td>
-            <td> Classify Id</td>
-            <td> Server</td>
-            <td> Xem</td>
-            <td> Mua</td>
-        </tr>
-        <c:forEach  var="i" begin="0" end="${products.size() - 1}">
-            <tr>
-                <td><input style="border: none" type="text" name="id" value="${products.get(i).id}"></td>
-                <td><input style="border: none" type="text" name="price" value="${products.get(i).price}"></td>
-                <td><input style="border: none" type="text" name="classifyId" value="${classifyProducts.get(i).category}"></td>
-                <td><input style="border: none" type="text" name="server" value="${servers.get(i).name}"></td>
-                <td><a href="/logIn?action=viewProduct&id=${products.get(i).id}"> Xem chi tiết</a></td>
-                <td><a href="/products?action=showBuy&idP=${products.get(i).id}&idC=${sessionScope.idC}"> Mua </a></td>
-
-            </tr>
-=======
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top ">
     <div class="container-fluid">
         <a class="navbar-branch" href="#">
@@ -222,29 +182,38 @@
 </div>
 <div class="container-fluid mt-2">
     <div class="row">
-        <c:forEach var="i" begin="0" end="${products.size() - 1}">
-            <div class="col-3" id="cardproduct">
-                <div class="card mb-4" >
-                    <figure class="snip1361" style="width: 265px">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample45.jpg" alt="sample45"/>
-                        <figcaption>
-                            <h3>Acc số ${products.get(i).id}</h3>
-                            <p>
-                                   Giá: ${products.get(i).price} <br>
-                                  Loại:  ${classifyProducts.get(i).category} <br>
-                                  Server:  ${servers.get(i).name}
-                            </p>
-                        </figcaption>
-                    </figure>
-                    <div class="card-body text-center">
-                        <h4 class="card-title"></h4>
-                        <a href="/logIn?action=viewProduct&id=${products.get(i).id}" class="btn btn-outline-secondary">Xem thông tin</a>
-                        <a href="/products?action=showBuy&idP=${products.get(i).id}&idC=${sessionScope.idC}" class="btn btn-outline-secondary">Mua</a>
+        <div class="col-1"></div>
+        <div class="col-11">
+            <div class="row">
+                <c:forEach var="i" begin="0" end="${products.size() - 1}">
+                    <div class="col-3" id="cardproduct">
+                        <div class="card mb-4" >
+                            <figure class="snip1361" style="width: 242px">
+                                <img src="img/logo.jpg" alt="sample45" style="width: 247px">
+                                <figcaption>
+                                    <h3>Acc số ${products.get(i).id}</h3>
+                                    <p>
+                                        Giá: ${products.get(i).price} <br>
+                                        Loại:  ${classifyProducts.get(i).category} <br>
+                                        Server:  ${servers.get(i).name}
+                                    </p>
+                                </figcaption>
+                            </figure>
+                            <div class="card-body text-center">
+                                <h4 class="card-title"></h4>
+                                <a href="/logIn?action=viewProduct&id=${products.get(i).id}" class="btn btn-outline-secondary">Xem thông tin</a>
+                                <a href="/products?action=showBuy&idP=${products.get(i).id}&idC=${sessionScope.idC}" class="btn btn-outline-secondary">Mua</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </c:forEach>
             </div>
+<<<<<<< HEAD
 >>>>>>> 1a701f4a626f1633cc18efff597cc981f00588fe
         </c:forEach>
+=======
+        </div>
+>>>>>>> b71c89bf75d6c7e3c012f5d0ecf2b43ed251e259
     </div>
 </div>
 <hr class="my-2">
