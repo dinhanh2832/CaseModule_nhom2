@@ -414,103 +414,47 @@ public class ProductServlet extends HttpServlet {
             list3=list2;
         }
         if (price == 0 && classifyId == 0 && serverId != 0) {
-            switch (serverId) {
-                case 1:
-                    for (Product product : list2) {
-                        if (product.getServerId() == 1) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-                case 2:
-                    for (Product product : list2) {
-                        if (product.getServerId() == 2) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-                case 3:
-                    for (Product product : list2) {
-                        if (product.getServerId() == 3) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-                case 4:
-                    for (Product product : list2) {
-                        if (product.getServerId() == 4) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-                case 5:
-                    for (Product product : list2) {
-                        if (product.getServerId() == 5) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-                case 6:
-                    for (Product product : list2) {
-                        if (product.getServerId() == 6) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-
+            for (Product product:list2){
+                if (product.getServerId()==serverId){
+                    list3.add(product);
+                }
             }
 
         }
         if (price == 0 && classifyId != 0 && serverId == 0) {
-            switch (classifyId) {
-                case 1:
-                    for (Product product : list2) {
-                        if (product.getClassifyId() == 1) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-                case 2:
-                    for (Product product : list2) {
-                        if (product.getClassifyId() == 2) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
+            for (Product product:list2) {
+                if(product.getClassifyId()==classifyId){
+                    list3.add(product);
+                }
             }
         }
         if (price != 0 && classifyId == 0 && serverId == 0) {
-            switch (price) {
-                case 500000:
-                    for (Product product : list2) {
-                        if (product.getPrice() < 500000) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-                case 1000000:
-                    for (Product product : list2) {
-                        if (product.getPrice() < 1000000) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-                case 1500000:
-                    for (Product product : list2) {
-                        if (product.getPrice() < 1500000) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
-                case 2000000:
-                    for (Product product : list2) {
-                        if (product.getPrice() <2000000) {
-                            list3.add(product);
-                        }
-                    }
-                    break;
+            for (Product product : list2) {
+                if (product.getPrice() < price) {
+                    list3.add(product);
+                }
             }
-
+        }
+        if(price==0&&classifyId!=0&&serverId!=0){
+            for (Product product:list2) {
+                if(product.getClassifyId()==classifyId && product.getServerId()==serverId){
+                    list3.add(product);
+                }
+            }
+        }
+        if(price!=0&&classifyId!=0&&serverId==0){
+            for (Product product:list2) {
+                if(product.getClassifyId()==classifyId && product.getPrice()<price){
+                    list3.add(product);
+                }
+            }
+        }
+        if(price!=0&&classifyId==0&&serverId!=0){
+            for (Product product:list2) {
+                if(product.getServerId()==serverId && product.getPrice()<price){
+                    list3.add(product);
+                }
+            }
         }
 
 
