@@ -64,7 +64,7 @@
                 </div>
                 <div class="col-4">
                     <form method="post" action="/products?action=searchAD">
-                        <input type="text" name="idProduct" placeholder="Nhập mã số Acc">
+                        <input type="text" name="key" placeholder="Nhập mã số Acc">
                         <button>Tìm Kiếm</button>
                     </form>
                 </div>

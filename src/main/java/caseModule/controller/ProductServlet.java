@@ -324,6 +324,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+
         List<Product> productList = productService.printAll();
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
         List<Product> list = new ArrayList<>();
@@ -415,20 +416,25 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void searchAdmin(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        int idProduct = Integer.parseInt(request.getParameter("idProduct"));
-        List<Product> listProduct = new ArrayList<>();
-        Product product = productService.findById(idProduct);
-        listProduct.add(product);
 
-        List<ClassifyProduct> classifyProducts = findClassifyProduct(listProduct);
-        List<Server> serverList = findAllServer(listProduct);
-        request.setAttribute("products", listProduct);
-        request.setAttribute("classifyProducts", classifyProducts);
-        request.setAttribute("servers", serverList);
+        String key = request.getParameter("key");
+        if (key.equals("")) {
+            response.sendRedirect("/products");
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
-        requestDispatcher.forward(request, response);
+        }else {
+            int idProduct=Integer.parseInt(key);
+            List<Product> listProduct = new ArrayList<>();
+            Product product = productService.findById(idProduct);
+            listProduct.add(product);
+            List<ClassifyProduct> classifyProducts = findClassifyProduct(listProduct);
+            List<Server> serverList = findAllServer(listProduct);
+            request.setAttribute("products", listProduct);
+            request.setAttribute("classifyProducts", classifyProducts);
+            request.setAttribute("servers", serverList);
 
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/listProduct.jsp");
+            requestDispatcher.forward(request, response);
+        }
     }
 
 
