@@ -65,7 +65,7 @@
         <div class="col-6">
             <div class="row mt-3">
                 <div class="col-12">
-                    <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/customers"> Back home</a>
+                    <a style="width: 150px;margin-left: 230px" class="btn btn-secondary" href="/products"> Back home</a>
                 </div>
             </div>
             <div class="row mt-3">

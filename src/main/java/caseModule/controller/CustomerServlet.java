@@ -45,6 +45,13 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "edit2":
+                try {
+                    showEditForm(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
             case "deleteCus":
                 try {
                     deleteCustomer(request,response);

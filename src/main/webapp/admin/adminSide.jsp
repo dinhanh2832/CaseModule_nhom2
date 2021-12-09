@@ -49,7 +49,7 @@
                     <a class="nav-link " href="#"><b class="bx">Trung tâm</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="http://localhost:8080"><b class="bx">Đăng xuất</b></a>
+                    <a class="nav-link " href="http://localhost:8080"><% session.removeAttribute("uc");%><b class="bx">Đăng xuất</b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="#"><b class="bx"></b>Admin</a>
